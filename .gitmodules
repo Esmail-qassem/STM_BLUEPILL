@@ -1,0 +1,3 @@
+[submodule "ST32/Inc"]
+	path = ST32/Inc
+	url = https://github.com/Esmail-qassem/LIB.git
