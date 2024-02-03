@@ -1,0 +1,5 @@
+../GPIO/src/GPIO_program.c:14:15:GPIO_SetPinConfig	24	static
+../GPIO/src/GPIO_program.c:65:15:GPIO_GetPinReading	24	static
+../GPIO/src/GPIO_program.c:85:15:GPIO_GetPortReading	24	static
+../GPIO/src/GPIO_program.c:102:15:GPIO_SetPinValue	24	static
+../GPIO/src/GPIO_program.c:137:15:GPIO_SetPortValue	24	static

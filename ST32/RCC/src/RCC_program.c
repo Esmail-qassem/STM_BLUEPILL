@@ -7,6 +7,9 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "../inc/RCC_interface.h"
+#include "../inc/RCC_private.h"
+#include "../inc/RCC_register.h"
+#include "../inc/RCC_config.h"
 
 
 

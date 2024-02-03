@@ -1,0 +1,7 @@
+"./GPIO/src/GPIO_program.o"
+"./NVIC/src/NVIC_program.o"
+"./RCC/src/RCC_program.o"
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f103c8tx.o"
