@@ -29,11 +29,12 @@
 #define NVIC_IABR0       *((volatile u32*)(NVIC_BASE_ADD+0x200))
 #define NVIC_IABR1       *((volatile u32*)(NVIC_BASE_ADD+0x204))
 /********************************************************************/
-#define NVIC_IPR0         ((volatile u8*)(NVIC_BASE_ADD+0x300))
+#define NVIC_IPRn         ((volatile u8*)(NVIC_BASE_ADD+0x300))
 
 /**********************************************************************/
 /*SCB REGISTER*/
 /*Application interrupt and reset control register (SCB_AIRCR)*/
 
-#define NVIC_SCB_AIRCR_Reg   ((volatile NVIC_SCB_AIRCR*)0xE000ED00+0x0c)
+#define NVIC_SCB_AIRCR_Reg   ((volatile NVIC_SCB_AIRCR*)(0xE000ED0C))
+
 #endif /* INC_NVIC_REGISTER_H_ */

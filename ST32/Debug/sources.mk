@@ -22,6 +22,8 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+AFIO/src \
+EXTI/src \
 GPIO/src \
 NVIC/src \
 RCC/src \

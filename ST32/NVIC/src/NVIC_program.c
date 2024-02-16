@@ -114,7 +114,19 @@ else
 }
 	return Local_ErrStatus;
 }
+void NVIC_SetPriority(s8 Copy_S8PriorityId,u8 Copy_u8GroupPriority,u8 Copy_u8SubPriority)
+{
+	/*u8 priority=Copy_u8SubPriority|(Copy_u8GroupPriority<<((GROUP-0x05FA0300)/256))  */
+	NVIC_SCB_AIRCR_Reg->x=0x05FA0000|(priority_PreBuidConfig<<8);
 
+	u8 Local_variable=priority_PreBuidConfig -3;
 
+	if(Copy_S8PriorityId<0)
+	{
+		/*CORE PERIPHERAL*/
 
-
+	}else if(Copy_S8PriorityId > -1)
+	{
+		*(NVIC_IPRn+Copy_S8PriorityId)=((Copy_u8SubPriority>>(4-Local_variable))|(Copy_u8GroupPriority<<(Local_variable)))<<4;
+	}
+}

@@ -14,6 +14,8 @@ RM := rm -rf
 -include RCC/src/subdir.mk
 -include NVIC/src/subdir.mk
 -include GPIO/src/subdir.mk
+-include EXTI/src/subdir.mk
+-include AFIO/src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

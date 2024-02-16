@@ -18,9 +18,12 @@ typedef enum
 NVIC_Status_t NVIC_EnableInterrupt(u8 Copy_u8Peripheral);
 NVIC_Status_t NVIC_DisableInterrupt(u8 Copy_u8Peripheral);
 
-
 NVIC_Status_t NVIC_SetPendingFlag(u8 Copy_u8Peripheral);
 NVIC_Status_t NVIC_ClearPendingFlag(u8 Copy_u8Peripheral);
 
 NVIC_Status_t NVIC_GetActiveInterrupt(u8 Copy_u8Peripheral,u8 * Copy_pvPeripheral);
+
+void NVIC_SetPriority(s8 Copy_S8PriorityId,u8 Copy_u8GroupPriority,u8 Copy_u8SubGroupPriority);
+
+
 #endif /* INC_NVIC_INTERFACE_H_ */

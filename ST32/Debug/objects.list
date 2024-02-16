@@ -1,3 +1,5 @@
+"./AFIO/src/AFIO_program.o"
+"./EXTI/src/EXTI_program.o"
 "./GPIO/src/GPIO_program.o"
 "./NVIC/src/NVIC_program.o"
 "./RCC/src/RCC_program.o"
