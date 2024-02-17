@@ -14,6 +14,6 @@
 /*if you want 4 groups and 4 Sub groups choose :  bxx_yy  */
 /*if you want 2 groups and 8 Sub groups choose :  bx_yyy  */
 /*if you want 0 groups and 16Sub  groups choose:  b_yyyy  */
-#define priority_PreBuidConfig bxxx_y
+#define priority_PreBuidConfig bxx_yy
 
 #endif /* INC_NVIC_CONFIG_H_ */
