@@ -19,8 +19,12 @@
 #include "BIT_MATH.h"
 #include <stdint.h>
 #include "../RCC/inc/RCC_interface.h"
+#include "../GPIO/inc/GPIO_interface.h"
+#include "../NVIC/inc/NVIC_interface.h"
 #include "../AFIO/inc/AFIO_interface.h"
-//#include "../NVIC/inc/NVIC_interface.h"
+
+#define NVIC_TEST
+//#define AFIO_TEST
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
@@ -28,12 +32,51 @@
 int main(void)
 {
 	RCC_VidInit();
-	RCC_voidEnablePeripheral(APB2_BUS, APB2_AFIOEN);
+	RCC_voidEnablePeripheral(APB2_BUS, APB2_GPIOAEN);
+	GPIO_SetPinConfig(GPIO_PORTA,PIN0,OUTPUT_10MHZ_PUSH_PULL);
+	GPIO_SetPinConfig(GPIO_PORTA,PIN1,OUTPUT_10MHZ_PUSH_PULL);
+	GPIO_SetPinConfig(GPIO_PORTA,PIN2,OUTPUT_10MHZ_PUSH_PULL);
+
+#ifdef AFIO_TEST
 	AFIO_voidSetEXTIConfiguration(AFIO_LINE1,AFIO_PORTB);
 	AFIO_voidSetEXTIConfiguration(AFIO_LINE0,AFIO_PORTC);
 	AFIO_voidSetEXTIConfiguration(AFIO_LINE15,AFIO_PORTB);
-	//NVIC_EnableInterrupt(5);\
-	//NVIC_SetPriority(6,7,0);
-    /* Loop forever */
+
+#endif
+
+#ifdef NVIC_TEST
+NVIC_EnableInterrupt(6);
+NVIC_EnableInterrupt(7);
+
+//NVIC_SetPriority(6,1,2);
+//NVIC_SetPriority(7,0,3);
+
+
+NVIC_SetPendingFlag(7);
+NVIC_SetPendingFlag(6);
+
+
+#endif
+
 	for(;;);
+
+
 }
+#ifdef NVIC_TEST
+
+	void EXTI0_IRQHandler(void)
+	{
+
+ GPIO_SetPinValue(GPIO_PORTA,PIN0,GPIO_HIGH);
+
+	}
+	void EXTI1_IRQHandler(void)
+	{
+
+
+    GPIO_SetPinValue(GPIO_PORTA,PIN2,GPIO_HIGH);
+
+	}
+
+
+#endif

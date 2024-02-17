@@ -127,6 +127,6 @@ void NVIC_SetPriority(s8 Copy_S8PriorityId,u8 Copy_u8GroupPriority,u8 Copy_u8Sub
 
 	}else if(Copy_S8PriorityId > -1)
 	{
-		*(NVIC_IPRn+Copy_S8PriorityId)=((Copy_u8SubPriority>>(4-Local_variable))|(Copy_u8GroupPriority<<(Local_variable)))<<4;
+		*(NVIC_IPRn+Copy_S8PriorityId)=((Copy_u8SubPriority)|(Copy_u8GroupPriority<<(Local_variable)))<<4;
 	}
 }
