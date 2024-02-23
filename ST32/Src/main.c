@@ -18,12 +18,12 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include <stdint.h>
-#include "../RCC/inc/RCC_interface.h"
-#include "../GPIO/inc/GPIO_interface.h"
-#include "../NVIC/inc/NVIC_interface.h"
-#include "../AFIO/inc/AFIO_interface.h"
-#include "../EXTI/inc/EXTI_interface.h"
-#include "../SysTick/inc/SysTick_interface.h"
+#include "../MCAL/RCC/inc/RCC_interface.h"
+#include "../MCAL/GPIO/inc/GPIO_interface.h"
+#include "../MCAL/NVIC/inc/NVIC_interface.h"
+#include "../MCAL/AFIO/inc/AFIO_interface.h"
+#include "../MCAL/EXTI/inc/EXTI_interface.h"
+#include "../MCAL/SysTick/inc/SysTick_interface.h"
 
 //#define NVIC_TEST
 //#define AFIO_TEST

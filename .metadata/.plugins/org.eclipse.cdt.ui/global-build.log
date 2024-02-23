@@ -1,0 +1,560 @@
+17:44:01 **** Clean-only build of configuration Debug for project ST32 ****
+make -j12 clean 
+rm -rf ./Startup/startup_stm32f103c8tx.d ./Startup/startup_stm32f103c8tx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf ./RCC/src/RCC_program.cyclo ./RCC/src/RCC_program.d ./RCC/src/RCC_program.o ./RCC/src/RCC_program.su
+rm -rf ./NVIC/src/NVIC_program.cyclo ./NVIC/src/NVIC_program.d ./NVIC/src/NVIC_program.o ./NVIC/src/NVIC_program.su
+rm -rf ./GPIO/src/GPIO_program.cyclo ./GPIO/src/GPIO_program.d ./GPIO/src/GPIO_program.o ./GPIO/src/GPIO_program.su
+rm -rf ST32.elf ST32.list ST32.map default.size.stdout
+ 
+17:44:01 **** Build of configuration Debug for project ST32 ****
+make -j12 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c8tx.d" -MT"Startup/startup_stm32f103c8tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c8tx.o" "../Startup/startup_stm32f103c8tx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../MCAL/SysTick/src/SysTick_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/SysTick/src/SysTick_program.d" -MT"MCAL/SysTick/src/SysTick_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/SysTick/src/SysTick_program.o"
+arm-none-eabi-gcc "../MCAL/RCC/src/RCC_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/RCC/src/RCC_program.d" -MT"MCAL/RCC/src/RCC_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/RCC/src/RCC_program.o"
+arm-none-eabi-gcc "../MCAL/NVIC/src/NVIC_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/NVIC/src/NVIC_program.d" -MT"MCAL/NVIC/src/NVIC_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/NVIC/src/NVIC_program.o"
+arm-none-eabi-gcc "../MCAL/GPIO/src/GPIO_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/GPIO/src/GPIO_program.d" -MT"MCAL/GPIO/src/GPIO_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/GPIO/src/GPIO_program.o"
+arm-none-eabi-gcc "../MCAL/EXTI/src/EXTI_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/EXTI/src/EXTI_program.d" -MT"MCAL/EXTI/src/EXTI_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/EXTI/src/EXTI_program.o"
+arm-none-eabi-gcc "../MCAL/AFIO/src/AFIO_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/AFIO/src/AFIO_program.d" -MT"MCAL/AFIO/src/AFIO_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/AFIO/src/AFIO_program.o"
+../Src/main.c:21:10: fatal error: ../RCC/inc/RCC_interface.h: No such file or directory
+   21 | #include "../RCC/inc/RCC_interface.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../MCAL/SysTick/src/SysTick_program.c:3:
+../MCAL/SysTick/src/../inc/SysTick_interface.h:19:1: error: unknown type name 'Status_t'
+   19 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/../inc/SysTick_interface.h:20:1: error: unknown type name 'Status_t'
+   20 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetBusyWait':
+../MCAL/SysTick/src/SysTick_program.c:25:30: error: 'Enable' undeclared (first use in this function)
+   25 |         STK_CTRL_Reg->Enable=Enable;
+      |                              ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c:25:30: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:33:1: error: unknown type name 'Status_t'
+   33 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalSingle':
+../MCAL/SysTick/src/SysTick_program.c:35:1: error: unknown type name 'Status_t'
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:35:28: error: 'E_Not_Ok' undeclared (first use in this function)
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                            ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:38:28: error: 'E_Null_Pointer' undeclared (first use in this function)
+   38 |          LocaL_ErrorStatus=E_Null_Pointer;
+      |                            ^~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:42:28: error: 'E_Ok' undeclared (first use in this function)
+   42 |          LocaL_ErrorStatus=E_Ok;
+      |                            ^~~~
+../MCAL/SysTick/src/SysTick_program.c:48:39: error: 'Enable' undeclared (first use in this function)
+   48 |                 STK_CTRL_Reg->TICKINT=Enable;
+      |                                       ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:56:1: error: unknown type name 'Status_t'
+   56 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalPeriodoc':
+../MCAL/SysTick/src/SysTick_program.c:59:9: error: unknown type name 'Status_t'
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:59:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:62:36: error: 'E_Null_Pointer' undeclared (first use in this function)
+   62 |                  LocaL_ErrorStatus=E_Null_Pointer;
+      |                                    ^~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:66:36: error: 'E_Ok' undeclared (first use in this function)
+   66 |                  LocaL_ErrorStatus=E_Ok;
+      |                                    ^~~~
+../MCAL/SysTick/src/SysTick_program.c:72:47: error: 'Enable' undeclared (first use in this function)
+   72 |                         STK_CTRL_Reg->TICKINT=Enable;
+      |                                               ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidStopTimer':
+../MCAL/SysTick/src/SysTick_program.c:84:30: error: 'Disable' undeclared (first use in this function)
+   84 |         STK_CTRL_Reg->Enable=Disable;
+      |                              ^~~~~~~
+In file included from ../MCAL/EXTI/src/EXTI_program.c:3:
+../MCAL/EXTI/src/../inc/EXTI_interface.h:33:1: error: unknown type name 'Status_t'
+   33 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:34:1: error: unknown type name 'Status_t'
+   34 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:35:1: error: unknown type name 'Status_t'
+   35 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:36:1: error: unknown type name 'Status_t'
+   36 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:37:1: error: unknown type name 'Status_t'
+   37 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:55:1: error: unknown type name 'Status_t'
+   55 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT0_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:57:9: error: unknown type name 'Status_t'
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/EXTI/src/EXTI_program.c:60:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   60 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:64:27: error: 'E_Ok' undeclared (first use in this function)
+   64 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:69:1: error: unknown type name 'Status_t'
+   69 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT1_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:71:9: error: unknown type name 'Status_t'
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:71:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:74:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   74 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:78:27: error: 'E_Ok' undeclared (first use in this function)
+   78 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:84:1: error: unknown type name 'Status_t'
+   84 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT2_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:86:9: error: unknown type name 'Status_t'
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:86:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:89:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   89 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:93:27: error: 'E_Ok' undeclared (first use in this function)
+   93 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:99:1: error: unknown type name 'Status_t'
+   99 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT3_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:101:9: error: unknown type name 'Status_t'
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:101:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:104:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  104 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:108:27: error: 'E_Ok' undeclared (first use in this function)
+  108 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:114:1: error: unknown type name 'Status_t'
+  114 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT4_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:116:9: error: unknown type name 'Status_t'
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:116:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:119:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  119 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:123:27: error: 'E_Ok' undeclared (first use in this function)
+  123 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [MCAL/SysTick/src/subdir.mk:19: MCAL/SysTick/src/SysTick_program.o] Error 1
+make: *** [MCAL/EXTI/src/subdir.mk:19: MCAL/EXTI/src/EXTI_program.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:45:30 **** Incremental Build of configuration Debug for project ST32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../MCAL/SysTick/src/SysTick_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/SysTick/src/SysTick_program.d" -MT"MCAL/SysTick/src/SysTick_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/SysTick/src/SysTick_program.o"
+arm-none-eabi-gcc "../MCAL/EXTI/src/EXTI_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/EXTI/src/EXTI_program.d" -MT"MCAL/EXTI/src/EXTI_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/EXTI/src/EXTI_program.o"
+arm-none-eabi-gcc "../MCAL/AFIO/src/AFIO_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/AFIO/src/AFIO_program.d" -MT"MCAL/AFIO/src/AFIO_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/AFIO/src/AFIO_program.o"
+../Src/main.c:21:10: fatal error: ../RCC/inc/RCC_interface.h: No such file or directory
+   21 | #include "../RCC/inc/RCC_interface.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../MCAL/SysTick/src/SysTick_program.c:3:
+../MCAL/SysTick/src/../inc/SysTick_interface.h:19:1: error: unknown type name 'Status_t'
+   19 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/../inc/SysTick_interface.h:20:1: error: unknown type name 'Status_t'
+   20 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetBusyWait':
+../MCAL/SysTick/src/SysTick_program.c:25:30: error: 'Enable' undeclared (first use in this function)
+   25 |         STK_CTRL_Reg->Enable=Enable;
+      |                              ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c:25:30: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:33:1: error: unknown type name 'Status_t'
+   33 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalSingle':
+../MCAL/SysTick/src/SysTick_program.c:35:1: error: unknown type name 'Status_t'
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:35:28: error: 'E_Not_Ok' undeclared (first use in this function)
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                            ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:38:28: error: 'E_Null_Pointer' undeclared (first use in this function)
+   38 |          LocaL_ErrorStatus=E_Null_Pointer;
+      |                            ^~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:42:28: error: 'E_Ok' undeclared (first use in this function)
+   42 |          LocaL_ErrorStatus=E_Ok;
+      |                            ^~~~
+In file included from ../MCAL/EXTI/src/EXTI_program.c:3:
+../MCAL/EXTI/src/../inc/EXTI_interface.h:33:1: error: unknown type name 'Status_t'
+   33 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:48:39: error: 'Enable' undeclared (first use in this function)
+   48 |                 STK_CTRL_Reg->TICKINT=Enable;
+      |                                       ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:56:1: error: unknown type name 'Status_t'
+   56 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:34:1: error: unknown type name 'Status_t'
+   34 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalPeriodoc':
+../MCAL/EXTI/src/../inc/EXTI_interface.h:35:1: error: unknown type name 'Status_t'
+   35 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:59:9: error: unknown type name 'Status_t'
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:59:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:36:1: error: unknown type name 'Status_t'
+   36 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:62:36: error: 'E_Null_Pointer' undeclared (first use in this function)
+   62 |                  LocaL_ErrorStatus=E_Null_Pointer;
+      |                                    ^~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:66:36: error: 'E_Ok' undeclared (first use in this function)
+   66 |                  LocaL_ErrorStatus=E_Ok;
+      |                                    ^~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:37:1: error: unknown type name 'Status_t'
+   37 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:72:47: error: 'Enable' undeclared (first use in this function)
+   72 |                         STK_CTRL_Reg->TICKINT=Enable;
+      |                                               ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidStopTimer':
+../MCAL/SysTick/src/SysTick_program.c:84:30: error: 'Disable' undeclared (first use in this function)
+   84 |         STK_CTRL_Reg->Enable=Disable;
+      |                              ^~~~~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../MCAL/EXTI/src/EXTI_program.c:55:1: error: unknown type name 'Status_t'
+   55 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT0_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:57:9: error: unknown type name 'Status_t'
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/EXTI/src/EXTI_program.c:60:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   60 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:64:27: error: 'E_Ok' undeclared (first use in this function)
+   64 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:69:1: error: unknown type name 'Status_t'
+   69 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT1_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:71:9: error: unknown type name 'Status_t'
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:71:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:74:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   74 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:78:27: error: 'E_Ok' undeclared (first use in this function)
+   78 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:84:1: error: unknown type name 'Status_t'
+   84 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT2_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:86:9: error: unknown type name 'Status_t'
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:86:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:89:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   89 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+make: *** [MCAL/SysTick/src/subdir.mk:19: MCAL/SysTick/src/SysTick_program.o] Error 1
+../MCAL/EXTI/src/EXTI_program.c:93:27: error: 'E_Ok' undeclared (first use in this function)
+   93 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:99:1: error: unknown type name 'Status_t'
+   99 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT3_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:101:9: error: unknown type name 'Status_t'
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:101:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:104:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  104 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:108:27: error: 'E_Ok' undeclared (first use in this function)
+  108 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:114:1: error: unknown type name 'Status_t'
+  114 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT4_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:116:9: error: unknown type name 'Status_t'
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:116:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:119:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  119 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:123:27: error: 'E_Ok' undeclared (first use in this function)
+  123 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+make: *** [MCAL/EXTI/src/subdir.mk:19: MCAL/EXTI/src/EXTI_program.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:45:39 **** Incremental Build of configuration Debug for project ST32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../MCAL/SysTick/src/SysTick_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/SysTick/src/SysTick_program.d" -MT"MCAL/SysTick/src/SysTick_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/SysTick/src/SysTick_program.o"
+arm-none-eabi-gcc "../MCAL/EXTI/src/EXTI_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/EXTI/src/EXTI_program.d" -MT"MCAL/EXTI/src/EXTI_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/EXTI/src/EXTI_program.o"
+In file included from ../MCAL/SysTick/src/SysTick_program.c:3:
+../MCAL/SysTick/src/../inc/SysTick_interface.h:19:1: error: unknown type name 'Status_t'
+   19 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/../inc/SysTick_interface.h:20:1: error: unknown type name 'Status_t'
+   20 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetBusyWait':
+../MCAL/SysTick/src/SysTick_program.c:25:30: error: 'Enable' undeclared (first use in this function)
+   25 |         STK_CTRL_Reg->Enable=Enable;
+      |                              ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c:25:30: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:33:1: error: unknown type name 'Status_t'
+   33 | Status_t SysTick_voidSetIntervalSingle(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalSingle':
+../MCAL/SysTick/src/SysTick_program.c:35:1: error: unknown type name 'Status_t'
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:35:28: error: 'E_Not_Ok' undeclared (first use in this function)
+   35 | Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                            ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:38:28: error: 'E_Null_Pointer' undeclared (first use in this function)
+   38 |          LocaL_ErrorStatus=E_Null_Pointer;
+      |                            ^~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:42:28: error: 'E_Ok' undeclared (first use in this function)
+   42 |          LocaL_ErrorStatus=E_Ok;
+      |                            ^~~~
+../MCAL/SysTick/src/SysTick_program.c:48:39: error: 'Enable' undeclared (first use in this function)
+   48 |                 STK_CTRL_Reg->TICKINT=Enable;
+      |                                       ^~~~~~
+../MCAL/SysTick/src/SysTick_program.c: At top level:
+../MCAL/SysTick/src/SysTick_program.c:56:1: error: unknown type name 'Status_t'
+   56 | Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidSetIntervalPeriodoc':
+../MCAL/SysTick/src/SysTick_program.c:59:9: error: unknown type name 'Status_t'
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../Src/main.c:21:10: fatal error: ../RCC/inc/RCC_interface.h: No such file or directory
+   21 | #include "../RCC/inc/RCC_interface.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:59:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   59 |         Status_t LocaL_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:62:36: error: 'E_Null_Pointer' undeclared (first use in this function)
+   62 |                  LocaL_ErrorStatus=E_Null_Pointer;
+      |                                    ^~~~~~~~~~~~~~
+compilation terminated.
+../MCAL/SysTick/src/SysTick_program.c:66:36: error: 'E_Ok' undeclared (first use in this function)
+   66 |                  LocaL_ErrorStatus=E_Ok;
+      |                                    ^~~~
+In file included from ../MCAL/EXTI/src/EXTI_program.c:3:
+../MCAL/EXTI/src/../inc/EXTI_interface.h:33:1: error: unknown type name 'Status_t'
+   33 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:34:1: error: unknown type name 'Status_t'
+   34 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c:72:47: error: 'Enable' undeclared (first use in this function)
+   72 |                         STK_CTRL_Reg->TICKINT=Enable;
+      |                                               ^~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:35:1: error: unknown type name 'Status_t'
+   35 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:36:1: error: unknown type name 'Status_t'
+   36 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/SysTick/src/SysTick_program.c: In function 'SysTick_voidStopTimer':
+../MCAL/SysTick/src/SysTick_program.c:84:30: error: 'Disable' undeclared (first use in this function)
+   84 |         STK_CTRL_Reg->Enable=Disable;
+      |                              ^~~~~~~
+../MCAL/EXTI/src/../inc/EXTI_interface.h:37:1: error: unknown type name 'Status_t'
+   37 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void));
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:55:1: error: unknown type name 'Status_t'
+   55 | Status_t EXT0_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT0_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:57:9: error: unknown type name 'Status_t'
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   57 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:57:36: note: each undeclared identifier is reported only once for each function it appears in
+../MCAL/EXTI/src/EXTI_program.c:60:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   60 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+../MCAL/EXTI/src/EXTI_program.c:64:27: error: 'E_Ok' undeclared (first use in this function)
+   64 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+make: *** Waiting for unfinished jobs....
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:69:1: error: unknown type name 'Status_t'
+   69 | Status_t EXT1_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT1_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:71:9: error: unknown type name 'Status_t'
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:71:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   71 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:74:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   74 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:78:27: error: 'E_Ok' undeclared (first use in this function)
+   78 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:84:1: error: unknown type name 'Status_t'
+   84 | Status_t EXT2_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT2_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:86:9: error: unknown type name 'Status_t'
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:86:36: error: 'E_Not_Ok' undeclared (first use in this function)
+   86 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:89:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+   89 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:93:27: error: 'E_Ok' undeclared (first use in this function)
+   93 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:99:1: error: unknown type name 'Status_t'
+   99 | Status_t EXT3_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+make: *** [MCAL/SysTick/src/subdir.mk:19: MCAL/SysTick/src/SysTick_program.o] Error 1
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT3_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:101:9: error: unknown type name 'Status_t'
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:101:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  101 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:104:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  104 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:108:27: error: 'E_Ok' undeclared (first use in this function)
+  108 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+../MCAL/EXTI/src/EXTI_program.c: At top level:
+../MCAL/EXTI/src/EXTI_program.c:114:1: error: unknown type name 'Status_t'
+  114 | Status_t EXT4_CallBack(void (*Copy_pvfunction)(void))
+      | ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c: In function 'EXT4_CallBack':
+../MCAL/EXTI/src/EXTI_program.c:116:9: error: unknown type name 'Status_t'
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |         ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:116:36: error: 'E_Not_Ok' undeclared (first use in this function)
+  116 |         Status_t Local_ErrorStatus=E_Not_Ok;
+      |                                    ^~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:119:35: error: 'E_Null_Pointer' undeclared (first use in this function)
+  119 |                 Local_ErrorStatus=E_Null_Pointer;
+      |                                   ^~~~~~~~~~~~~~
+../MCAL/EXTI/src/EXTI_program.c:123:27: error: 'E_Ok' undeclared (first use in this function)
+  123 |         Local_ErrorStatus=E_Ok;
+      |                           ^~~~
+make: *** [MCAL/EXTI/src/subdir.mk:19: MCAL/EXTI/src/EXTI_program.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:47:56 **** Incremental Build of configuration Debug for project ST32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../MCAL/SysTick/src/SysTick_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/SysTick/src/SysTick_program.d" -MT"MCAL/SysTick/src/SysTick_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/SysTick/src/SysTick_program.o"
+arm-none-eabi-gcc "../MCAL/RCC/src/RCC_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/RCC/src/RCC_program.d" -MT"MCAL/RCC/src/RCC_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/RCC/src/RCC_program.o"
+arm-none-eabi-gcc "../MCAL/NVIC/src/NVIC_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/NVIC/src/NVIC_program.d" -MT"MCAL/NVIC/src/NVIC_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/NVIC/src/NVIC_program.o"
+arm-none-eabi-gcc "../MCAL/GPIO/src/GPIO_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/GPIO/src/GPIO_program.d" -MT"MCAL/GPIO/src/GPIO_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/GPIO/src/GPIO_program.o"
+arm-none-eabi-gcc "../MCAL/EXTI/src/EXTI_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/EXTI/src/EXTI_program.d" -MT"MCAL/EXTI/src/EXTI_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/EXTI/src/EXTI_program.o"
+arm-none-eabi-gcc "../MCAL/AFIO/src/AFIO_program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"MCAL/AFIO/src/AFIO_program.d" -MT"MCAL/AFIO/src/AFIO_program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "MCAL/AFIO/src/AFIO_program.o"
+../Src/main.c:21:10: fatal error: ../RCC/inc/RCC_interface.h: No such file or directory
+   21 | #include "../RCC/inc/RCC_interface.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:48:55 **** Incremental Build of configuration Debug for project ST32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "ST32.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\STM_BLUEPILL\ST32\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ST32.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ST32.elf
+ 
+arm-none-eabi-size   ST32.elf 
+arm-none-eabi-objdump -h -S  ST32.elf  > "ST32.list"
+   text	   data	    bss	    dec	    hex	filename
+   1468	      8	   1592	   3068	    bfc	ST32.elf
+Finished building: default.size.stdout
+ 
+Finished building: ST32.list
+ 

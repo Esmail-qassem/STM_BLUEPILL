@@ -1,11 +1,20 @@
 Src/main.o: ../Src/main.c ../Inc/STD_TYPES.h ../Inc/BIT_MATH.h \
- ../Src/../RCC/inc/RCC_interface.h ../Src/../RCC/inc/RCC_config.h \
- ../Src/../RCC/inc/RCC_private.h ../Src/../RCC/inc/RCC_register.h \
- ../Src/../AFIO/inc/AFIO_interface.h
+ ../Src/../MCAL/RCC/inc/RCC_interface.h \
+ ../Src/../MCAL/RCC/inc/RCC_config.h ../Src/../MCAL/RCC/inc/RCC_private.h \
+ ../Src/../MCAL/RCC/inc/RCC_register.h \
+ ../Src/../MCAL/GPIO/inc/GPIO_interface.h \
+ ../Src/../MCAL/NVIC/inc/NVIC_interface.h \
+ ../Src/../MCAL/AFIO/inc/AFIO_interface.h \
+ ../Src/../MCAL/EXTI/inc/EXTI_interface.h \
+ ../Src/../MCAL/SysTick/inc/SysTick_interface.h
 ../Inc/STD_TYPES.h:
 ../Inc/BIT_MATH.h:
-../Src/../RCC/inc/RCC_interface.h:
-../Src/../RCC/inc/RCC_config.h:
-../Src/../RCC/inc/RCC_private.h:
-../Src/../RCC/inc/RCC_register.h:
-../Src/../AFIO/inc/AFIO_interface.h:
+../Src/../MCAL/RCC/inc/RCC_interface.h:
+../Src/../MCAL/RCC/inc/RCC_config.h:
+../Src/../MCAL/RCC/inc/RCC_private.h:
+../Src/../MCAL/RCC/inc/RCC_register.h:
+../Src/../MCAL/GPIO/inc/GPIO_interface.h:
+../Src/../MCAL/NVIC/inc/NVIC_interface.h:
+../Src/../MCAL/AFIO/inc/AFIO_interface.h:
+../Src/../MCAL/EXTI/inc/EXTI_interface.h:
+../Src/../MCAL/SysTick/inc/SysTick_interface.h:

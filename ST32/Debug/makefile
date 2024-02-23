@@ -11,11 +11,12 @@ RM := rm -rf
 -include sources.mk
 -include Startup/subdir.mk
 -include Src/subdir.mk
--include RCC/src/subdir.mk
--include NVIC/src/subdir.mk
--include GPIO/src/subdir.mk
--include EXTI/src/subdir.mk
--include AFIO/src/subdir.mk
+-include MCAL/SysTick/src/subdir.mk
+-include MCAL/RCC/src/subdir.mk
+-include MCAL/NVIC/src/subdir.mk
+-include MCAL/GPIO/src/subdir.mk
+-include MCAL/EXTI/src/subdir.mk
+-include MCAL/AFIO/src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

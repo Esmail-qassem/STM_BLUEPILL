@@ -1,5 +1,0 @@
-../NVIC/src/NVIC_program.c:15:15:NVIC_EnableInterrupt	3
-../NVIC/src/NVIC_program.c:35:15:NVIC_DisableInterrupt	3
-../NVIC/src/NVIC_program.c:56:15:NVIC_SetPendingFlag	3
-../NVIC/src/NVIC_program.c:76:15:NVIC_ClearPendingFlag	3
-../NVIC/src/NVIC_program.c:97:15:NVIC_GetActiveInterrupt	3

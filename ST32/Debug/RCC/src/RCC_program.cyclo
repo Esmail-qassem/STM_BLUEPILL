@@ -1,4 +1,0 @@
-../RCC/src/RCC_program.c:16:6:RCC_VidInit	3
-../RCC/src/RCC_program.c:97:12:RCC_voidEnablePeripheral	7
-../RCC/src/RCC_program.c:120:12:RCC_voidDisablePeripheral	7
-../RCC/src/RCC_program.c:142:12:RCC_voidResetPeripheral	5

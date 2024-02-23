@@ -22,11 +22,12 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-AFIO/src \
-EXTI/src \
-GPIO/src \
-NVIC/src \
-RCC/src \
+MCAL/AFIO/src \
+MCAL/EXTI/src \
+MCAL/GPIO/src \
+MCAL/NVIC/src \
+MCAL/RCC/src \
+MCAL/SysTick/src \
 Src \
 Startup \
 
