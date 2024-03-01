@@ -11,7 +11,9 @@ RM := rm -rf
 -include sources.mk
 -include Startup/subdir.mk
 -include Src/subdir.mk
+-include MCAL/UART/src/subdir.mk
 -include MCAL/SysTick/src/subdir.mk
+-include MCAL/SPI/src/subdir.mk
 -include MCAL/RCC/src/subdir.mk
 -include MCAL/NVIC/src/subdir.mk
 -include MCAL/GPIO/src/subdir.mk
@@ -57,6 +59,21 @@ default.size.stdout \
 OBJDUMP_LIST += \
 ST32.list \
 
+OBJCOPY_HEX += \
+ST32.hex \
+
+OBJCOPY_BIN += \
+ST32.bin \
+
+OBJCOPY_VERILOG += \
+ST32.verilog \
+
+OBJCOPY_SREC += \
+ST32.srec \
+
+OBJCOPY_SYMBOLSREC += \
+ST32.symbolsrec \
+
 
 # All Target
 all: main-build
@@ -80,12 +97,37 @@ ST32.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+ST32.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "ST32.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+ST32.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "ST32.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+ST32.verilog: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O verilog $(EXECUTABLES) "ST32.verilog"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+ST32.srec: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O srec $(EXECUTABLES) "ST32.srec"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+ST32.symbolsrec: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O symbolsrec $(EXECUTABLES) "ST32.symbolsrec"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) ST32.elf ST32.list ST32.map default.size.stdout
+	-$(RM) ST32.bin ST32.elf ST32.hex ST32.list ST32.map ST32.srec ST32.symbolsrec ST32.verilog default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN) $(OBJCOPY_VERILOG) $(OBJCOPY_SREC) $(OBJCOPY_SYMBOLSREC)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

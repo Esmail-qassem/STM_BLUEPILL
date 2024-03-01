@@ -19,7 +19,7 @@ enum Clock
 
 typedef struct
 {
-	u32 Enable    :1; /*Counter enable*/
+	u32 Sys_Enable    :1; /*Counter enable*/
 	u32 TICKINT   :1; /*SysTick exception request enable*/
 	u32 CLKSOURCE :1; /*Clock source selection*/
     u32           :13;

@@ -22,7 +22,7 @@ void SysTick_voidSetBusyWait(u32 Copy_u32TicksCount)
 	STK_LOAD_Reg=Copy_u32TicksCount;
 
 	/*Enable the timer*/
-	STK_CTRL_Reg->Enable=Enable;
+	STK_CTRL_Reg->Sys_Enable=Enable;
 	/*Polling*/
 	while(STK_CTRL_Reg->COUNTFLAG!=1);
 	SysTick_voidStopTimer();
@@ -47,7 +47,7 @@ Status_t LocaL_ErrorStatus=E_Not_Ok;
 		/*enable the interrput*/
 		STK_CTRL_Reg->TICKINT=Enable;
 		/*enable the timer */
-		STK_CTRL_Reg->Enable=Enable;
+		STK_CTRL_Reg->Sys_Enable=Enable;
  }
 
 return LocaL_ErrorStatus;
@@ -71,7 +71,7 @@ Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfu
 			/*enable the interrput*/
 			STK_CTRL_Reg->TICKINT=Enable;
 			/*enable the timer */
-			STK_CTRL_Reg->Enable=Enable;
+			STK_CTRL_Reg->Sys_Enable=Enable;
 	 }
 
 
@@ -81,7 +81,7 @@ Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfu
 
 void SysTick_voidStopTimer(void)
 {
-	STK_CTRL_Reg->Enable=Disable;
+	STK_CTRL_Reg->Sys_Enable=Disable;
 }
 u32 SysTick_GetElapsedTime(void)
 {

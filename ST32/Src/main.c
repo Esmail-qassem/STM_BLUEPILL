@@ -24,7 +24,8 @@
 #include "../MCAL/AFIO/inc/AFIO_interface.h"
 #include "../MCAL/EXTI/inc/EXTI_interface.h"
 #include "../MCAL/SysTick/inc/SysTick_interface.h"
-
+#include "../MCAL/SPI/inc/SPI_interface.h"
+#include "../MCAL/UART/inc/UART_interface.h"
 //#define NVIC_TEST
 //#define AFIO_TEST
 //#define EXT_TEST
@@ -80,14 +81,22 @@ void E4(void)
 int main(void)
 {
 	RCC_VidInit();
-	RCC_voidEnablePeripheral(APB2_BUS, APB2_GPIOAEN);
+	// RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOAEN);
+	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
+	RCC_voidEnablePeripheral(APB2_BUS,APB2_USART1EN);
+	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
 
 
-	GPIO_SetPinConfig(GPIO_PORTA,PIN5,OUTPUT_10MHZ_PUSH_PULL);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN6,OUTPUT_10MHZ_PUSH_PULL);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN7,OUTPUT_10MHZ_PUSH_PULL);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN8,OUTPUT_10MHZ_PUSH_PULL);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN9,OUTPUT_10MHZ_PUSH_PULL);
+	//GPIO_SetPinConfig(GPIO_PORTA,PIN9,OUTPUT_10MHZ_AF_PUSH);
+//	GPIO_SetPinConfig(GPIO_PORTA,PIN10,INPUT_FLOATING);
+
+
+	//GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_10MHZ_AF_PUSH);
+	//GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
+
+	//GPIO_SetPinConfig(GPIO_PORTA,PIN2,OUTPUT_10MHZ_AF_PUSH);
+	//GPIO_SetPinConfig(GPIO_PORTA,PIN3,INPUT_FLOATING);
+
 
 #ifdef EXT_TEST
 	GPIO_SetPinConfig(GPIO_PORTA,PIN0,INPUT_PULL_UP_DOWN);
@@ -160,8 +169,14 @@ EXT3_CallBack(&E3);
 
 #endif
 
+
+UART_voidInit();
+
 while(1)
 	{
+	UART_u8SendCharSynch(UART_Unit1,'1');
+	UART_u8SendCharSynch(UART_Unit2,'2');
+	UART_u8SendCharSynch(UART_Unit3,'3');
 
 	}
 
