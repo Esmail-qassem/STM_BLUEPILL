@@ -7,7 +7,7 @@
 #include "../inc/UART_private.h"
 #include "../inc/UART_config.h"
 
-
+u8* Global_Recieve=NULL;
 void UART_voidInit(void)
 {
 
@@ -54,14 +54,12 @@ USART1_CR1_Reg->M=UART1_WORD_SIZE;
 		#elif USART1_INTERRUPT == TXE_INT_ENABLE
 
      USART1_CR1_Reg->TXEIE=1;
+     USART1_CR1_Reg->PEIE=1;
 
 		#elif USART1_INTERRUPT == TCE_INT_ENABLE
-
+     USART1_CR1_Reg->PEIE=1;
      USART1_CR1_Reg->TCIE=1;
 
-		#elif USART1_INTERRUPT == RXNE_INT_ENABLE
-
-     USART1_CR1_Reg->RXNEIE=1;
 
 
 		#endif
@@ -118,16 +116,14 @@ USART2_CR1_Reg->M=UART2_WORD_SIZE;
      USART2_CR1_Reg->RXNEIE=0;
 
 		#elif USART2_INTERRUPT == TXE_INT_ENABLE
-
+     USART2_CR1_Reg->PEIE=1;
      USART2_CR1_Reg->TXEIE=1;
 
 		#elif USART2_INTERRUPT == TCE_INT_ENABLE
-
+     USART2_CR1_Reg->PEIE=1;
      USART2_CR1_Reg->TCIE=1;
 
-		#elif USART2_INTERRUPT == RXNE_INT_ENABLE
 
-     USART2_CR1_Reg->RXNEIE=1;
 
 
 		#endif
@@ -185,19 +181,17 @@ USART3_CR1_Reg->M=UART3_WORD_SIZE;
 
      USART3_CR1_Reg->TXEIE=0;
      USART3_CR1_Reg->TCIE=0;
-     USART3_CR1_Reg->RXNEIE=0;
+
 
 		#elif USART3_INTERRUPT == TXE_INT_ENABLE
-
+     USART3_CR1_Reg->PEIE=1;
      USART3_CR1_Reg->TXEIE=1;
 
 		#elif USART3_INTERRUPT == TCE_INT_ENABLE
-
+     USART3_CR1_Reg->PEIE=1;
      USART3_CR1_Reg->TCIE=1;
 
-		#elif USART3_INTERRUPT == RXNE_INT_ENABLE
 
-     USART3_CR1_Reg->RXNEIE=1;
 
 
 		#endif
@@ -216,6 +210,38 @@ USART3_CR1_Reg->M=UART3_WORD_SIZE;
 #endif
 
 }
+Status_t UART_u8SendCharASynch(UART_t HardWare_Unit,u8 Copy_u16Data,void(*Copy_pfISR)(void))
+{
+	Status_t ret =E_Not_Ok;
+	if(NULL == Copy_pfISR)
+	{
+		ret =E_Null_Pointer;
+	}
+	else
+	{
+		ret =E_Ok;
+		switch(HardWare_Unit)
+		{
+		case UART_Unit1 :
+		          {
+
+		          }
+		case UART_Unit2 :
+		          {
+
+		          }
+		case UART_Unit3 :
+		          {
+
+		          }
+		}
+
+
+
+	}
+return ret;
+}
+
 
 void UART_u8SendCharSynch(UART_t HardWare_Unit,u8 Copy_u16Data)
 {
@@ -247,9 +273,50 @@ case UART_Unit3 :
 
 }
 
+
+
+Status_t UART_u8ReceiveCharAsynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData,void(*Copy_pfISR)(void))
+{
+	Status_t Local_Error=E_Ok;
+
+	if(NULL == Copy_p8ReceiveData)
+	{
+		Local_Error=E_Null_Pointer;
+	}
+	else
+	{
+		if(UART_Unit1==HardWare_Unit)
+		{
+			 UART1_CallBack=Copy_pfISR;
+			 Global_Recieve=Copy_p8ReceiveData;
+			 USART1_CR1_Reg->PEIE=1;
+			 USART1_CR1_Reg->RXNEIE=1;
+		}
+		else if(UART_Unit2==HardWare_Unit)
+		{
+			UART2_CallBack=Copy_pfISR;
+			 Global_Recieve=Copy_p8ReceiveData;
+			 USART2_CR1_Reg->PEIE=1;
+			 USART2_CR1_Reg->RXNEIE=1;
+		}
+		else if (UART_Unit3==HardWare_Unit)
+		{
+			UART3_CallBack=Copy_pfISR;
+			 Global_Recieve=Copy_p8ReceiveData;
+			 USART3_CR1_Reg->PEIE=1;
+			 USART3_CR1_Reg->RXNEIE=1;
+		}
+	}
+	return Local_Error;
+}
+
+
+
+
+
 Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 {
-	u16 Local_counter=NULL;
+	u32 Local_counter=NULL;
 	Status_t Local_Error=E_Ok;
 
 	USART1_SR_Reg->RXNE=Disable;
@@ -268,7 +335,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_Not_Ok;
+					Local_Error=E_TIME_OUT;
 				}
 				else
 				{
@@ -283,7 +350,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_Not_Ok;
+					Local_Error=E_TIME_OUT;
 				}
 				else
 				{
@@ -300,7 +367,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_Not_Ok;
+					Local_Error=E_TIME_OUT;
 				}
 				else
 				{
@@ -360,26 +427,7 @@ void UART_u8RecieveStringSynch(UART_t HardWare_Unit,u8*Copy_p8Data,u8 Copy_u8Dat
 
 
 
-
-
-void USART1_IRQHandler(void){
-
-	UART1_CallBack();
-
-}
-
-
-void USART2_IRQHandler(void){
-
-	UART2_CallBack();
-
-}
-void USART3_IRQHandler(void){
-
-	UART2_CallBack();
-
-}
-u8 isStringEqual(const u8 *str1, const u8 *str2, u8 length) {
+u8 UART_IsStringEqual(const u8 *str1, const u8 *str2, u8 length) {
     for (u8 i = 0; i < length; ++i) {
         if (str1[i] != str2[i]) {
             return 0;  // Not equal
@@ -388,5 +436,18 @@ u8 isStringEqual(const u8 *str1, const u8 *str2, u8 length) {
     }
     return 1;  // Equal
 
+}
+void USART1_IRQHandler (void)
+{
+	*Global_Recieve=USART1_DR_Reg;
+	UART1_CallBack();
+}
+void USART2_IRQHandler (void)
+{
+	UART2_CallBack();
+}
+void USART3_IRQHandler (void)
+{
+	UART3_CallBack();
 }
 

@@ -113,6 +113,6 @@ enum Stop
 #define UART2_PAR_EVEN      1
 #define UART2_PAR_ODD       2
 
-#define TIME_OUT 100000
+#define TIME_OUT 200000
 
 #endif /* UART_PRIVATE_H_ */

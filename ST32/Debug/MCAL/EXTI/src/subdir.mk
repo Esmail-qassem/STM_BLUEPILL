@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/EXTI/src/EXTI_program.c 
 
-OBJS += \
-./MCAL/EXTI/src/EXTI_program.o 
-
 C_DEPS += \
 ./MCAL/EXTI/src/EXTI_program.d 
+
+OBJS += \
+./MCAL/EXTI/src/EXTI_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

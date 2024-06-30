@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/AFIO/src/AFIO_program.c 
 
-OBJS += \
-./MCAL/AFIO/src/AFIO_program.o 
-
 C_DEPS += \
 ./MCAL/AFIO/src/AFIO_program.d 
+
+OBJS += \
+./MCAL/AFIO/src/AFIO_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/SysTick/src/SysTick_program.c 
 
-OBJS += \
-./MCAL/SysTick/src/SysTick_program.o 
-
 C_DEPS += \
 ./MCAL/SysTick/src/SysTick_program.d 
+
+OBJS += \
+./MCAL/SysTick/src/SysTick_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

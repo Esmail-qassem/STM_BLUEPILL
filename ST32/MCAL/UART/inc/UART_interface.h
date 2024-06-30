@@ -31,7 +31,7 @@ void UART2_VidSendCallBack( void(*ptr) (void) );
 void UART2_VidSendCallBack( void(*ptr) (void) );
 
 
-u8 isStringEqual(const u8 *str1, const u8 *str2, u8 length) ;
+u8 UART_IsStringEqual(const u8 *str1, const u8 *str2, u8 length) ;
 
 
 #endif /* UART_INTERFACE_H_ */
