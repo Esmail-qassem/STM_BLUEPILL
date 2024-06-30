@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/RCC/src/RCC_program.c 
 
-OBJS += \
-./MCAL/RCC/src/RCC_program.o 
-
 C_DEPS += \
 ./MCAL/RCC/src/RCC_program.d 
+
+OBJS += \
+./MCAL/RCC/src/RCC_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -9,15 +9,15 @@ C_SRCS += \
 ../Src/syscalls.c \
 ../Src/sysmem.c 
 
-OBJS += \
-./Src/main.o \
-./Src/syscalls.o \
-./Src/sysmem.o 
-
 C_DEPS += \
 ./Src/main.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d 
+
+OBJS += \
+./Src/main.o \
+./Src/syscalls.o \
+./Src/sysmem.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

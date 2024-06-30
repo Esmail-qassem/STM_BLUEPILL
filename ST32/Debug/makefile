@@ -19,6 +19,7 @@ RM := rm -rf
 -include MCAL/GPIO/src/subdir.mk
 -include MCAL/EXTI/src/subdir.mk
 -include MCAL/AFIO/src/subdir.mk
+-include HAL/ESP/src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

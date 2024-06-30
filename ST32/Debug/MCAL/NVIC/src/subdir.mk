@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/NVIC/src/NVIC_program.c 
 
-OBJS += \
-./MCAL/NVIC/src/NVIC_program.o 
-
 C_DEPS += \
 ./MCAL/NVIC/src/NVIC_program.d 
+
+OBJS += \
+./MCAL/NVIC/src/NVIC_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

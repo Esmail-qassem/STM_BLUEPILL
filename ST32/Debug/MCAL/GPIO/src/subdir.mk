@@ -7,11 +7,11 @@
 C_SRCS += \
 ../MCAL/GPIO/src/GPIO_program.c 
 
-OBJS += \
-./MCAL/GPIO/src/GPIO_program.o 
-
 C_DEPS += \
 ./MCAL/GPIO/src/GPIO_program.d 
+
+OBJS += \
+./MCAL/GPIO/src/GPIO_program.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
