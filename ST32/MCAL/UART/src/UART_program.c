@@ -1,7 +1,7 @@
 
 
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../../inc/STD_TYPES.h"
+#include "../../../inc/BIT_MATH.h"
 #include "../inc/UART_interface.h"
 #include "../inc/UART_register.h"
 #include "../inc/UART_private.h"
@@ -335,7 +335,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_TIME_OUT;
+				//	Local_Error=E_TIME_OUT;
 				}
 				else
 				{
@@ -350,7 +350,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_TIME_OUT;
+					//Local_Error=E_TIME_OUT;
 				}
 				else
 				{
@@ -367,7 +367,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 				}
 				if(Local_counter==TIME_OUT)
 				{
-					Local_Error=E_TIME_OUT;
+					//ocal_Error=E_TIME_OUT;
 				}
 				else
 				{

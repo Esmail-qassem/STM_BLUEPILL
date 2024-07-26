@@ -9,9 +9,10 @@
  * */
 #define   UART1
 #define   UART2
-//#define   UART3
+#define   UART3
 /**************************************************************************************/
 /****************   UART 1  ****************/
+#ifdef UART1
 #define USART1_BAUD_RATE   115200
 
 /*_8BIT
@@ -37,8 +38,11 @@
  * */
 #define  UART1_Stop_Bit_Condition   Stop_bit
 
+#endif
 /**************************************************************************************/
 /****************   UART 2  ****************/
+#ifdef UART2
+
 #define USART2_BAUD_RATE   115200
 
 /*_8BIT
@@ -65,9 +69,13 @@
  * One_half_Stop_bit
  * */
 #define  UART2_Stop_Bit_Condition   Stop_bit
+
+#endif
 /****************************************************************************/
 /**************************************************************************************/
 /****************   UART 3  ****************/
+#ifdef UART3
+
 #define USART3_BAUD_RATE   115200
 
 /*_8BIT
@@ -93,3 +101,4 @@
  * */
 #define  UART3_Stop_Bit_Condition   Stop_bit
 #endif /* UART_CONFIG_H_ */
+#endif

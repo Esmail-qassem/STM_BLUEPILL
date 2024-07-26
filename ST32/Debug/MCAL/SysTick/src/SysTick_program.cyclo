@@ -1,8 +1,0 @@
-../MCAL/SysTick/src/SysTick_program.c:11:6:SysTick_voidInit	1
-../MCAL/SysTick/src/SysTick_program.c:19:6:SysTick_voidSetBusyWait	2
-../MCAL/SysTick/src/SysTick_program.c:33:10:SysTick_voidSetIntervalSingle	2
-../MCAL/SysTick/src/SysTick_program.c:56:10:SysTick_voidSetIntervalPeriodoc	2
-../MCAL/SysTick/src/SysTick_program.c:82:6:SysTick_voidStopTimer	1
-../MCAL/SysTick/src/SysTick_program.c:86:5:SysTick_GetElapsedTime	1
-../MCAL/SysTick/src/SysTick_program.c:91:5:SysTick_GetRemaningTime	1
-../MCAL/SysTick/src/SysTick_program.c:100:6:SysTick_Handler	1

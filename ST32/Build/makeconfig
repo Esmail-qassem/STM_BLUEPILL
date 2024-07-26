@@ -1,0 +1,9 @@
+OBJDIR =C:/STM_BLUEPILL/ST32/Build/Object
+LinkerDir =C:/STM_BLUEPILL/ST32/Build/Linker
+Images =C:/STM_BLUEPILL/ST32/Tools
+CC=arm-none-eabi-gcc
+CFLAG=-mcpu=cortex-m3 -mthumb --debug
+LD=arm-none-eabi-ld
+BIN=arm-none-eabi-objcopy
+STL=st-flash
+MCAL=C:/STM_BLUEPILL/ST32/MCAL

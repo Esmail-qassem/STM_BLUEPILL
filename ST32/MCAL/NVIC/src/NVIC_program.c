@@ -4,8 +4,8 @@
 /*SWC         : NVIC                                                   */
 /*Version     : V.1                                                    */
 /***********************************************************************/
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../../inc/STD_TYPES.h"
+#include "../../../inc/BIT_MATH.h"
 #include "../inc/NVIC_interface.h"
 #include "../inc/NVIC_private.h"
 #include "../inc/NVIC_register.h"

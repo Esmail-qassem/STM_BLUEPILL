@@ -15,8 +15,8 @@
  *
  ******************************************************************************
  */
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../inc/STD_TYPES.h"
+#include "../inc/BIT_MATH.h"
 #include <stdint.h>
 #include "../MCAL/RCC/inc/RCC_interface.h"
 #include "../MCAL/GPIO/inc/GPIO_interface.h"
@@ -26,7 +26,7 @@
 #include "../MCAL/SysTick/inc/SysTick_interface.h"
 #include "../MCAL/SPI/inc/SPI_interface.h"
 #include "../MCAL/UART/inc/UART_interface.h"
-#include "../HAL/ESP/inc/ESP_interface.h"
+//#include "../HAL/ESP/inc/ESP_interface.h"
 
 //#define NVIC_TEST
 //#define AFIO_TEST
@@ -80,28 +80,27 @@ void E4(void)
 
 }
 #endif
-u8 volatile x;
 
-void bdan (void)
-{
-	static volatile int y=0;
-	TOGGLE_BIT(y,0);
-	GPIO_SetPinValue(GPIO_PORTA,PIN0,y);
-
-}
-int main(void)
+void main(void)
 {
 	RCC_VidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOAEN);
-	//RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
+	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
+	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOCEN);
+	
+	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_USART1EN);
-RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
+    RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
 
 
-	GPIO_SetPinConfig(GPIO_PORTA,PIN9,OUTPUT_10MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN10,INPUT_FLOATING);
+	GPIO_SetPinConfig(GPIO_PORTC,PIN13,OUTPUT_2MHZ_PUSH_PULL);
 
-	GPIO_SetPinConfig(GPIO_PORTA,PIN0,OUTPUT_50MHZ_PUSH_PULL);
+	// GPIO_SetPinConfig(GPIO_PORTA,PIN9,OUTPUT_10MHZ_AF_PUSH);
+	// GPIO_SetPinConfig(GPIO_PORTA,PIN10,INPUT_FLOATING);
+	// GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_10MHZ_AF_PUSH);
+	// GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
+
+	//GPIO_SetPinConfig(GPIO_PORTA,PIN0,OUTPUT_50MHZ_PUSH_PULL);
 
 
 	//GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_10MHZ_AF_PUSH);
@@ -183,10 +182,9 @@ EXT3_CallBack(&E3);
 #endif
 
 
-UART_voidInit();
 //NVIC_EnableInterrupt(37);
 
-ESP_voidInit();
+
 
 //ESP_voidWifiLogin("esmail","Esmail1222001");
 
@@ -196,12 +194,16 @@ ESP_voidInit();
 //x= ESP_u8ReceiveHttpReq("t3bt.atwebpages.com" ,"43" );
 
 
-
+UART_voidInit();
 
 
 while(1)
 	{
+		UART_u8SendCharSynch(UART_Unit1,'1');
+		UART_u8SendCharSynch(UART_Unit3,'10');
+		UART_u8SendCharSynch(UART_Unit2,'55');
 
+		GPIO_SetPinValue(GPIO_PORTC,PIN13,GPIO_HIGH);
 
 
 	}

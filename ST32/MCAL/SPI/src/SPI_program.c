@@ -1,5 +1,5 @@
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+#include "../../../inc/STD_TYPES.h"
+#include "../../../inc/BIT_MATH.h"
 #include "../inc/SPI_interface.h"
 #include "../inc/SPI_private.h"
 #include "../inc/SPI_register.h"
