@@ -1,35 +1,64 @@
 include makeconfig
-all : Bin
 
-Bin:Linker
-	$(BIN) -O binary $(Images)/app.elf  $(Images)/app.bin
+# Define the source directories
+SRC_DIRS = ../Src/\
+           ../Startup/\
+		   $(MCAL)/RCC/src/ \
+		   $(MCAL)/NVIC/src/\
+		   $(MCAL)/SysTick/src/\
+		   $(MCAL)/GPIO/src/ \
+		   $(MCAL)/EXTI/src/\
+           $(MCAL)/AFIO/src/\
+           $(MCAL)/SPI/src/\
+           $(MCAL)/UART/src/
+
+# Find all source files
+SRC_FILES = $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.c))
+
+# Define the object files
+OBJ_FILES = $(patsubst %.c, $(OBJDIR)/%.o, $(notdir $(SRC_FILES)))
+
+# Search for source files in the specified directories
+vpath %.c $(SRC_DIRS)
+
+# ANSI color codes for green background
+COLOR_GREEN_BG=\033[42m
+COLOR_Blue_BG=\033[94m
+COLOR_purble=\033[45m
+COLOR_RESET=\033[0m
+
+all: Bin
+
+Bin: Linker
+	$(BIN) -O binary $(Images)/app.elf $(Images)/app.bin
 	$(BIN) -O ihex $(Images)/app.elf $(Images)/app.hex
+	@echo -e "$(COLOR_purble)++ Binary and hex generation completed$(COLOR_RESET) "
+
+Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
+	@$(LD) -Map $(Images)/application.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/app.elf
+	@echo -e "$(COLOR_Blue_BG)++ Linking completed$(COLOR_RESET)"
 
 
-Linker: Obj
-	$(LD) -Map $(Images)/application.map -T $(LinkerDir)/LinkerScript.ld $(wildcard $(OBJDIR)/*.o) -o $(Images)/app.elf
+# Rule to compile source files to object files
+$(OBJDIR)/%.o: %.c
+	@$(CC) -c $(CFLAG) $< -o $@
+	@mkdir -p $(OBJDIR)
+	@file_name=$(notdir $<); \
+	if [ "$$file_name" = "uart.c" ]; then \
+		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) uart"; \
+	else \
+		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) Compiling $$file_name"; \
+	fi
 
-Obj:
-	$(CC) -c $(CFLAG) ../src/main.c -o $(OBJDIR)/main.o
-	$(CC) -c $(CFLAG) ../Startup/startup_stm32f103.c -o $(OBJDIR)/startup_stm32f103.o
-	$(CC) -c $(CFLAG) $(MCAL)/AFIO/src/AFIO_program.c -o $(OBJDIR)/AFIO_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/EXTI/src/EXTI_program.c -o $(OBJDIR)/EXTI_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/GPIO/src/GPIO_program.c -o $(OBJDIR)/GPIO_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/NVIC/src/NVIC_program.c -o $(OBJDIR)/NVIC_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/RCC/src/RCC_program.c -o $(OBJDIR)/RCC_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/SPI/src/SPI_program.c -o $(OBJDIR)/SPI_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/SysTick/src/SysTick_program.c -o $(OBJDIR)/SysTick_program.o
-	$(CC) -c $(CFLAG) $(MCAL)/UART/src/UART_program.c  -o $(OBJDIR)/UART_program.o
-	
 clean:
 	@rm -f $(OBJDIR)/*.o
 	@rm -f $(Images)/*.elf
 	@rm -f $(Images)/*.map
 	@rm -f $(Images)/*.bin
-	@echo "Clean done in `date`" > log.txt
+	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
 
-flash :Bin
+flash: Bin
 	$(STL) write $(Images)/app.bin 0x08000000
 
-erase :
+erase:
 	$(STL) erase
