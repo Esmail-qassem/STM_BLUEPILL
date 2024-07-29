@@ -10,11 +10,8 @@
 
 static void(*Local_PvFunction)(void)=NULL;
 
-enum Clock
-{
-	AHB_BY_8,
-	AHB,
-};
+#define AHB_BY_8 0
+#define AHB 1
 
 
 typedef struct

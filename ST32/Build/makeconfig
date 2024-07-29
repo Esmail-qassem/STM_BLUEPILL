@@ -5,5 +5,5 @@ CC=arm-none-eabi-gcc
 CFLAG=-mcpu=cortex-m3 -mthumb --debug
 LD=arm-none-eabi-ld
 BIN=arm-none-eabi-objcopy
-STL=st-flash
+STL="C:/Program Files (x86)/STMicroelectronics/STM32 ST-LINK Utility/ST-LINK Utility/ST-LINK_CLI.exe"
 MCAL=C:/STM_BLUEPILL/ST32/MCAL

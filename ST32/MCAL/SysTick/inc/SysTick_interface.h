@@ -12,7 +12,7 @@
 void SysTick_voidInit(void);
 
 /*Synchronous function*/
-void SysTick_voidSetBusyWait(u32 Copy_u32TicksCount);
+void SysTick_voidSetBusyWait(u32 milliseconds);
 
 /*ASynchronous function*/
 /**************************************/
