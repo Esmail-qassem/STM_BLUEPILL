@@ -49,6 +49,11 @@ all: Bin
 Bin: Linker
 	@$(BIN) -O binary $(Images)/app.elf $(Images)/app.bin
 	@$(BIN) -O ihex $(Images)/app.elf $(Images)/app.hex
+	@$(SIZE) $(Images)/app.elf
+	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
+	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
+	@echo -e "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
+	@echo -e "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
 	@echo -e "$(COLOR_purble)++ Binary and hex generation completed$(COLOR_RESET)"
 
 Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
@@ -76,9 +81,10 @@ clean:
 	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
 
 flash: Bin
-	@$(STL) -c SWD -P $(Images)/app.bin 0x08000000 -Rst -Cksum $(Images)/app.bin  
+	@$(STL) -c port=swd -d $(Images)/app.bin 0x08000000 -v -rst
 
 erase:
-	@$(STL) -c SWD UR -ME
+	@$(STL) -c port=swd -e all
+
 # Include the dependency files
 -include $(DEP_FILES)
