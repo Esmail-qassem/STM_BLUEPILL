@@ -1,7 +1,6 @@
 C:/STM_BLUEPILL/ST32/Build/Object/EXTI_program.o: \
- C:/STM_BLUEPILL/ST32/MCAL/EXTI/src/EXTI_program.c \
- c:\stm_bluepill\st32\inc\std_types.h c:\stm_bluepill\st32\inc\bit_math.h \
- c:\stm_bluepill\st32\mcal\exti\inc\exti_interface.h \
- c:\stm_bluepill\st32\mcal\exti\inc\exti_private.h \
- c:\stm_bluepill\st32\mcal\exti\inc\exti_register.h \
- c:\stm_bluepill\st32\mcal\exti\inc\exti_config.h
+ C:/STM_BLUEPILL/ST32/MCAL/EXTI/src/EXTI_program.c ../Inc/STD_TYPES.h \
+ ../Inc/BIT_MATH.h C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_interface.h \
+ C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_private.h \
+ C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_register.h \
+ C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_config.h

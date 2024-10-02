@@ -4,12 +4,12 @@
 /*SWC         : NVIC                                                   */
 /*Version     : V.1                                                    */
 /***********************************************************************/
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/NVIC_interface.h"
-#include "../inc/NVIC_private.h"
-#include "../inc/NVIC_register.h"
-#include "../inc/NVIC_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "NVIC_interface.h"
+#include "NVIC_private.h"
+#include "NVIC_register.h"
+#include "NVIC_config.h"
 
 
 NVIC_Status_t NVIC_EnableInterrupt(u8 Copy_u8Peripheral)

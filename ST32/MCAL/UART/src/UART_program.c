@@ -1,11 +1,11 @@
 
 
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/UART_interface.h"
-#include "../inc/UART_register.h"
-#include "../inc/UART_private.h"
-#include "../inc/UART_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "UART_interface.h"
+#include "UART_register.h"
+#include "UART_private.h"
+#include "UART_config.h"
 
 u8* Global_Recieve=NULL;
 void UART_voidInit(void)

@@ -1,9 +1,9 @@
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/SPI_interface.h"
-#include "../inc/SPI_private.h"
-#include "../inc/SPI_register.h"
-#include "../inc/SPI_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "SPI_interface.h"
+#include "SPI_private.h"
+#include "SPI_register.h"
+#include "SPI_config.h"
 
 void SPI_voidInit (void)
 {

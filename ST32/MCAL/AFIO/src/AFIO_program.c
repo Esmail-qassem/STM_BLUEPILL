@@ -1,9 +1,9 @@
-#include "../../../Inc/STD_TYPES.h"
-#include "../../../Inc/BIT_MATH.h"
-#include "../inc/AFIO_interface.h"
-#include "../inc/AFIO_private.h"
-#include "../inc/AFIO_register.h"
-#include "../inc/AFIO_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "AFIO_interface.h"
+#include "AFIO_private.h"
+#include "AFIO_register.h"
+#include "AFIO_config.h"
 
 void AFIO_voidSetEXTIConfiguration(AFIO_Line_t Copy_u8Line,AFIO_EXTI_PORT Copy_u8Port_Mapp)
 {

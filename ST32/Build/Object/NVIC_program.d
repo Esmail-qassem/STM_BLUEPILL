@@ -1,7 +1,6 @@
 C:/STM_BLUEPILL/ST32/Build/Object/NVIC_program.o: \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/src/NVIC_program.c \
- c:\stm_bluepill\st32\inc\std_types.h c:\stm_bluepill\st32\inc\bit_math.h \
- c:\stm_bluepill\st32\mcal\nvic\inc\nvic_interface.h \
- c:\stm_bluepill\st32\mcal\nvic\inc\nvic_private.h \
- c:\stm_bluepill\st32\mcal\nvic\inc\nvic_register.h \
- c:\stm_bluepill\st32\mcal\nvic\inc\nvic_config.h
+ C:/STM_BLUEPILL/ST32/MCAL/NVIC/src/NVIC_program.c ../Inc/STD_TYPES.h \
+ ../Inc/BIT_MATH.h C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_interface.h \
+ C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_private.h \
+ C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_register.h \
+ C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_config.h

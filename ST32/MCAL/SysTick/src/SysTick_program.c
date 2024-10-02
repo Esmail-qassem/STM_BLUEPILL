@@ -1,9 +1,9 @@
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/SysTick_interface.h"
-#include "../inc/SysTick_private.h"
-#include "../inc/SysTick_register.h"
-#include "../inc/SysTick_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "SysTick_interface.h"
+#include "SysTick_private.h"
+#include "SysTick_register.h"
+#include "SysTick_config.h"
 
 
 

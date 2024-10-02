@@ -4,12 +4,12 @@
 /*SWC         : RCC                                                    */
 /*Version     : V.1                                                    */
 /***********************************************************************/
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/RCC_interface.h"
-#include "../inc/RCC_private.h"
-#include "../inc/RCC_register.h"
-#include "../inc/RCC_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "RCC_interface.h"
+#include "RCC_private.h"
+#include "RCC_register.h"
+#include "RCC_config.h"
 
 
 

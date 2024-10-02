@@ -4,12 +4,12 @@
 /*SWC         : GPIO                                                    */
 /*Version     : V.1                                                    */
 /***********************************************************************/
-#include "../../../inc/STD_TYPES.h"
-#include "../../../inc/BIT_MATH.h"
-#include "../inc/GPIO_interface.h"
-#include "../inc/GPIO_private.h"
-#include "../inc/GPIO_register.h"
-#include "../inc/GPIO_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "GPIO_interface.h"
+#include "GPIO_private.h"
+#include "GPIO_register.h"
+#include "GPIO_config.h"
 
 GPIO_STATUS_t GPIO_SetPinConfig(PORT_t Copy_Port,PIN_t Copy_Pin,Bit_Mode_t Copy_Config)
 {

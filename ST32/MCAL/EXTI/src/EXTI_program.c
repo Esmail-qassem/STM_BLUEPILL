@@ -1,9 +1,9 @@
-#include "../../../Inc/STD_TYPES.h"
-#include "../../../Inc/BIT_MATH.h"
-#include "../inc/EXTI_interface.h"
-#include "../inc/EXTI_private.h"
-#include "../inc/EXTI_register.h"
-#include "../inc/EXTI_config.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "EXTI_interface.h"
+#include "EXTI_private.h"
+#include "EXTI_register.h"
+#include "EXTI_config.h"
 
 
 void EXTI_voidInterrupEnable(Line_t Copy_LineId)

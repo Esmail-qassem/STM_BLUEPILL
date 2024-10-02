@@ -15,17 +15,17 @@
  *
  ******************************************************************************
  */
-#include "../inc/STD_TYPES.h"
-#include "../inc/BIT_MATH.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
 #include <stdint.h>
-#include "../MCAL/RCC/inc/RCC_interface.h"
-#include "../MCAL/GPIO/inc/GPIO_interface.h"
-#include "../MCAL/NVIC/inc/NVIC_interface.h"
-#include "../MCAL/AFIO/inc/AFIO_interface.h"
-#include "../MCAL/EXTI/inc/EXTI_interface.h"
-#include "../MCAL/SysTick/inc/SysTick_interface.h"
-#include "../MCAL/SPI/inc/SPI_interface.h"
-#include "../MCAL/UART/inc/UART_interface.h"
+#include "RCC_interface.h"
+#include "GPIO_interface.h"
+#include "NVIC_interface.h"
+#include "AFIO_interface.h"
+#include "EXTI_interface.h"
+#include "SysTick_interface.h"
+#include "SPI_interface.h"
+#include "UART_interface.h"
 //#include "../HAL/ESP/inc/ESP_interface.h"
 
 //#define NVIC_TEST
