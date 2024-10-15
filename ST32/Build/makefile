@@ -14,14 +14,7 @@ SRC_DIRS = ../Src/\
 
 # Define the include directories
 INC_DIRS = ../Inc/\
-           $(MCAL)/RCC/inc/ \
-           $(MCAL)/NVIC/inc/\
-           $(MCAL)/SysTick/inc/\
-           $(MCAL)/GPIO/inc/ \
-           $(MCAL)/EXTI/inc/\
-           $(MCAL)/AFIO/inc/\
-           $(MCAL)/SPI/inc/\
-           $(MCAL)/UART/inc/
+           $(wildcard $(MCAL)/*/inc/)
 
 # Add include directories to CFLAG
 INC_FLAGS = $(foreach dir, $(INC_DIRS), -I$(dir))
