@@ -6,7 +6,7 @@
 #include "SysTick_config.h"
 
 
-
+int test=0;
 
 void SysTick_voidInit(void)
 {
@@ -26,8 +26,7 @@ void SysTick_voidSetBusyWait(u32 milliseconds)
     STK_CTRL_Reg->Sys_Enable = Enable;
 
     /* Polling */
-    while ((STK_CTRL_Reg->COUNTFLAG & 0x01) == 0);
-
+    while ((STK_CTRL_Reg->COUNTFLAG) == 0);
     /* Stop the timer */
     SysTick_voidStopTimer();
 }

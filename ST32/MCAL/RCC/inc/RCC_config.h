@@ -17,7 +17,7 @@
 /*********************************/
 
 #ifdef PLL
-#define HSE /*write the clock source*/
+#define HSI /*write the clock source*/
 #endif
 
 /*************************** HSE ********************************/
@@ -47,7 +47,7 @@
  *PLL_x15
  *PLL_x16
  *PLL_x16*/
-#define PLL_MULT_FACTOR PLL_x2
+#define PLL_MULT_FACTOR PLL_x5
 
 #ifdef HSE
 /*
