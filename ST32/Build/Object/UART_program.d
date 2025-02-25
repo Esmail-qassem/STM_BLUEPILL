@@ -1,6 +1,0 @@
-C:/STM_BLUEPILL/ST32/Build/Object/UART_program.o: \
- C:/STM_BLUEPILL/ST32/MCAL/UART/src/UART_program.c ../Inc/STD_TYPES.h \
- ../Inc/BIT_MATH.h C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_register.h \
- C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_private.h \
- C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_config.h

@@ -1,6 +1,10 @@
 #ifndef SPI_PRIVATE_H_
 #define SPI_PRIVATE_H_
 
+
+static void (*SPI1_CallBack)(u16) = NULL;
+static void (*SPI2_CallBack)(u16)=NULL;
+
 typedef struct
 {
 	u32 CPHA    :1;  /*Clock phase*/

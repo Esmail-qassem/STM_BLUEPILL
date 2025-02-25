@@ -1,6 +1,0 @@
-C:/STM_BLUEPILL/ST32/Build/Object/NVIC_program.o: \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/src/NVIC_program.c ../Inc/STD_TYPES.h \
- ../Inc/BIT_MATH.h C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_private.h \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_register.h \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_config.h

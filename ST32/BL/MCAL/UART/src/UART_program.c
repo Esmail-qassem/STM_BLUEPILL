@@ -364,14 +364,7 @@ u8 UART_IsStringEqual(const u8 *str1, const u8 *str2, u8 length) {
     return 1;  // Equal
 
 }
-void USART1_IRQHandler (void)
-{
-	UART1_CallBack();
-}
-void USART2_IRQHandler (void)
-{
-	UART2_CallBack();
-}
+
 void USART3_IRQHandler (void)
 {
 	UART3_CallBack();
