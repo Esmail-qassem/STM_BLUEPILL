@@ -13,30 +13,20 @@ void main(void)
 {
 	RCC_VidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
-	RCC_voidEnablePeripheral(APB2_BUS,APB2_USART1EN);
-	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
 	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
 	NVIC_EnableInterrupt(35);
 	SysTick_voidInit();
 	UART_voidInit();
-	GPIO_SetPinConfig(GPIO_PORTB,PIN8,OUTPUT_50MHZ_PUSH_PULL);
-	GPIO_SetPinConfig(GPIO_PORTB,PIN5,OUTPUT_50MHZ_PUSH_PULL);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN2,OUTPUT_50MHZ_PUSH_PULL);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN3,OUTPUT_50MHZ_PUSH_PULL);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN4,OUTPUT_10MHZ_AF_PUSH);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN5,OUTPUT_10MHZ_AF_PUSH);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN6,OUTPUT_10MHZ_AF_PUSH);
-	// GPIO_SetPinConfig(GPIO_PORTA,PIN7,OUTPUT_10MHZ_AF_PUSH);
+	GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);
+	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
 
 
-static int x=0;
-x^=1;
 while(1)
 	{
 		
-			GPIO_SetPinValue(GPIO_PORTB,PIN8,1);
-			GPIO_SetPinValue(GPIO_PORTB,PIN5,1);
-		 SysTick_voidSetBusyWait(300);
+		UART_u8SendStringSynch(UART_Unit3,"i'm app ");
+
+		 SysTick_voidSetBusyWait(30);
 
 	
 	}

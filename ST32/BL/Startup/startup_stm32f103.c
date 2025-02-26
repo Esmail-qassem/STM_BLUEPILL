@@ -195,7 +195,6 @@ void Reset_Handler(void)
 /* 4) Call the main function */
     main();
     
-    while(1);
 }
 
 void Default_Handler(void)

@@ -48,16 +48,13 @@ void main(void)
 	SysTick_voidSetIntervalSingle(15000000,func);
 	while(u8TimeOutFlag == 0)
 	{
-		UART_u8SendStringSynch(UART_Unit3,"1 ");
 		Local_u8RecStatus = UART_u8ReceiveCharSynch(UART_Unit3, &u8RecBuffer[u8RecCounter]);
 		if (Local_u8RecStatus == 0)
 		{
-			UART_u8SendStringSynch(UART_Unit3,"2 ");
 			SysTick_voidStopTimer();
 
 			if(u8RecBuffer[u8RecCounter] == '\n')
 			{
-				UART_u8SendStringSynch(UART_Unit3,"3 ");
 				if (u8BLWriteReq == 1)
 				{
 					FPEC_voidEraseAppArea();
@@ -69,10 +66,8 @@ void main(void)
 				UART_u8SendStringSynch(UART_Unit3,"ok");
 				u8RecCounter = 0;
 			}
-
 			else
 			{
-				UART_u8SendStringSynch(UART_Unit3,"a7a ");
 				u8RecCounter ++ ;
 			}
 
