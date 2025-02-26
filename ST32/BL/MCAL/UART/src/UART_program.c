@@ -254,6 +254,7 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
 	}
 	else
 	{
+		Local_Error =0;
 		if(UART_Unit1==HardWare_Unit)
 		{
 			while(USART1_SR_Reg->RXNE ==0 && (Local_counter<TIME_OUT))

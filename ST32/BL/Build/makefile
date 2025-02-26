@@ -4,9 +4,10 @@ include makeconfig
 SRC_DIRS = ../Src/\
            ../Startup/\
            $(MCAL)/RCC/src/ \
-           $(MCAL)/SysTick/src/\
            $(MCAL)/UART/src/\
-		   $(MCAL)/FPEC/src/
+		   $(MCAL)/FPEC/src/\
+		   $(MCAL)/GPIO/src/\
+		   $(MCAL)/SysTick/src/
 
 # Define the include directories
 INC_DIRS = ../Inc/\

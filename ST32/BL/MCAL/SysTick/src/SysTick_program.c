@@ -41,15 +41,26 @@ Status_t LocaL_ErrorStatus=E_Not_Ok;
  }
  else
  {
+	STK_CTRL_Reg->Sys_Enable=0;
+	STK_LOAD_Reg=0;
+	STK_VAL_Reg=0;
+
 	 LocaL_ErrorStatus=E_Ok;
-	 Local_PvFunction=Copy_pvfunction;
+	
 
 		/*Load the value*/
 		STK_LOAD_Reg=Copy_u32TicksCount;
-		/*enable the interrput*/
-		STK_CTRL_Reg->TICKINT=Enable;
+
 		/*enable the timer */
 		STK_CTRL_Reg->Sys_Enable=Enable;
+
+		Local_PvFunction=Copy_pvfunction;
+		/*enable the interrput*/
+		STK_CTRL_Reg->TICKINT=Enable;
+
+
+
+		return LocaL_ErrorStatus;
  }
 
 return LocaL_ErrorStatus;
@@ -84,6 +95,8 @@ Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfu
 void SysTick_voidStopTimer(void)
 {
 	STK_CTRL_Reg->Sys_Enable=Disable;
+	STK_LOAD_Reg=0;
+	STK_VAL_Reg=0;
 }
 u32 SysTick_GetElapsedTime(void)
 {
