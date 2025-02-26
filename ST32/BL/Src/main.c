@@ -20,7 +20,8 @@ void func(void)
 
 	SCB_VTOR = 0x08001400;
 
-	addr_to_call = *(Function_t*)(0x08001404);
+	addr_to_call = *(volatile Function_t*)(0x08001404);
+	UART_u8SendStringSynch(UART_Unit3,"bye");
 	addr_to_call();
 }
 
