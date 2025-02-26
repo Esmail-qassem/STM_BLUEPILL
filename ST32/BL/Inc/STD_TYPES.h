@@ -11,7 +11,8 @@ typedef enum
 {
 	E_Ok,
 	E_Not_Ok,
-	E_Null_Pointer
+	E_Null_Pointer,
+	E_TIME_OUT
 }Status_t;
 
 enum Ability

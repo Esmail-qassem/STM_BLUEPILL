@@ -34,7 +34,7 @@ void init (void)
 	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
 	RCC_voidEnablePeripheral(AHB_BUS,AHB_FLITFEN);
 	GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
+	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_PULL_UP_DOWN);
 	
 	UART_voidInit();
 	
@@ -75,9 +75,9 @@ void main(void)
 			SysTick_voidSetIntervalSingle(15000000,func);
 		}
 
-		else
+		else if(Local_u8RecStatus == E_TIME_OUT)
 		{
-			
+
 
 		}
 

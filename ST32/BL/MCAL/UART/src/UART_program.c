@@ -241,69 +241,66 @@ case UART_Unit3 :
 
 }
 
-Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData)
+Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit, u8 *Copy_p8ReceiveData)
 {
-	u32 Local_counter=NULL;
-	Status_t Local_Error=E_Ok;
+    u32 Local_counter = 0;  // Initialize properly
+    Status_t Local_Error = E_Ok;
 
-	USART1_SR_Reg->RXNE=Disable;
-	if(NULL == Copy_p8ReceiveData)
-	{
-		Local_Error=E_Null_Pointer;
+    if (NULL == Copy_p8ReceiveData)
+    {
+        Local_Error= E_Null_Pointer;
+    }
 
-	}
-	else
-	{
-		Local_Error =0;
-		if(UART_Unit1==HardWare_Unit)
-		{
-			while(USART1_SR_Reg->RXNE ==0 && (Local_counter<TIME_OUT))
-				{
-					Local_counter++;
-				}
-				if(Local_counter==TIME_OUT)
-				{
-					Local_Error=5;
-				}
-				else
-				{
-					* Copy_p8ReceiveData=USART1_DR_Reg;
-				}
-		}
-		else if(UART_Unit2==HardWare_Unit)
-		{
-			while(USART2_SR_Reg->RXNE ==0 && (Local_counter<TIME_OUT))
-				{
-					Local_counter++;
-				}
-				if(Local_counter==TIME_OUT)
-				{
-					//Local_Error=E_TIME_OUT;
-				}
-				else
-				{
-					* Copy_p8ReceiveData=USART2_DR_Reg;
-				}
+    if (UART_Unit1 == HardWare_Unit)
+    {
+        while ((USART1_SR_Reg->RXNE == 0) && (Local_counter < TIME_OUT))
+        {
+            Local_counter++;
+        }
 
+        if (Local_counter == TIME_OUT)
+        {
+            Local_Error = E_TIME_OUT;
+        }
+        else
+        {
+            *Copy_p8ReceiveData = USART1_DR_Reg;
+        }
+    }
+    else if (UART_Unit2 == HardWare_Unit)
+    {
+        while ((USART2_SR_Reg->RXNE == 0) && (Local_counter < TIME_OUT))
+        {
+            Local_counter++;
+        }
 
+        if (Local_counter == TIME_OUT)
+        {
+            Local_Error = E_TIME_OUT;  // Fix missing timeout assignment
+        }
+        else
+        {
+            *Copy_p8ReceiveData = USART2_DR_Reg;
+        }
+    }
+    else if (UART_Unit3 == HardWare_Unit)
+    {
+        while ((USART3_SR_Reg->RXNE == 0) && (Local_counter < TIME_OUT))
+        {
+            Local_counter++;
+        }
 
-		}else if (UART_Unit3==HardWare_Unit)
-		{
-			while(USART3_SR_Reg->RXNE ==0 && (Local_counter<TIME_OUT))
-				{
-					Local_counter++;
-				}
-				if(Local_counter==TIME_OUT)
-				{
-					Local_Error=5;
-				}
-				else
-				{
-					* Copy_p8ReceiveData=USART3_DR_Reg;
-				}
-		}
-	}
-	return Local_Error;
+        if (Local_counter == TIME_OUT)
+        {
+            Local_Error = E_TIME_OUT;
+        }
+        else
+        {
+            *Copy_p8ReceiveData = USART3_DR_Reg;
+        }
+    }
+
+    return Local_Error;
 }
 
 Status_t UART_u8SendStringSynch(UART_t HardWare_Unit,u8* Copy_p8Data)
