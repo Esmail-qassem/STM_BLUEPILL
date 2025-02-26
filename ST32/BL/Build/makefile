@@ -39,12 +39,13 @@ all: Bin
 Bin: Linker
 	@$(BIN) -O binary $(Images)/app.elf $(Images)/app.bin
 	@$(BIN) -O ihex $(Images)/app.elf $(Images)/app.hex
+	@cp $(Images)/app.hex $(Images)/app.txt  # Copy HEX file as TXT
 	@$(SIZE) $(Images)/app.elf
 	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
 	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
 	@echo -e "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
 	@echo -e "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
-	@echo -e "$(COLOR_purble)++ Binary and hex generation completed$(COLOR_RESET)"
+	@echo -e "$(COLOR_purble)++ Binary, hex, and txt generation completed$(COLOR_RESET)"
 
 Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
 	@$(LD) -Map $(Images)/application.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/app.elf
@@ -68,6 +69,7 @@ clean:
 	@rm -f $(Images)/*.map
 	@rm -f $(Images)/*.bin
 	@rm -f $(Images)/*.hex
+	@rm -f $(Images)/*.txt
 	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
 
 flash: Bin

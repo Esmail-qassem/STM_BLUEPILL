@@ -14,12 +14,12 @@ volatile u8  u8BLWriteReq    = 1;
 typedef void (*Function_t)(void);
 Function_t addr_to_call = 0;
 
+u16 myData[] = {0x5345 ,0x414D,0X6C49}; // Example data
 void func(void)
 {
 #define SCB_VTOR   *((volatile u32*)0xE000ED08)
-
-	SCB_VTOR = 0x08001400;
-
+SCB_VTOR = 0x08001400;
+FPEC_voidFlashWrite(0x080013F0, myData, 3);
 	addr_to_call = *(volatile Function_t*)(0x08001404);
 	UART_u8SendStringSynch(UART_Unit3,"bye");
 	addr_to_call();
@@ -27,7 +27,7 @@ void func(void)
 
 void init (void)
 {
-
+	
 	RCC_VidInit();
 	SysTick_voidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
