@@ -12,21 +12,28 @@
 int asd=2;
 void main(void)
 {
-	asd=5;
+	
 	RCC_VidInit();
 	UART_voidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
 	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
-	
-	GPIO_SetPinConfig(GPIO_PORTB,PIN5,OUTPUT_50MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTB,PIN8,OUTPUT_50MHZ_AF_PUSH);
+	asd=5;
+	GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);
+	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
 
 
 while(1)
 	{
-		
-		GPIO_SetPinValue(GPIO_PORTB,PIN5,1);
-		GPIO_SetPinValue(GPIO_PORTB,PIN8,1);
+		for(int i=0;i<1000;i++)
+		{
+			
+		}
+		UART_u8SendStringSynch(UART_Unit3,"manga ");
+
+	for(int i=0;i<1000;i++)
+	{
+
+	}
 	}
 
 
