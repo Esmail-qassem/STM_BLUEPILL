@@ -1,5 +1,7 @@
 include makeconfig
-
+ifdef APPLICATION_ONLY
+CFLAG+= -DAPPLICATION_ONLY
+endif
 # Define the source directories
 SRC_DIRS = ../Src/\
            ../Startup/\
@@ -10,7 +12,8 @@ SRC_DIRS = ../Src/\
            $(MCAL)/EXTI/src/\
            $(MCAL)/AFIO/src/\
            $(MCAL)/SPI/src/\
-           $(MCAL)/UART/src/
+           $(MCAL)/UART/src/\
+		   $(MCAL)/FPEC/src/
 
 # Define the include directories
 INC_DIRS = ../Inc/\
@@ -40,18 +43,18 @@ COLOR_RESET=\033[0m
 all: Bin
 
 Bin: Linker
-	@$(BIN) -O binary $(Images)/app.elf $(Images)/app.bin
-	@$(BIN) -O ihex $(Images)/app.elf $(Images)/app.hex
-	@cp $(Images)/app.hex $(Images)/app.txt  # Copy HEX file as TXT
-	@$(SIZE) $(Images)/app.elf
-	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
-	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/app.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
+	@$(BIN) -O binary $(Images)/application.elf $(Images)/application.bin
+	@$(BIN) -O ihex $(Images)/application.elf $(Images)/application.hex
+	@cp $(Images)/application.hex $(Images)/application.txt  # Copy HEX file as TXT
+	@$(SIZE) $(Images)/application.elf
+	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/application.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
+	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/application.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
 	@echo -e "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
 	@echo -e "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
 	@echo -e "$(COLOR_purble)++ Binary, hex, and txt generation completed$(COLOR_RESET)"
 
 Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
-	@$(LD) -Map $(Images)/application.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/app.elf
+	@$(LD) -Map $(Images)/applicationlication.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/application.elf
 	@echo -e "$(COLOR_Blue_BG)++ Linking completed$(COLOR_RESET)"
 
 # Rule to compile source files to object files
@@ -76,7 +79,7 @@ clean:
 	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
 
 flash: Bin
-	@$(STL) -c port=swd -d $(Images)/app.bin 0x08000000 -v -rst
+	@$(STL) -c port=swd -d $(Images)/application.bin 0x08000000 -v -rst
 
 erase:
 	@$(STL) -c port=swd -e all

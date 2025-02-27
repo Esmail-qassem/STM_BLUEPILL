@@ -187,8 +187,7 @@ void Reset_Handler(void)
 
     for(uint32_t MemCounter = 0; MemCounter < Section_Size; MemCounter++){
         *MemDestAddr++ = 0;
-    }
-
+    } 
 	/* 3) Call the system intitialization function */
     System_Intitialization(); 
 

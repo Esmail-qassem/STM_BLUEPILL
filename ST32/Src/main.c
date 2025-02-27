@@ -9,16 +9,21 @@
 #include "SysTick_interface.h"
 #include "SPI_interface.h"
 #include "UART_interface.h" 
-int asd=2;
+#include "FPEC.h"
 void main(void)
 {
+	#ifdef APPLICATION_ONLY
+	 FPEC_voidFlashWrite(0x08000000,0xE0,1);
+    #define SCB_VTOR   *((volatile uint32_t*)0xE000ED08)
+    SCB_VTOR = 0x08001400;
+    #pragma message "APPLICATION_ONLY is running!"
+	#endif  
 	
 	RCC_VidInit();
 	UART_voidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOAEN);
 	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
-	asd=5;
 	GPIO_SetPinConfig(GPIO_PORTA,PIN0,OUTPUT_50MHZ_PUSH_PULL);
 	GPIO_SetPinConfig(GPIO_PORTA,PIN1,OUTPUT_50MHZ_PUSH_PULL);
 	GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);

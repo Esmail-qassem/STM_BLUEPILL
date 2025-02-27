@@ -10,4 +10,5 @@ C:/STM_BLUEPILL/ST32/Build/Object/main.o: ../Src/main.c \
  C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_interface.h \
  C:/STM_BLUEPILL/ST32/MCAL/SysTick/inc/SysTick_interface.h \
  C:/STM_BLUEPILL/ST32/MCAL/SPI/inc/SPI_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_interface.h
+ C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_interface.h \
+ C:/STM_BLUEPILL/ST32/MCAL/FPEC/inc/FPEC.h
