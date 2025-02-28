@@ -241,6 +241,15 @@ case UART_Unit3 :
 
 }
 
+void UART_voidSendNumber(UART_t HardWare_Unit, u32 Copy_u32Data)
+{
+    for (int i = 3; i >= 0; i--) // Send 4 bytes (assuming 32-bit number)
+    {
+        UART_u8SendCharSynch(HardWare_Unit, (Copy_u32Data >> (i * 8)) & 0xFF);
+    }
+}
+
+
 Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit, u8 *Copy_p8ReceiveData)
 {
     u32 Local_counter = 0;  // Initialize properly

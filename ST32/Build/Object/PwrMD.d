@@ -1,0 +1,7 @@
+C:/STM_BLUEPILL/ST32/Build/Object/PwrMD.o: \
+ C:/STM_BLUEPILL/ST32/MCAL/PwrMD/src/PwrMD.c \
+ C:/STM_BLUEPILL/ST32/MCAL/PwrMD/inc/PwrMD.h ../Inc/STD_TYPES.h \
+ C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_interface.h \
+ C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_config.h \
+ C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_private.h \
+ C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_register.h

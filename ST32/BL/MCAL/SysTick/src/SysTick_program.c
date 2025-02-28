@@ -6,6 +6,8 @@
 #include "SysTick_config.h"
 
 
+/* Define Variable for interval mode */
+static u8 MSTK_u8ModeOfInterval;
 
 void SysTick_voidInit(void)
 {
@@ -55,6 +57,8 @@ Status_t LocaL_ErrorStatus=E_Not_Ok;
 		STK_CTRL_Reg->Sys_Enable=Enable;
 
 		Local_PvFunction=Copy_pvfunction;
+			/* Set Mode to Single */
+	MSTK_u8ModeOfInterval = MSTK_SINGLE_INTERVAL;
 		/*enable the interrput*/
 		STK_CTRL_Reg->TICKINT=Enable;
 
@@ -81,6 +85,8 @@ Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfu
 
 			/*Load the value*/
 			STK_LOAD_Reg=Copy_u32TicksCount;
+			MSTK_u8ModeOfInterval = MSTK_PERIOD_INTERVAL;
+
 			/*enable the interrput*/
 			STK_CTRL_Reg->TICKINT=Enable;
 			/*enable the timer */
@@ -95,8 +101,6 @@ Status_t SysTick_voidSetIntervalPeriodoc(u32 Copy_u32TicksCount,void (*Copy_pvfu
 void SysTick_voidStopTimer(void)
 {
 	STK_CTRL_Reg->Sys_Enable=Disable;
-	STK_LOAD_Reg=0;
-	STK_VAL_Reg=0;
 }
 u32 SysTick_GetElapsedTime(void)
 {
@@ -114,5 +118,22 @@ u32 SysTick_GetRemaningTime(void)
 
 void SysTick_Handler(void)
 {
+	u8 Local_u8Temporary;
+	
+	if (MSTK_u8ModeOfInterval == MSTK_SINGLE_INTERVAL)
+	{
+		/* Disable STK Interrupt */
+		STK_CTRL_Reg->TICKINT=0;
+	
+		/* Stop Timer */
+		STK_CTRL_Reg->Sys_Enable=0;
+		STK_LOAD_Reg = 0;
+		STK_VAL_Reg  = 0;
+	}
+	
+	/* Callback notification */
 	Local_PvFunction();
+	
+	/* Clear interrupt flag */
+	STK_CTRL_Reg->COUNTFLAG=0;
 }

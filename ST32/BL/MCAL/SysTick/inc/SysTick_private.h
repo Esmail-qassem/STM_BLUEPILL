@@ -13,7 +13,8 @@ static void(*Local_PvFunction)(void)=NULL;
 #define AHB_BY_8 0
 #define AHB 1
 
-
+#define MSTK_SINGLE_INTERVAL 0
+#define MSTK_PERIOD_INTERVAL 1
 typedef struct
 {
 	u32 Sys_Enable    :1; /*Counter enable*/

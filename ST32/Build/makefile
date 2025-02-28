@@ -13,7 +13,8 @@ SRC_DIRS = ../Src/\
            $(MCAL)/AFIO/src/\
            $(MCAL)/SPI/src/\
            $(MCAL)/UART/src/\
-		   $(MCAL)/FPEC/src/
+		   $(MCAL)/FPEC/src/\
+		   $(MCAL)/PwrMD/src/
 
 # Define the include directories
 INC_DIRS = ../Inc/\
