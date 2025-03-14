@@ -7,4 +7,5 @@ LD=arm-none-eabi-ld
 BIN=arm-none-eabi-objcopy
 STL="C:/Program Files/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI.exe"
 MCAL=$(realpath .././MCAL)
+HAL=$(realpath .././HAL)
 SIZE=arm-none-eabi-size

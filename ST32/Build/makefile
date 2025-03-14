@@ -14,11 +14,14 @@ SRC_DIRS = ../Src/\
            $(MCAL)/SPI/src/\
            $(MCAL)/UART/src/\
 		   $(MCAL)/FPEC/src/\
-		   $(MCAL)/PwrMD/src/
+		   $(MCAL)/PwrMD/src/\
+		   $(MCAL)/DMA/src/\
+		   $(HAL)/TFT/src/
 
 # Define the include directories
 INC_DIRS = ../Inc/\
-           $(wildcard $(MCAL)/*/inc/)
+           $(wildcard $(MCAL)/*/inc/)\
+		   $(wildcard $(HAL)/*/inc/)
 
 # Add include directories to CFLAG
 INC_FLAGS = $(foreach dir, $(INC_DIRS), -I$(dir))

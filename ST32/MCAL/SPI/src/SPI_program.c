@@ -5,6 +5,30 @@
 #include "SPI_register.h"
 #include "SPI_config.h"
 
+void SPI_SendDataDMA(u8 *data, u16 size) {
+ 
+    // Disable DMA channel before configuration
+    DMA_CCR(DMA1_BASE, DMA_Channel5) &= ~DMA_CCR_EN;
+
+    // Set number of bytes to transfer
+    DMA_CNDTR(DMA1_BASE, DMA_Channel5) = size;
+
+    // Set memory address (source)
+    DMA_CMAR(DMA1_BASE, DMA_Channel5) = (u32)data;
+
+    // Set peripheral address (destination: SPI2 data register)
+    DMA_CPAR(DMA1_BASE, DMA_Channel5) = (u32)PERIPH_SPI2_TX;
+
+    // Configure DMA channel
+    DMA_CCR(DMA1_BASE, DMA_Channel5) =
+        DMA_CCR_MINC |       // Memory increment mode
+        DMA_CCR_DIR |        // Direction: Memory to peripheral
+        DMA_CCR_TCIE |       // Transfer complete interrupt enable
+        DMA_CCR_PL_HIGH;     // Priority level: High
+
+    // Enable DMA channel
+    DMA_CCR(DMA1_BASE, DMA_Channel5) |= DMA_CCR_EN;
+}
 void SPI_voidInit (void)
 {
 #ifdef SPI_1
@@ -14,6 +38,7 @@ void SPI_voidInit (void)
     SPI1_CR1_Reg->RXONLY=SPI1_RECEIVE_ONLY;
     /*Software slave managment*/
     SPI1_CR1_Reg->SSM=1;
+    SPI1_CR1_Reg->SSI = 0; 
     /*Frame format*/
     SPI1_CR1_Reg->LSBFIRST=SPI1_FRAME_FORMAT;
     /*baud rate control*/
@@ -36,6 +61,7 @@ void SPI_voidInit (void)
 	 SPI2_CR1_Reg->RXONLY=SPI2_RECEIVE_ONLY;
 	 /*Software slave managment*/
 	 SPI2_CR1_Reg->SSM=1;
+   SPI2_CR1_Reg->SSI = 1; 
 	 /*Frame format*/
 	 SPI2_CR1_Reg->LSBFIRST=SPI2_FRAME_FORMAT;
 	 /*baud rate control*/
@@ -43,12 +69,13 @@ void SPI_voidInit (void)
 	 /* Master selection */
 	 SPI2_CR1_Reg->MSTR= SPI2_MASTER_SELECTION;
 	 /*choose the clock plarity*/
-	  SPI2_CR1_Reg->CPOL=SPI2_CLOCK_POLARITY;
+	  SPI2_CR1_Reg->CPOL=SPI2_CLOCK_POLARITY; 
 	  /*choose the clock phase*/
 	  SPI2_CR1_Reg->CPHA=SPI2_CLOCK_PHASE;
     SPI2_CR1_Reg->SPE=Enable;
     SPI2_CR2_Reg->TXEIE = 1; 
-    SPI2_CR2_Reg->RXNEIE = 1; 
+    SPI2_CR2_Reg->RXNEIE = 1;
+    SPI2_CR2_Reg->TXDMAEN=1;
 #endif
 }
 Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_pvReceived)
