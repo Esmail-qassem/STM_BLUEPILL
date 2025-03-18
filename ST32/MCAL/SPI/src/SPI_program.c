@@ -23,7 +23,7 @@ void SPI_SendDataDMA(u8 *data, u16 size) {
     DMA_CCR(DMA1_BASE, DMA_Channel5) =
         DMA_CCR_MINC |       // Memory increment mode
         DMA_CCR_DIR |        // Direction: Memory to peripheral
-        DMA_CCR_TCIE |       // Transfer complete interrupt enable
+        DMA_CCR_TCIE |       // Transfer comSSSplete interrupt enable
         DMA_CCR_PL_HIGH;     // Priority level: High
 
     // Enable DMA channel

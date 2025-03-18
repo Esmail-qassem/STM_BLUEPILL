@@ -43,7 +43,7 @@ void TFT_VidInit ( void ) {
 	WriteCommand( MADCTL );
 	WriteData   ( 0xC0 );
 }
-
+int count=0;
 
 void TFT_VidFillImage(const u16 *Copy_ptrImage) {
     // Set column and row ranges
@@ -56,7 +56,7 @@ void TFT_VidFillImage(const u16 *Copy_ptrImage) {
 	u8 buffer[256];  // Buffer for 128 pixels
    
 
-    for (u32 i = 0; i < (131 * 161); i += 128) {
+    for (u32 i = 0; i < 164; i+=1) {
         // Fill the buffer with pixel data (128 pixels per batch)
         for (int j = 0; j < 128; j++) {
             u16 pixel = *Copy_ptrImage++;
@@ -72,6 +72,7 @@ void TFT_VidFillImage(const u16 *Copy_ptrImage) {
 
         // Wait for DMA transfer to complete
         while ((DMA_ISR(DMA1_BASE) & (1 << 17)) == 0);
+		count++;
     }
 
 	

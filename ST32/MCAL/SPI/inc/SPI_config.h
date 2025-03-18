@@ -87,7 +87,7 @@
  *  F_BY_128
  *  F_BY_256
  * */
-#define SPI2_BAUD_RATE  F_BY_4
+#define SPI2_BAUD_RATE  F_BY_8
 
 /*Slave_config
  *Master_config

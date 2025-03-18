@@ -14,6 +14,7 @@
 extern const u16 IMT_IMAGE[];
 void RCC_APP_Init(void);
 void Peripheral_APP_Init(void);
+extern int count;
 
 void main(void)
 {
@@ -26,6 +27,8 @@ void main(void)
 	//TFT_VidFillColor(GREEN);
 	TFT_VidFillImage( IMT_IMAGE ) ;
 	UART_u8SendStringSynch(UART_Unit3,"\r... done \r ");
+	 UART_voidSendNumber(UART_Unit3,count);
+
 
 
 while(1)
