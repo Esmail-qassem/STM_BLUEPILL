@@ -5,11 +5,6 @@ C:/STM_BLUEPILL/ST32/Build/Object/main.o: ../Src/main.c \
  C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_private.h \
  C:/STM_BLUEPILL/ST32/MCAL/RCC/inc/RCC_register.h \
  C:/STM_BLUEPILL/ST32/MCAL/GPIO/inc/GPIO_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/NVIC/inc/NVIC_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/AFIO/inc/AFIO_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/EXTI/inc/EXTI_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/SysTick/inc/SysTick_interface.h \
  C:/STM_BLUEPILL/ST32/MCAL/UART/inc/UART_interface.h \
- C:/STM_BLUEPILL/ST32/MCAL/FPEC/inc/FPEC.h \
- C:/STM_BLUEPILL/ST32/MCAL/DMA/inc/DMA.h \
- C:/STM_BLUEPILL/ST32/HAL/TFT/inc/TFT.h
+ C:/STM_BLUEPILL/ST32/MCAL/SPI/inc/SPI_interface.h \
+ C:/STM_BLUEPILL/ST32/MCAL/DMA/inc/DMA.h

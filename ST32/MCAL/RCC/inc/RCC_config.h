@@ -13,7 +13,7 @@
  *--if you will choose PLL so makr another define with the selected
  * clock source---.
  * */
-#define  PLL
+#define  HSI
 /*********************************/
 
 #ifdef PLL

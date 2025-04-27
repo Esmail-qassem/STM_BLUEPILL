@@ -2,7 +2,7 @@
 #ifndef UART_CONFIG_H_
 #define UART_CONFIG_H_
 /**************************************************************************************/
-#define F_CPU              64000000UL
+#define F_CPU              8000000UL
 /* UART1
  * UART2
  * UART3
