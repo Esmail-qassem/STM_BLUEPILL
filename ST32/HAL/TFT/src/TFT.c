@@ -1,11 +1,11 @@
 #include "STD_TYPES.h"
+#include "GPIO_interface.h"
+#include "SPI_interface.h"
 #include "SysTick_interface.h"
-#include "GPIO_INTERFACE.h"
-#include "SPI_INTERFACE.h"
 #include "TFT.h"
 
 
-u8 s;
+u16 s;
 static void WriteData   ( u8 Copy_u8Data ) {
 
 	/* DC is 1 for data */

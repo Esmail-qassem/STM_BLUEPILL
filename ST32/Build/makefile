@@ -53,13 +53,13 @@ Bin: Linker
 	@$(SIZE) $(Images)/application.elf
 	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/application.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
 	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/application.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
-	@echo -e "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
-	@echo -e "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
-	@echo -e "$(COLOR_purble)++ Binary, hex, and txt generation completed$(COLOR_RESET)"
+	@echo "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
+	@echo "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
+	@echo "$(COLOR_purble)++ Binary, hex, and txt generation completed$(COLOR_RESET)"
 
 Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
 	@$(LD) -Map $(Images)/applicationlication.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/application.elf
-	@echo -e "$(COLOR_Blue_BG)++ Linking completed$(COLOR_RESET)"
+	@echo  "$(COLOR_Blue_BG)++ Linking completed$(COLOR_RESET)"
 
 # Rule to compile source files to object files
 $(OBJDIR)/%.o: %.c
@@ -67,9 +67,9 @@ $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
 	@file_name=$(notdir $<); \
 	if [ "$$file_name" = "uart.c" ]; then \
-		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) uart"; \
+		echo  "$(COLOR_GREEN_BG)++$(COLOR_RESET) uart"; \
 	else \
-		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) Compiling $$file_name"; \
+		echo  "$(COLOR_GREEN_BG)++$(COLOR_RESET) Compiling $$file_name"; \
 	fi
 
 clean:
@@ -80,7 +80,7 @@ clean:
 	@rm -f $(Images)/*.bin
 	@rm -f $(Images)/*.hex
 	@rm -f $(Images)/*.txt
-	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
+	@echo "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
 
 flash: Bin
 	@$(STL) -c port=swd -d $(Images)/application.bin 0x08000000 -v -rst

@@ -1,3 +1,4 @@
-C:/STM_BLUEPILL/ST32/Build/Object/DMA.o: \
- C:/STM_BLUEPILL/ST32/MCAL/DMA/src/DMA.c \
- C:/STM_BLUEPILL/ST32/MCAL/DMA/inc/DMA.h ../Inc/STD_TYPES.h
+/home/esmail/Desktop/Repos/STM_BLUEPILL/ST32/Build/Object/DMA.o: \
+ /home/esmail/Desktop/Repos/STM_BLUEPILL/ST32/MCAL/DMA/src/DMA.c \
+ /home/esmail/Desktop/Repos/STM_BLUEPILL/ST32/MCAL/DMA/inc/DMA.h \
+ ../Inc/STD_TYPES.h
