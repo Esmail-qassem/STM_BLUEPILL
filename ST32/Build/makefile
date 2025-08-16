@@ -21,6 +21,7 @@ SRC_DIRS += ../Src \
            $(MCAL_path)/PwrMD/src \
            $(MCAL_path)/DMA/src 
 
+
 # Include directories
 INC_DIRS = ../Inc/ \
            $(wildcard $(MCAL_path)/*/inc/) \
@@ -59,6 +60,7 @@ $(Images)/application.elf: $(OBJ_FILES)
 		exit 1; \
 	fi
 # 	@$(info MCAL_path = $(MCAL_path))
+# 	@$(info HAL_path = $(HAL_path))
 # 	@$(info SRC_DIRS = $(SRC_DIRS))
 # 	@$(info SRC_FILES = $(SRC_FILES))
 # 	@$(info OBJ_FILES = $(OBJ_FILES))

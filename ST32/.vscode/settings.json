@@ -2,6 +2,8 @@
     "files.associations": {
         "tft.h": "c",
         "systick_interface.h": "c",
-        "std_types.h": "c"
+        "std_types.h": "c",
+        "spi_interface.h": "c",
+        "uart_interface.h": "c"
     }
 }

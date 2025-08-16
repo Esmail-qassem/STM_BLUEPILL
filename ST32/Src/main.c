@@ -4,7 +4,6 @@
 #include "GPIO_interface.h"
 #include "UART_interface.h" 
 #include "SPI_interface.h"
-#include "TFT.h"
 void RCC_APP_Init(void);
 void Peripheral_APP_Init(void);
 extern int count;
@@ -56,6 +55,5 @@ void Peripheral_APP_Init(void)
 
 	UART_voidInit();
 	SPI_voidInit ();
-	TFT_VidInit();
 
 }
