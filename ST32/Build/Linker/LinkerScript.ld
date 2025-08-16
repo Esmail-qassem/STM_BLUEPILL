@@ -14,7 +14,7 @@ _Min_Stack_Size = 0x400 ; /* Required amount of stack */
 MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 20K
-  FLASH  (rx)     : ORIGIN = 0x08000000,   LENGTH = 64K
+  FLASH  (rx)     : ORIGIN = 0x08001400,   LENGTH = 59K
 }
 
 /* Sections */
@@ -45,7 +45,7 @@ SECTIONS{
   } >FLASH
 
 /*used by the startup code*/
-_sidata = LOADADDR(.data);
+_sidata= LOADADDR(.data);
   /* .data section, Initialized data sections into "RAM" Ram type memory */
   .data :
   {

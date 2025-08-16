@@ -2,10 +2,9 @@ OBJDIR =$(realpath ./Object)
 LinkerDir =$(realpath ./Linker)
 Images =$(realpath .././Tools)
 CC=arm-none-eabi-gcc
-CFLAG=-mcpu=cortex-m3 -mthumb --debug -specs=nano.specs -lc -lm -lnosys
+CFLAGS=-mcpu=cortex-m3 -mthumb --debug -specs=nano.specs -lc -lm -lnosys
 LD=arm-none-eabi-ld
 BIN=arm-none-eabi-objcopy
 STL="C:/Program Files/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI.exe"
-MCAL=$(realpath .././MCAL)
-HAL=$(realpath .././HAL)
+MCAL_path := ../MCAL
 SIZE=arm-none-eabi-size

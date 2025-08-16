@@ -1,82 +1,85 @@
+# Ensure directories exist before building
 include makeconfig
+$(shell mkdir -p $(OBJDIR) $(Images))
 
-# Define the source directories
-SRC_DIRS = ../Src/\
-           ../Startup/\
-           $(MCAL)/RCC/src/ \
-           $(MCAL)/UART/src/\
-		   $(MCAL)/FPEC/src/\
-		   $(MCAL)/GPIO/src/\
-		   $(MCAL)/SysTick/src/
+ifdef APPLICATION_ONLY
+CFLAGS+= -DAPPLICATION_ONLY
+endif
 
-# Define the include directories
-INC_DIRS = ../Inc/\
-           $(wildcard $(MCAL)/*/inc/)
+# Source directories
+SRC_DIRS += ../Src \
+           ../Startup \
+           $(MCAL_path)/RCC/src \
+           $(MCAL_path)/NVIC/src \
+           $(MCAL_path)/SysTick/src \
+           $(MCAL_path)/GPIO/src \
+           $(MCAL_path)/EXTI/src \
+           $(MCAL_path)/AFIO/src \
+           $(MCAL_path)/SPI/src \
+           $(MCAL_path)/UART/src \
+           $(MCAL_path)/FPEC/src \
+           $(MCAL_path)/PwrMD/src \
+           $(MCAL_path)/DMA/src 
 
-# Add include directories to CFLAG
-INC_FLAGS = $(foreach dir, $(INC_DIRS), -I$(dir))
+# Include directories
+INC_DIRS = ../Inc/ \
+           $(wildcard $(MCAL_path)/*/inc/) \
+           $(wildcard $(HAL_path)/*/inc/)
 
-# Find all source files
-SRC_FILES = $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.c))
+INC_FLAGS = $(addprefix -I,$(INC_DIRS))
 
-# Define the object files
-OBJ_FILES = $(patsubst %.c, $(OBJDIR)/%.o, $(notdir $(SRC_FILES)))
-
-# Define the dependency files
-DEP_FILES = $(patsubst %.c, $(OBJDIR)/%.d, $(notdir $(SRC_FILES)))
-
-# Search for source files in the specified directories
+# Source and object files
+SRC_FILES = $(wildcard $(addsuffix /*.c,$(SRC_DIRS)))
+OBJ_FILES = $(patsubst ../%, $(OBJDIR)/%, $(SRC_FILES:.c=.o))
+DEP_FILES = $(OBJ_FILES:.o=.d)
 vpath %.c $(SRC_DIRS)
 
-# ANSI color codes for green background
-COLOR_GREEN_BG=\033[42m
-COLOR_Blue_BG=\033[94m
-COLOR_purble=\033[45m
-COLOR_RESET=\033[0m
+# Color codes
+COLOR_GREEN = \033[0;32m
+COLOR_BLUE = \033[0;34m
+COLOR_RESET = \033[0m
 
-all: Bin
+.PHONY: all clean flash erase
 
-Bin: Linker
-	@$(BIN) -O binary $(Images)/Boorloader.elf $(Images)/Boorloader.bin
-	@$(BIN) -O ihex $(Images)/Boorloader.elf $(Images)/Boorloader.hex
-	@cp $(Images)/Boorloader.hex $(Images)/Boorloader.txt  # Copy HEX file as TXT
-	@$(SIZE) $(Images)/Boorloader.elf
-	$(eval FLASH_SIZE = $(shell $(SIZE) -A $(Images)/Boorloader.elf | awk '$$1 == ".text" {text = $$2} $$1 == ".data" {data = $$2} END {print text + data}'))
-	$(eval RAM_SIZE = $(shell $(SIZE) -A $(Images)/Boorloader.elf | awk '$$1 == ".data" {data = $$2} $$1 == ".bss" {bss = $$2} END {print data + bss}'))
-	@echo -e "$(COLOR_purble)++ Flash size: $(FLASH_SIZE) bytes$(COLOR_RESET)"
-	@echo -e "$(COLOR_purble)++ RAM size: $(RAM_SIZE) bytes$(COLOR_RESET)"
-	@echo -e "$(COLOR_purble)++ Binary, hex, and txt generation completed$(COLOR_RESET)"
+all: $(Images)/application.bin size
 
-Linker: $(OBJ_FILES) $(LinkerDir)/LinkerScript.ld  # Add dependency on linker script
-	@$(LD) -Map $(Images)/Boorloaderlication.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $(Images)/Boorloader.elf
-	@echo -e "$(COLOR_Blue_BG)++ Linking completed$(COLOR_RESET)"
+size: $(Images)/application.elf
+	@$(SIZE) $<
+	@echo -e "$(COLOR_GREEN)++ Build complete$(COLOR_RESET)"
 
-# Rule to compile source files to object files
-$(OBJDIR)/%.o: %.c
-	@$(CC) -c $(CFLAG) $(INC_FLAGS) -MMD -MF $(OBJDIR)/$*.d $< -o $@
-	@mkdir -p $(OBJDIR)
-	@file_name=$(notdir $<); \
-	if [ "$$file_name" = "uart.c" ]; then \
-		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) uart"; \
-	else \
-		echo -e "$(COLOR_GREEN_BG)++$(COLOR_RESET) Compiling $$file_name"; \
+$(Images)/application.bin: $(Images)/application.elf
+	@$(BIN) -O binary $< $@
+	@$(BIN) -O ihex $< $(@:.bin=.hex)
+	@cp $(@:.bin=.hex) $(@:.bin=.txt)
+	@echo -e "$(COLOR_BLUE)++ Binary files generated$(COLOR_RESET)"
+
+$(Images)/application.elf: $(OBJ_FILES)
+	@if [ -z "$(OBJ_FILES)" ]; then \
+		echo -e "$(COLOR_RED)Error: No object files found - check compilation$(COLOR_RESET)"; \
+		exit 1; \
 	fi
+# 	@$(info MCAL_path = $(MCAL_path))
+# 	@$(info SRC_DIRS = $(SRC_DIRS))
+# 	@$(info SRC_FILES = $(SRC_FILES))
+# 	@$(info OBJ_FILES = $(OBJ_FILES))
+	@echo -e "$(COLOR_BLUE)Linking with objects:. . .$(COLOR_RESET)"
+	@$(LD) -Map $(Images)/application.map -T $(LinkerDir)/LinkerScript.ld $(OBJ_FILES) -o $@
+	@echo -e "$(COLOR_BLUE)++ Linking complete$(COLOR_RESET)"
+
+
+$(OBJDIR)/%.o: ../%.c
+	@mkdir -p $(dir $@)
+	@echo -e "$(COLOR_GREEN)Compiling $(notdir $<)$(COLOR_RESET)"
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -MMD -MP -c $< -o $@
 
 clean:
-	@rm -f $(OBJDIR)/*.o
-	@rm -f $(OBJDIR)/*.d
-	@rm -f $(Images)/*.elf
-	@rm -f $(Images)/*.map
-	@rm -f $(Images)/*.bin
-	@rm -f $(Images)/*.hex
-	@rm -f $(Images)/*.txt
-	@echo -e "$(COLOR_GREEN_BG)++ Clean done$(COLOR_RESET)"
+	@rm -rf $(OBJDIR)/* $(Images)/*.elf $(Images)/*.map $(Images)/*.bin $(Images)/*.hex $(Images)/*.txt
+	@echo -e "$(COLOR_GREEN)++ Clean complete$(COLOR_RESET)"
 
-flash: Bin
-	@$(STL) -c port=swd -d $(Images)/Boorloader.bin 0x08000000 -v -rst
+flash: $(Images)/application.bin
+	@$(STL) -c port=swd -d $< 0x08000000 -v -rst
 
 erase:
 	@$(STL) -c port=swd -e all
 
-# Include the dependency files
 -include $(DEP_FILES)
