@@ -3,7 +3,7 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 RAM              0x20000000         0x00005000         xrw
-FLASH            0x08000000         0x00010000         xr
+FLASH            0x08002800         0x0000d800         xr
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
@@ -12,190 +12,190 @@ Linker script and memory map
                 0x00000200                _Min_Heap_Size = 0x200
                 0x00000400                _Min_Stack_Size = 0x400
 
-.isr_vector     0x08000000      0x130
-                0x08000000                . = ALIGN (0x4)
+.isr_vector     0x08002800      0x130
+                0x08002800                . = ALIGN (0x4)
  *(.isr_vector)
- .isr_vector    0x08000000      0x130 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
-                0x08000000                Vector_Table
-                0x08000130                . = ALIGN (0x4)
+ .isr_vector    0x08002800      0x130 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
+                0x08002800                Vector_Table
+                0x08002930                . = ALIGN (0x4)
 
-.text           0x08000130     0x1a44
-                0x08000130                . = ALIGN (0x4)
+.text           0x08002930     0x1a44
+                0x08002930                . = ALIGN (0x4)
  *(.text)
- .text          0x08000130        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
- .text          0x08000130       0x9c C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
-                0x08000130                main
-                0x08000150                RCC_APP_Init
-                0x08000184                Peripheral_APP_Init
- .text          0x080001cc       0xb0 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
-                0x080001d8                Reset_Handler
-                0x08000270                TIM8_CC_IRQHandler
-                0x08000270                DebugMon_Handler
-                0x08000270                TIM1_CC_IRQHandler
-                0x08000270                HardFault_Handler
-                0x08000270                TIM6_IRQHandler
-                0x08000270                PVD_IRQHandler
-                0x08000270                SDIO_IRQHandler
-                0x08000270                TAMP_STAMP_IRQHandler
-                0x08000270                PendSV_Handler
-                0x08000270                NMI_Handler
-                0x08000270                USB_HP_CAN_TX_IRQHandler
-                0x08000270                I2C2_EV_IRQHandler
-                0x08000270                UsageFault_Handler
-                0x08000270                CAN_SCE_IRQHandler
-                0x08000270                TIM8_UP_IRQHandler
-                0x08000270                DMA2_Channel2_IRQHandler
-                0x08000270                DMA1_Channel4_IRQHandler
-                0x08000270                DMA1_Channel7_IRQHandler
-                0x08000270                TIM8_TRG_COM_IRQHandler
-                0x08000270                UART5_IRQHandler
-                0x08000270                ADC3_IRQHandler
-                0x08000270                TIM4_IRQHandler
-                0x08000270                CAN_RX1_IRQHandler
-                0x08000270                DMA2_Channel1_IRQHandler
-                0x08000270                I2C1_EV_IRQHandler
-                0x08000270                DMA1_Channel6_IRQHandler
-                0x08000270                UART4_IRQHandler
-                0x08000270                TIM3_IRQHandler
-                0x08000270                RCC_IRQHandler
-                0x08000270                TIM1_TRG_COM_IRQHandler
-                0x08000270                DMA1_Channel1_IRQHandler
-                0x08000270                Default_Handler
-                0x08000270                EXTI15_10_IRQHandler
-                0x08000270                TIM7_IRQHandler
-                0x08000270                TIM5_IRQHandler
-                0x08000270                EXTI9_5_IRQHandler
-                0x08000270                RTC_WKUP_IRQHandler
-                0x08000270                USB_LP_CAN_RX0_IRQHandler
-                0x08000270                MemManage_Handler
-                0x08000270                SVC_Handler
-                0x08000270                ADC_1_2_IRQHandler
-                0x08000270                DMA1_Channel5_IRQHandler
-                0x08000270                DMA1_Channel3_IRQHandler
-                0x08000270                FSMC_IRQHandler
-                0x08000270                TIM1_UP_IRQHandler
-                0x08000270                WWDG_IRQHandler
-                0x08000270                TIM2_IRQHandler
-                0x08000270                TIM1_BRK_IRQHandler
-                0x08000270                RTCAlarm_IRQHandler
-                0x08000270                DMA2_Channel4_5_IRQHandler
-                0x08000270                I2C2_ER_IRQHandler
-                0x08000270                DMA1_Channel2_IRQHandler
-                0x08000270                TIM8_BRK_IRQHandler
-                0x08000270                FLASH_IRQHandler
-                0x08000270                BusFault_Handler
-                0x08000270                SPI3_IRQHandler
-                0x08000270                I2C1_ER_IRQHandler
-                0x08000270                DMA2_Channel3_IRQHandler
- .text          0x0800027c      0x208 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/RCC/src/RCC_program.o
-                0x0800027c                RCC_VidInit
-                0x080002cc                RCC_voidEnablePeripheral
-                0x08000368                RCC_voidDisablePeripheral
-                0x08000408                RCC_voidResetPeripheral
- .text          0x08000484      0x210 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/NVIC/src/NVIC_program.o
-                0x08000484                NVIC_EnableInterrupt
-                0x080004d4                NVIC_DisableInterrupt
-                0x08000524                NVIC_SetPendingFlag
-                0x08000574                NVIC_ClearPendingFlag
-                0x080005c4                NVIC_GetActiveInterrupt
-                0x08000630                NVIC_SetPriority
- .text          0x08000694      0x184 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SysTick/src/SysTick_program.o
-                0x08000694                SysTick_voidInit
-                0x080006b0                SysTick_voidSetBusyWait
-                0x08000704                SysTick_voidSetIntervalSingle
-                0x0800075c                SysTick_voidSetIntervalPeriodoc
-                0x080007b4                SysTick_voidStopTimer
-                0x080007d0                SysTick_GetElapsedTime
-                0x080007f0                SysTick_GetRemaningTime
-                0x08000804                SysTick_Handler
- .text          0x08000818      0x3e8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/GPIO/src/GPIO_program.o
-                0x08000818                GPIO_SetPinConfig
-                0x080009c8                GPIO_GetPinReading
-                0x08000a68                GPIO_GetPortReading
-                0x08000ad4                GPIO_SetPinValue
-                0x08000ba4                GPIO_SetPortValue
- .text          0x08000c00      0x34c C:/STM_BLUEPILL/ST32/Build/Object/MCAL/EXTI/src/EXTI_program.o
-                0x08000c00                EXTI_voidInterrupEnable
-                0x08000c2c                EXTI_voidInterrupDisable
-                0x08000c5c                EXTI_SetSignalLatch
-                0x08000d78                EXTI_voidSwTrigger
-                0x08000dd0                EXT0_CallBack
-                0x08000e04                EXT1_CallBack
-                0x08000e38                EXT2_CallBack
-                0x08000e6c                EXT3_CallBack
-                0x08000ea0                EXT4_CallBack
-                0x08000ed4                EXTI0_IRQHandler
-                0x08000eec                EXTI1_IRQHandler
-                0x08000f04                EXTI2_IRQHandler
-                0x08000f1c                EXTI3_IRQHandler
-                0x08000f34                EXTI4_IRQHandler
- .text          0x08000f4c      0x108 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/AFIO/src/AFIO_program.o
-                0x08000f4c                AFIO_voidSetEXTIConfiguration
- .text          0x08001054      0x228 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SPI/src/SPI_program.o
-                0x08001054                SPI_SendDataDMA
-                0x080010b0                SPI_voidInit
-                0x08001148                Spi_SendRecieveSync
-                0x080011d8                Spi_SendRecieveASync
-                0x0800122c                SPI1_IRQHandler
-                0x08001254                SPI2_IRQHandler
- .text          0x0800127c      0x5d0 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
-                0x0800127c                UART_voidSendNumber
-                0x08001324                UART_voidInit
-                0x08001558                UART_u8SendCharSynch
-                0x08001618                UART_u8ReceiveCharSynch
-                0x0800171c                UART_u8SendStringSynch
-                0x0800176a                UART_u8RecieveStringSynch
-                0x080017ca                UART_IsStringEqual
-                0x08001810                USART1_IRQHandler
-                0x08001824                USART2_IRQHandler
-                0x08001838                USART3_IRQHandler
- .text          0x0800184c      0x170 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
-                0x0800184c                FPEC_voidEraseAppArea
-                0x08001876                FPEC_voidFlashPageErase
-                0x08001908                FPEC_voidFlashWrite
- .text          0x080019bc       0xd0 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
-                0x080019bc                PWR_EnterSleepMode
-                0x080019dc                PWR_EnterStopMode
-                0x08001a1c                PWR_EnterStandbyMode
-                0x08001a68                PWR_IsWakeupFromStandby
- .text          0x08001a8c       0xe8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
-                0x08001a8c                DMA_Init
+ .text          0x08002930        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
+ .text          0x08002930       0x9c C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
+                0x08002930                main
+                0x08002950                RCC_APP_Init
+                0x08002984                Peripheral_APP_Init
+ .text          0x080029cc       0xb0 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
+                0x080029d8                Reset_Handler
+                0x08002a70                TIM8_CC_IRQHandler
+                0x08002a70                DebugMon_Handler
+                0x08002a70                TIM1_CC_IRQHandler
+                0x08002a70                HardFault_Handler
+                0x08002a70                TIM6_IRQHandler
+                0x08002a70                PVD_IRQHandler
+                0x08002a70                SDIO_IRQHandler
+                0x08002a70                TAMP_STAMP_IRQHandler
+                0x08002a70                PendSV_Handler
+                0x08002a70                NMI_Handler
+                0x08002a70                USB_HP_CAN_TX_IRQHandler
+                0x08002a70                I2C2_EV_IRQHandler
+                0x08002a70                UsageFault_Handler
+                0x08002a70                CAN_SCE_IRQHandler
+                0x08002a70                TIM8_UP_IRQHandler
+                0x08002a70                DMA2_Channel2_IRQHandler
+                0x08002a70                DMA1_Channel4_IRQHandler
+                0x08002a70                DMA1_Channel7_IRQHandler
+                0x08002a70                TIM8_TRG_COM_IRQHandler
+                0x08002a70                UART5_IRQHandler
+                0x08002a70                ADC3_IRQHandler
+                0x08002a70                TIM4_IRQHandler
+                0x08002a70                CAN_RX1_IRQHandler
+                0x08002a70                DMA2_Channel1_IRQHandler
+                0x08002a70                I2C1_EV_IRQHandler
+                0x08002a70                DMA1_Channel6_IRQHandler
+                0x08002a70                UART4_IRQHandler
+                0x08002a70                TIM3_IRQHandler
+                0x08002a70                RCC_IRQHandler
+                0x08002a70                TIM1_TRG_COM_IRQHandler
+                0x08002a70                DMA1_Channel1_IRQHandler
+                0x08002a70                Default_Handler
+                0x08002a70                EXTI15_10_IRQHandler
+                0x08002a70                TIM7_IRQHandler
+                0x08002a70                TIM5_IRQHandler
+                0x08002a70                EXTI9_5_IRQHandler
+                0x08002a70                RTC_WKUP_IRQHandler
+                0x08002a70                USB_LP_CAN_RX0_IRQHandler
+                0x08002a70                MemManage_Handler
+                0x08002a70                SVC_Handler
+                0x08002a70                ADC_1_2_IRQHandler
+                0x08002a70                DMA1_Channel5_IRQHandler
+                0x08002a70                DMA1_Channel3_IRQHandler
+                0x08002a70                FSMC_IRQHandler
+                0x08002a70                TIM1_UP_IRQHandler
+                0x08002a70                WWDG_IRQHandler
+                0x08002a70                TIM2_IRQHandler
+                0x08002a70                TIM1_BRK_IRQHandler
+                0x08002a70                RTCAlarm_IRQHandler
+                0x08002a70                DMA2_Channel4_5_IRQHandler
+                0x08002a70                I2C2_ER_IRQHandler
+                0x08002a70                DMA1_Channel2_IRQHandler
+                0x08002a70                TIM8_BRK_IRQHandler
+                0x08002a70                FLASH_IRQHandler
+                0x08002a70                BusFault_Handler
+                0x08002a70                SPI3_IRQHandler
+                0x08002a70                I2C1_ER_IRQHandler
+                0x08002a70                DMA2_Channel3_IRQHandler
+ .text          0x08002a7c      0x208 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/RCC/src/RCC_program.o
+                0x08002a7c                RCC_VidInit
+                0x08002acc                RCC_voidEnablePeripheral
+                0x08002b68                RCC_voidDisablePeripheral
+                0x08002c08                RCC_voidResetPeripheral
+ .text          0x08002c84      0x210 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/NVIC/src/NVIC_program.o
+                0x08002c84                NVIC_EnableInterrupt
+                0x08002cd4                NVIC_DisableInterrupt
+                0x08002d24                NVIC_SetPendingFlag
+                0x08002d74                NVIC_ClearPendingFlag
+                0x08002dc4                NVIC_GetActiveInterrupt
+                0x08002e30                NVIC_SetPriority
+ .text          0x08002e94      0x184 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SysTick/src/SysTick_program.o
+                0x08002e94                SysTick_voidInit
+                0x08002eb0                SysTick_voidSetBusyWait
+                0x08002f04                SysTick_voidSetIntervalSingle
+                0x08002f5c                SysTick_voidSetIntervalPeriodoc
+                0x08002fb4                SysTick_voidStopTimer
+                0x08002fd0                SysTick_GetElapsedTime
+                0x08002ff0                SysTick_GetRemaningTime
+                0x08003004                SysTick_Handler
+ .text          0x08003018      0x3e8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/GPIO/src/GPIO_program.o
+                0x08003018                GPIO_SetPinConfig
+                0x080031c8                GPIO_GetPinReading
+                0x08003268                GPIO_GetPortReading
+                0x080032d4                GPIO_SetPinValue
+                0x080033a4                GPIO_SetPortValue
+ .text          0x08003400      0x34c C:/STM_BLUEPILL/ST32/Build/Object/MCAL/EXTI/src/EXTI_program.o
+                0x08003400                EXTI_voidInterrupEnable
+                0x0800342c                EXTI_voidInterrupDisable
+                0x0800345c                EXTI_SetSignalLatch
+                0x08003578                EXTI_voidSwTrigger
+                0x080035d0                EXT0_CallBack
+                0x08003604                EXT1_CallBack
+                0x08003638                EXT2_CallBack
+                0x0800366c                EXT3_CallBack
+                0x080036a0                EXT4_CallBack
+                0x080036d4                EXTI0_IRQHandler
+                0x080036ec                EXTI1_IRQHandler
+                0x08003704                EXTI2_IRQHandler
+                0x0800371c                EXTI3_IRQHandler
+                0x08003734                EXTI4_IRQHandler
+ .text          0x0800374c      0x108 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/AFIO/src/AFIO_program.o
+                0x0800374c                AFIO_voidSetEXTIConfiguration
+ .text          0x08003854      0x228 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SPI/src/SPI_program.o
+                0x08003854                SPI_SendDataDMA
+                0x080038b0                SPI_voidInit
+                0x08003948                Spi_SendRecieveSync
+                0x080039d8                Spi_SendRecieveASync
+                0x08003a2c                SPI1_IRQHandler
+                0x08003a54                SPI2_IRQHandler
+ .text          0x08003a7c      0x5d0 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
+                0x08003a7c                UART_voidSendNumber
+                0x08003b24                UART_voidInit
+                0x08003d58                UART_u8SendCharSynch
+                0x08003e18                UART_u8ReceiveCharSynch
+                0x08003f1c                UART_u8SendStringSynch
+                0x08003f6a                UART_u8RecieveStringSynch
+                0x08003fca                UART_IsStringEqual
+                0x08004010                USART1_IRQHandler
+                0x08004024                USART2_IRQHandler
+                0x08004038                USART3_IRQHandler
+ .text          0x0800404c      0x170 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
+                0x0800404c                FPEC_voidEraseAppArea
+                0x08004076                FPEC_voidFlashPageErase
+                0x08004108                FPEC_voidFlashWrite
+ .text          0x080041bc       0xd0 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
+                0x080041bc                PWR_EnterSleepMode
+                0x080041dc                PWR_EnterStopMode
+                0x0800421c                PWR_EnterStandbyMode
+                0x08004268                PWR_IsWakeupFromStandby
+ .text          0x0800428c       0xe8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
+                0x0800428c                DMA_Init
  *(.text*)
-                0x08001b74                . = ALIGN (0x4)
-                0x08001b74                _etext = .
+                0x08004374                . = ALIGN (0x4)
+                0x08004374                _etext = .
 
-.glue_7         0x08001b74        0x0
- .glue_7        0x08001b74        0x0 linker stubs
+.glue_7         0x08004374        0x0
+ .glue_7        0x08004374        0x0 linker stubs
 
-.glue_7t        0x08001b74        0x0
- .glue_7t       0x08001b74        0x0 linker stubs
+.glue_7t        0x08004374        0x0
+ .glue_7t       0x08004374        0x0 linker stubs
 
-.vfp11_veneer   0x08001b74        0x0
- .vfp11_veneer  0x08001b74        0x0 linker stubs
+.vfp11_veneer   0x08004374        0x0
+ .vfp11_veneer  0x08004374        0x0 linker stubs
 
-.v4_bx          0x08001b74        0x0
- .v4_bx         0x08001b74        0x0 linker stubs
+.v4_bx          0x08004374        0x0
+ .v4_bx         0x08004374        0x0 linker stubs
 
-.iplt           0x08001b74        0x0
- .iplt          0x08001b74        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
+.iplt           0x08004374        0x0
+ .iplt          0x08004374        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
 
-.rodata         0x08001b74     0xa71c
-                0x08001b74                . = ALIGN (0x4)
+.rodata         0x08004374     0xa71c
+                0x08004374                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08001b74     0xa710 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
-                0x08001b74                IMT_IMAGE
- .rodata        0x0800c284        0x7 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
- *fill*         0x0800c28b        0x1 
- .rodata        0x0800c28c        0x4 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
-                0x0800c28c                MSP_Value
+ .rodata        0x08004374     0xa710 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
+                0x08004374                IMT_IMAGE
+ .rodata        0x0800ea84        0x7 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
+ *fill*         0x0800ea8b        0x1 
+ .rodata        0x0800ea8c        0x4 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
+                0x0800ea8c                MSP_Value
  *(.rodata*)
-                0x0800c290                . = ALIGN (0x4)
-                0x0800c290                _sidata = LOADADDR (.data)
+                0x0800ea90                . = ALIGN (0x4)
+                0x0800ea90                _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800c290        0x0
- .rel.iplt      0x0800c290        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
+.rel.dyn        0x0800ea90        0x0
+ .rel.iplt      0x0800ea90        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
 
-.data           0x20000000        0x0 load address 0x0800c290
+.data           0x20000000        0x0 load address 0x0800ea90
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -217,10 +217,10 @@ Linker script and memory map
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _edata = .
 
-.igot.plt       0x20000000        0x0 load address 0x0800c290
+.igot.plt       0x20000000        0x0 load address 0x0800ea90
  .igot.plt      0x20000000        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
 
-.bss            0x20000000       0x38 load address 0x0800c290
+.bss            0x20000000       0x38 load address 0x0800ea90
                 0x20000000                _sbss = .
  *(.bss)
  .bss           0x20000000        0x0 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
@@ -244,7 +244,7 @@ Linker script and memory map
                 0x20000038                _ebss = .
 
 ._user_heap_stack
-                0x20000038      0x600 load address 0x0800c290
+                0x20000038      0x600 load address 0x0800ea90
                 0x20000038                . = ALIGN (0x8)
                 0x20000238                . = (. + _Min_Heap_Size)
  *fill*         0x20000038      0x200 
