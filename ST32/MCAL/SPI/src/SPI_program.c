@@ -5,7 +5,7 @@
 #include "SPI_register.h"
 #include "SPI_config.h"
 
-void SPI_SendDataDMA(u8 *data, u16 size) {
+void SPI_SendDataDMA(uint8 *data, uint16 size) {
  
     // Disable DMA channel before configuration
     DMA_CCR(DMA1_BASE, DMA_Channel5) &= ~DMA_CCR_EN;
@@ -14,10 +14,10 @@ void SPI_SendDataDMA(u8 *data, u16 size) {
     DMA_CNDTR(DMA1_BASE, DMA_Channel5) = size;
 
     // Set memory address (source)
-    DMA_CMAR(DMA1_BASE, DMA_Channel5) = (u32)data;
+    DMA_CMAR(DMA1_BASE, DMA_Channel5) = (uint32)data;
 
     // Set peripheral address (destination: SPI2 data register)
-    DMA_CPAR(DMA1_BASE, DMA_Channel5) = (u32)PERIPH_SPI2_TX;
+    DMA_CPAR(DMA1_BASE, DMA_Channel5) = (uint32)PERIPH_SPI2_TX;
 
     // Configure DMA channel
     DMA_CCR(DMA1_BASE, DMA_Channel5) =
@@ -78,7 +78,7 @@ void SPI_voidInit (void)
     SPI2_CR2_Reg->TXDMAEN=1;
 #endif
 }
-Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_pvReceived)
+Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,uint16 Copy_uint16Transmit,uint16* Copy_pvReceived)
 {
 	Status_t Local_ErrorStatus=E_Not_Ok;
     if(NULL==Copy_pvReceived)
@@ -92,7 +92,7 @@ Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_p
       { 
         case SPI1 :
         {
-            SPI1_DR_Reg=Copy_u16Transmit;
+            SPI1_DR_Reg=Copy_uint16Transmit;
             /*wait*/
             while(SPI1_SR_Reg->BSY == 1);
 
@@ -101,7 +101,7 @@ Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_p
         }
         case SPI2 :
         {
-            SPI2_DR_Reg=Copy_u16Transmit;
+            SPI2_DR_Reg=Copy_uint16Transmit;
             /*wait*/
             while(SPI2_SR_Reg->BSY == 1);
 
@@ -114,21 +114,21 @@ Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_p
 return Local_ErrorStatus;
 }
 
-Status_t Spi_SendRecieveASync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,void(*P2F_CallBack)(u16))
+Status_t Spi_SendRecieveASync(SPI_HW SPI_HW_Unit,uint16 Copy_uint16Transmit,void(*P2F_CallBack)(uint16))
 {     
   switch (SPI_HW_Unit)
   {
     case SPI1 :
     {
       SPI1_CallBack=P2F_CallBack;
-      SPI1_DR_Reg=Copy_u16Transmit;
+      SPI1_DR_Reg=Copy_uint16Transmit;
   break;
     }
     case SPI2:
 
     {
       SPI2_CallBack=P2F_CallBack;
-      SPI2_DR_Reg=Copy_u16Transmit;
+      SPI2_DR_Reg=Copy_uint16Transmit;
 break;
     }
     default :break;

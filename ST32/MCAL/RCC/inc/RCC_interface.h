@@ -124,8 +124,8 @@ typedef enum {
 } RCC_BUS_t;
 
 void RCC_VidInit(void);
-RCC_status RCC_voidEnablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_u8Peripheral);
-RCC_status RCC_voidDisablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_u8Peripheral);
-RCC_status RCC_voidResetPeripheral(RCC_BUS_t Copy_Bus,Bus_RestPeripheral_t Copy_u8Peripheral);
+RCC_status RCC_voidEnablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_uint8Peripheral);
+RCC_status RCC_voidDisablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_uint8Peripheral);
+RCC_status RCC_voidResetPeripheral(RCC_BUS_t Copy_Bus,Bus_RestPeripheral_t Copy_uint8Peripheral);
 
 #endif /* RCC_INTERFACE_H_ */

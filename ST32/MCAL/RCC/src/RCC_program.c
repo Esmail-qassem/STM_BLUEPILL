@@ -15,7 +15,7 @@
 
 void RCC_VidInit(void){
 
-	u16 Counter=0;
+	uint16 Counter=0;
 /*******************************************************************/
 #ifdef  HSI
 
@@ -94,7 +94,7 @@ RCC_CFGR_Reg->SW=PLL_SELECT_CLOCK;
 #endif
 }
 
-RCC_status RCC_voidEnablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_u8Peripheral){
+RCC_status RCC_voidEnablePeripheral(RCC_BUS_t Copy_Bus, Bus_EnPeripheral_t Copy_uint8Peripheral){
 
 	RCC_status Local_ErrorStatus=RCC_OK;
 if(Copy_Bus>APB2_BUS || Copy_Bus<AHB_BUS)
@@ -102,44 +102,44 @@ if(Copy_Bus>APB2_BUS || Copy_Bus<AHB_BUS)
 	Local_ErrorStatus = RCC_BUS_ERR;
 
 }
-else if (Copy_u8Peripheral>30 )
+else if (Copy_uint8Peripheral>30 )
 {
 	Local_ErrorStatus=RCC_PERIPHERAL_ERR;
 }
 else
 {
 	switch( Copy_Bus ){
-				case AHB_BUS  : SET_BIT(RCC_AHBENR_REG,Copy_u8Peripheral); break;
-				case APB1_BUS : SET_BIT(RCC_APB1ENR_REG,Copy_u8Peripheral); break;
-				case APB2_BUS : SET_BIT(RCC_APB2ENR_REG,Copy_u8Peripheral); break;
+				case AHB_BUS  : SET_BIT(RCC_AHBENR_REG,Copy_uint8Peripheral); break;
+				case APB1_BUS : SET_BIT(RCC_APB1ENR_REG,Copy_uint8Peripheral); break;
+				case APB2_BUS : SET_BIT(RCC_APB2ENR_REG,Copy_uint8Peripheral); break;
 			}
 }
 return Local_ErrorStatus;
 }
 
-RCC_status RCC_voidDisablePeripheral(RCC_BUS_t Copy_Bus,Bus_EnPeripheral_t Copy_u8Peripheral){
+RCC_status RCC_voidDisablePeripheral(RCC_BUS_t Copy_Bus,Bus_EnPeripheral_t Copy_uint8Peripheral){
 	RCC_status Local_ErrorStatus=RCC_OK;
 if(Copy_Bus>APB2_BUS || Copy_Bus<AHB_BUS)
 {
 	Local_ErrorStatus = RCC_BUS_ERR;
 
 }
-else if (Copy_u8Peripheral>30)
+else if (Copy_uint8Peripheral>30)
 {
 	Local_ErrorStatus=RCC_PERIPHERAL_ERR;
 }
 else
 {
 	switch( Copy_Bus ){
-				case AHB_BUS  : CLEAR_BIT(RCC_AHBENR_REG,Copy_u8Peripheral); break;
-				case APB1_BUS : CLEAR_BIT(RCC_APB1ENR_REG,Copy_u8Peripheral); break;
-				case APB2_BUS : CLEAR_BIT(RCC_APB2ENR_REG,Copy_u8Peripheral); break;
+				case AHB_BUS  : CLEAR_BIT(RCC_AHBENR_REG,Copy_uint8Peripheral); break;
+				case APB1_BUS : CLEAR_BIT(RCC_APB1ENR_REG,Copy_uint8Peripheral); break;
+				case APB2_BUS : CLEAR_BIT(RCC_APB2ENR_REG,Copy_uint8Peripheral); break;
 			}
 }
 return Local_ErrorStatus;
 }
 
-RCC_status RCC_voidResetPeripheral(RCC_BUS_t Copy_Bus,Bus_RestPeripheral_t Copy_u8Peripheral)
+RCC_status RCC_voidResetPeripheral(RCC_BUS_t Copy_Bus,Bus_RestPeripheral_t Copy_uint8Peripheral)
 {
 	RCC_status Local_ErrorStatus=RCC_OK;
 	if(Copy_Bus>APB2_BUS || Copy_Bus<AHB_BUS)
@@ -147,15 +147,15 @@ RCC_status RCC_voidResetPeripheral(RCC_BUS_t Copy_Bus,Bus_RestPeripheral_t Copy_
 		Local_ErrorStatus = RCC_BUS_ERR;
 
 	}
-	else if (Copy_u8Peripheral>30)
+	else if (Copy_uint8Peripheral>30)
 	{
 		Local_ErrorStatus=RCC_PERIPHERAL_ERR;
 	}
 	else
 	{
 		switch( Copy_Bus ){
-					case APB1_BUS : SET_BIT(RCC_APB1RSTR_REG,Copy_u8Peripheral); break;
-					case APB2_BUS : SET_BIT(RCC_APB2RSTR_REG,Copy_u8Peripheral); break;
+					case APB1_BUS : SET_BIT(RCC_APB1RSTR_REG,Copy_uint8Peripheral); break;
+					case APB2_BUS : SET_BIT(RCC_APB2RSTR_REG,Copy_uint8Peripheral); break;
 					default: Local_ErrorStatus=RCC_BUS_ERR;
 				}
 

@@ -62,7 +62,7 @@ GPIO_STATUS_t GPIO_SetPinConfig(PORT_t Copy_Port,PIN_t Copy_Pin,Bit_Mode_t Copy_
 	}
 return Local_Error_Status;
 }
-GPIO_STATUS_t GPIO_GetPinReading(PORT_t Copy_Port,PIN_t Copy_Pin,u8* Copy_pu8Value)
+GPIO_STATUS_t GPIO_GetPinReading(PORT_t Copy_Port,PIN_t Copy_Pin,uint8* Copy_puint8Value)
 {
 	GPIO_STATUS_t Local_Error_Status=GPIO_ok;
 		if(Copy_Port>GPIO_PORTC || Copy_Port<GPIO_PORTA)
@@ -75,14 +75,14 @@ GPIO_STATUS_t GPIO_GetPinReading(PORT_t Copy_Port,PIN_t Copy_Pin,u8* Copy_pu8Val
 		}else
 		{
 			switch(Copy_Port)
-			{case GPIO_PORTA :*Copy_pu8Value=GET_BIT(GPIOA_IDR,Copy_Pin);break;
-			case GPIO_PORTB :*Copy_pu8Value=GET_BIT(GPIOB_IDR,Copy_Pin);break;
-			case GPIO_PORTC :*Copy_pu8Value=GET_BIT(GPIOC_IDR,Copy_Pin);break;
+			{case GPIO_PORTA :*Copy_puint8Value=GET_BIT(GPIOA_IDR,Copy_Pin);break;
+			case GPIO_PORTB :*Copy_puint8Value=GET_BIT(GPIOB_IDR,Copy_Pin);break;
+			case GPIO_PORTC :*Copy_puint8Value=GET_BIT(GPIOC_IDR,Copy_Pin);break;
 			}
 		}
 return Local_Error_Status;
 }
-GPIO_STATUS_t GPIO_GetPortReading(PORT_t Copy_Port,u16* Copy_pu8Value)
+GPIO_STATUS_t GPIO_GetPortReading(PORT_t Copy_Port,uint16* Copy_puint8Value)
 {
 	GPIO_STATUS_t Local_Error_Status=GPIO_ok;
 		if(Copy_Port>GPIO_PORTC || Copy_Port<GPIO_PORTA)
@@ -92,14 +92,14 @@ GPIO_STATUS_t GPIO_GetPortReading(PORT_t Copy_Port,u16* Copy_pu8Value)
 		else
 		{
 			switch(Copy_Port)
-			{case GPIO_PORTA :*Copy_pu8Value=GPIOA_IDR;break;
-			case GPIO_PORTB :*Copy_pu8Value=GPIOB_IDR;break;
-			case GPIO_PORTC :*Copy_pu8Value=GPIOC_IDR;break;
+			{case GPIO_PORTA :*Copy_puint8Value=GPIOA_IDR;break;
+			case GPIO_PORTB :*Copy_puint8Value=GPIOB_IDR;break;
+			case GPIO_PORTC :*Copy_puint8Value=GPIOC_IDR;break;
 			}
 		}
 return Local_Error_Status;
 }
-GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,u8 Copy_pu8Value)
+GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,uint8 Copy_puint8Value)
 {
 	GPIO_STATUS_t Local_Error_Status=GPIO_ok;
 			if(Copy_Port>GPIO_PORTB || Copy_Port<GPIO_PORTA)
@@ -111,7 +111,7 @@ GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,u8 Copy_pu8Value)
 				Local_Error_Status=GPIO_Wrong_bit;
 			}else
 			{
-				if(GPIO_HIGH == Copy_pu8Value)
+				if(GPIO_HIGH == Copy_puint8Value)
 				{
 					switch(Copy_Port)
 							{case GPIO_PORTA: GPIOA_BSRR=(1<<Copy_Pin);break;
@@ -120,7 +120,7 @@ GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,u8 Copy_pu8Value)
 							}
 
 
-				}else if(GPIO_LOW == Copy_pu8Value)
+				}else if(GPIO_LOW == Copy_puint8Value)
 				{
 					switch(Copy_Port)
 		         {  case GPIO_PORTA:GPIOA_BRR =(1<<Copy_Pin);break;
@@ -134,7 +134,7 @@ GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,u8 Copy_pu8Value)
 			}
 return Local_Error_Status;
 }
-GPIO_STATUS_t GPIO_SetPortValue(PORT_t Copy_Port,u16 Copy_pu8Value)
+GPIO_STATUS_t GPIO_SetPortValue(PORT_t Copy_Port,uint16 Copy_puint8Value)
 {
 	GPIO_STATUS_t Local_Error_Status=GPIO_ok;
 			if(Copy_Port>GPIO_PORTB || Copy_Port<GPIO_PORTA)
@@ -144,8 +144,8 @@ GPIO_STATUS_t GPIO_SetPortValue(PORT_t Copy_Port,u16 Copy_pu8Value)
 			else
 			{
 				switch(Copy_Port)
-					{case GPIO_PORTA:GPIOA_ODR=Copy_pu8Value ;break;
-					case GPIO_PORTB :GPIOB_ODR=Copy_pu8Value ;break;
+					{case GPIO_PORTA:GPIOA_ODR=Copy_puint8Value ;break;
+					case GPIO_PORTB :GPIOB_ODR=Copy_puint8Value ;break;
 					case GPIO_PORTC : break;
 					}
 			}

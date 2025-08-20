@@ -14,10 +14,10 @@ void EXTI_voidInterrupDisable(Line_t Copy_LineId)
 {
 	EXTI_Reg->IMR&=~(1<<Copy_LineId);
 }
-EXTI_Err EXTI_SetSignalLatch(Line_t Copy_LineId,Exti_Mode_t Copy_Mode,u8 Copy_u8Ability)
+EXTI_Err EXTI_SetSignalLatch(Line_t Copy_LineId,Exti_Mode_t Copy_Mode,uint8 Copy_uint8Ability)
 {
 	EXTI_Err Local_ErrorStatus=EXTI_OK;
-if(EXT_Enable==Copy_u8Ability)
+if(EXT_Enable==Copy_uint8Ability)
 {
 	switch(Copy_Mode)
 		{
@@ -27,7 +27,7 @@ if(EXT_Enable==Copy_u8Ability)
 	    default:Local_ErrorStatus=EXTI_NOK;
 		}
 }
-else if(EXT_Disable==Copy_u8Ability)
+else if(EXT_Disable==Copy_uint8Ability)
 {
 	switch(Copy_Mode)
 		{

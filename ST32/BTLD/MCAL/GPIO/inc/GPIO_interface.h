@@ -67,12 +67,12 @@ typedef enum
 
 GPIO_STATUS_t GPIO_SetPinConfig(PORT_t Copy_Port,PIN_t Copy_Pin,Bit_Mode_t Copy_Config);
 
-GPIO_STATUS_t GPIO_GetPinReading(PORT_t Copy_Port,PIN_t Copy_Pin,u8* Copy_pu8Value);
-GPIO_STATUS_t GPIO_GetPortReading(PORT_t Copy_Port,u16* Copy_pu8Value);
+GPIO_STATUS_t GPIO_GetPinReading(PORT_t Copy_Port,PIN_t Copy_Pin,uint8* Copy_puint8Value);
+GPIO_STATUS_t GPIO_GetPortReading(PORT_t Copy_Port,uint16* Copy_puint8Value);
 
 
-GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,u8 Copy_pu8Value);
-GPIO_STATUS_t GPIO_SetPortValue(PORT_t Copy_Port,u16 Copy_pu8Value);
+GPIO_STATUS_t GPIO_SetPinValue(PORT_t Copy_Port,PIN_t Copy_Pin,uint8 Copy_puint8Value);
+GPIO_STATUS_t GPIO_SetPortValue(PORT_t Copy_Port,uint16 Copy_puint8Value);
 
 
 

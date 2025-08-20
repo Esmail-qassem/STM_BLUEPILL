@@ -17,12 +17,12 @@ static void(*Local_PvFunction)(void)=NULL;
 #define MSTK_PERIOD_INTERVAL 1
 typedef struct
 {
-	u32 Sys_Enable    :1; /*Counter enable*/
-	u32 TICKINT   :1; /*SysTick exception request enable*/
-	u32 CLKSOURCE :1; /*Clock source selection*/
-    u32           :13;
-    u32 COUNTFLAG :1 ;
-    u32           :15;
+	uint32 Sys_Enable    :1; /*Counter enable*/
+	uint32 TICKINT   :1; /*SysTick exception request enable*/
+	uint32 CLKSOURCE :1; /*Clock source selection*/
+    uint32           :13;
+    uint32 COUNTFLAG :1 ;
+    uint32           :15;
 }STK_CTRL;
 
 

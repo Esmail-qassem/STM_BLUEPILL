@@ -10,6 +10,7 @@ SRC_DIRS += ../Src \
            $(MCAL_path)/SysTick/src \
            $(MCAL_path)/GPIO/src \
            $(MCAL_path)/UART/src \
+           $(MCAL_path)/FPEC/src 
 
 # Include directories
 INC_DIRS = ../Inc/ \

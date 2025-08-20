@@ -14,75 +14,75 @@ static void (*UART3_CallBack)(void)=NULL;
 /*************************************************************/
 typedef struct
 {
-	u32 PE:1;   // Parity error
-	u32 FE:1;   // Framing error
-	u32 NE:1;   //  Noise error flag
-	u32 ORE:1;  // Overrun error
-	u32 IDLE:1; // IDLE line detected
-	u32 RXNE:1; //  Read data register not empty
-	u32 TC:1;   //Transmission complete
-	u32 TXE:1;  // Transmit data empty
-	u32 LBD:1;  //LIN break detection flag
-	u32 CTS:1;  // CTS FLAG
-	u32 :22;
+	uint32 PE:1;   // Parity error
+	uint32 FE:1;   // Framing error
+	uint32 NE:1;   //  Noise error flag
+	uint32 ORE:1;  // Overrun error
+	uint32 IDLE:1; // IDLE line detected
+	uint32 RXNE:1; //  Read data register not empty
+	uint32 TC:1;   //Transmission complete
+	uint32 TXE:1;  // Transmit data empty
+	uint32 LBD:1;  //LIN break detection flag
+	uint32 CTS:1;  // CTS FLAG
+	uint32 :22;
 }USART_SR;
 
 typedef struct
 {
-	u32 DIV_FACTOR:4;
-	u32 DIV_MANTISSA:12 ;
-	u32:16;
+	uint32 DIV_FACTOR:4;
+	uint32 DIV_MANTISSA:12 ;
+	uint32:16;
 }USART_BRR;
 
 typedef struct
 {
-	u32 SBK    :1;   // Send Break
-	u32 RWU    :1;   // Receiver wakeup
-	u32 RE     :1;   // Receiver enable
-	u32 TE     :1;   // Transmitter enable
-	u32 IDLEIE :1;   // IDLE interrupt enable
-	u32 RXNEIE :1;   // RXNE interrupt enable
-	u32 TCIE   :1;   // RXNE interrupt enable
-	u32 TXEIE  :1;   // TXE interrupt enable
-	u32 PEIE   :1;   // PE interrupt enable
-	u32 PS     :1;   // Parity selection
-	u32 PCE    :1;   // Parity control enable
-	u32 WAKE   :1;   // Wakeup method
-	u32 M      :1;   // Word length
-	u32 UE     :1;   // USART enable
-    u32        :18;
+	uint32 SBK    :1;   // Send Break
+	uint32 RWU    :1;   // Receiver wakeup
+	uint32 RE     :1;   // Receiver enable
+	uint32 TE     :1;   // Transmitter enable
+	uint32 IDLEIE :1;   // IDLE interrupt enable
+	uint32 RXNEIE :1;   // RXNE interrupt enable
+	uint32 TCIE   :1;   // RXNE interrupt enable
+	uint32 TXEIE  :1;   // TXE interrupt enable
+	uint32 PEIE   :1;   // PE interrupt enable
+	uint32 PS     :1;   // Parity selection
+	uint32 PCE    :1;   // Parity control enable
+	uint32 WAKE   :1;   // Wakeup method
+	uint32 M      :1;   // Word length
+	uint32 UE     :1;   // USART enable
+    uint32        :18;
 }USART_CR1;
 
 typedef struct
 {
-	u32 ADD    :3;   // Address of the USART node
-	u32        :1;   // Reserved
-	u32 LBDL   :1;   // lin break detection length
-	u32 LBDIE  :1;   // LIN break detection interrupt enable
-	u32        :1;   // Reserved
-	u32 LBCL   :1;   // Last bit clock pulse
-	u32 CPHA   :1;   // Clock phase
-	u32 CPOL   :1;   // Clock phase
-	u32 CLK_EN :1;   // Clock enable
-	u32 STOP   :2;   // STOP bits
-    u32        :17;
+	uint32 ADD    :3;   // Address of the USART node
+	uint32        :1;   // Reserved
+	uint32 LBDL   :1;   // lin break detection length
+	uint32 LBDIE  :1;   // LIN break detection interrupt enable
+	uint32        :1;   // Reserved
+	uint32 LBCL   :1;   // Last bit clock pulse
+	uint32 CPHA   :1;   // Clock phase
+	uint32 CPOL   :1;   // Clock phase
+	uint32 CLK_EN :1;   // Clock enable
+	uint32 STOP   :2;   // STOP bits
+    uint32        :17;
 }USART_CR2;
 
 
 typedef struct
 {
-	u32 EIE    :1;   // Error interrupt enable
-	u32 IREN   :1;   // IrDA mode enable
-	u32 IRLP   :1;   // IrDA Low Power
-	u32 HDSEL  :1;   // Half-duplex selection
-	u32 NACK   :1;   // Smartcard NACK enable
-	u32 SCEN   :1;   // Smartcard mode enable
-	u32 DMAR   :1;   // DMA enable receiver
-	u32 DMAT   :1;   // DMA enable transmitter
-	u32 RTSE   :1;   // RTS enable
-	u32 CTSE   :1;   // CTS enable
-	u32 CTSIE  :1;   // CTS interrupt enable
-    u32        :21;
+	uint32 EIE    :1;   // Error interrupt enable
+	uint32 IREN   :1;   // IrDA mode enable
+	uint32 IRLP   :1;   // IrDA Low Power
+	uint32 HDSEL  :1;   // Half-duplex selection
+	uint32 NACK   :1;   // Smartcard NACK enable
+	uint32 SCEN   :1;   // Smartcard mode enable
+	uint32 DMAR   :1;   // DMA enable receiver
+	uint32 DMAT   :1;   // DMA enable transmitter
+	uint32 RTSE   :1;   // RTS enable
+	uint32 CTSE   :1;   // CTS enable
+	uint32 CTSIE  :1;   // CTS interrupt enable
+    uint32        :21;
 }USART_CR3;
 
 

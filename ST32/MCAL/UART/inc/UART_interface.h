@@ -16,17 +16,17 @@ typedef enum
 
 void UART_voidInit(void);
 
-void UART_u8SendCharSynch(UART_t HardWare_Unit,u8 Copy_u16Data);
+void UART_uint8SendCharSynch(UART_t HardWare_Unit,uint8 Copy_uint16Data);
 
-Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit,u8 *Copy_p8ReceiveData);
+Status_t UART_uint8ReceiveCharSynch(UART_t HardWare_Unit,uint8 *Copy_p8ReceiveData);
 
-Status_t UART_u8SendStringSynch(UART_t HardWare_Unit,u8* Copy_p8Data);
+Status_t UART_uint8SendStringSynch(UART_t HardWare_Unit,uint8* Copy_p8Data);
 
-void UART_u8RecieveStringSynch(UART_t HardWare_Unit,u8*Copy_p8Data,u8 Copy_u8DataSize);
+void UART_uint8RecieveStringSynch(UART_t HardWare_Unit,uint8*Copy_p8Data,uint8 Copy_uint8DataSize);
 
 void UART_voidSendNumber(UART_t HardWare_Unit,s32 Copy_s32Number);
 
-u8 UART_IsStringEqual(const u8 *str1, const u8 *str2, u8 length) ;
+uint8 UART_IsStringEqual(const uint8 *str1, const uint8 *str2, uint8 length) ;
 
 
 #endif /* UART_INTERFACE_H_ */

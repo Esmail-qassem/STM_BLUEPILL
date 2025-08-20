@@ -11,19 +11,19 @@
 
 typedef struct
 {
-	    u32 HSION:1;     /* Internal high-speed clock enable*/
-		u32 HSIRDY:1;    /* Internal high-speed clock ready flag*/
-		u32 :1;
-		u32 HSITRIM:5;   /*Internal high-speed clock trimming*/
-		u32 HSICAL:8;    /*Internal high-speed clock calibration*/
-		u32 HSEON:1;     /*HSE clock enable*/
-		u32 HSERDY:1;    /*External high-speed clock ready flag*/
-		u32 HSEBYP:1;    /*External high-speed clock bypass*/
-		u32 CSSON:1;     /*Clock security system enable*/
-		u32 :4;
-		u32 PLLON:1;     /*PLL enable*/
-		u32 PLLRDY:1;    /*PLL clock ready flag*/
-		u32 :6;
+	    uint32 HSION:1;     /* Internal high-speed clock enable*/
+		uint32 HSIRDY:1;    /* Internal high-speed clock ready flag*/
+		uint32 :1;
+		uint32 HSITRIM:5;   /*Internal high-speed clock trimming*/
+		uint32 HSICAL:8;    /*Internal high-speed clock calibration*/
+		uint32 HSEON:1;     /*HSE clock enable*/
+		uint32 HSERDY:1;    /*External high-speed clock ready flag*/
+		uint32 HSEBYP:1;    /*External high-speed clock bypass*/
+		uint32 CSSON:1;     /*Clock security system enable*/
+		uint32 :4;
+		uint32 PLLON:1;     /*PLL enable*/
+		uint32 PLLRDY:1;    /*PLL clock ready flag*/
+		uint32 :6;
 
 
 }RCC_CR;
@@ -50,19 +50,19 @@ typedef enum {
 /**********************************************/
 typedef struct
 {
-	    u32 SW:2;
-		u32 SWS:2;
-		u32 HPRE:4;
-		u32 PPRE1:3;
-		u32 PPRE2:3;
-		u32 ADCPRE:2;
-		u32 PLLSRC:1;
-		u32 PLLXTRPE:1;
-		u32 PLLMUL:4;
-		u32 USBPRE:1;
-		u32 :1;
-		u32 MCO:3;
-		u32 :5;
+	    uint32 SW:2;
+		uint32 SWS:2;
+		uint32 HPRE:4;
+		uint32 PPRE1:3;
+		uint32 PPRE2:3;
+		uint32 ADCPRE:2;
+		uint32 PLLSRC:1;
+		uint32 PLLXTRPE:1;
+		uint32 PLLMUL:4;
+		uint32 USBPRE:1;
+		uint32 :1;
+		uint32 MCO:3;
+		uint32 :5;
 
 }RCC_CFGR;
 
@@ -71,41 +71,41 @@ typedef struct
 
 
 typedef struct {
-	u32 LSIRDYF:1;
-	u32 LSERDYF:1;
-	u32 HSIRDYF:1;
-	u32 HSERDYF:1;
-	u32 PLLRDYF:1;
-	u32 :2;
-	u32 CSSF:1;
-	u32 LSIRDYIE:1;
-	u32 LSERDYIE:1;
-	u32 HSIRDYIE:1;
-	u32 HSERDYIE:1;
-	u32 PLLRDYIE:1;
-	u32 :3;
-	u32 LSIRDYC:1;
-	u32 LSERDYC:1;
-	u32 HSIRDYC:1;
-	u32 HSERDYC:1;
-	u32 PLLRDYC:1;
-	u32 :2;
-	u32 CSSC:1;
-	u32:8;
+	uint32 LSIRDYF:1;
+	uint32 LSERDYF:1;
+	uint32 HSIRDYF:1;
+	uint32 HSERDYF:1;
+	uint32 PLLRDYF:1;
+	uint32 :2;
+	uint32 CSSF:1;
+	uint32 LSIRDYIE:1;
+	uint32 LSERDYIE:1;
+	uint32 HSIRDYIE:1;
+	uint32 HSERDYIE:1;
+	uint32 PLLRDYIE:1;
+	uint32 :3;
+	uint32 LSIRDYC:1;
+	uint32 LSERDYC:1;
+	uint32 HSIRDYC:1;
+	uint32 HSERDYC:1;
+	uint32 PLLRDYC:1;
+	uint32 :2;
+	uint32 CSSC:1;
+	uint32:8;
 }RCC_CIR;
 
 
 
 typedef struct {
-	u32 LSEON:1;
-	u32 LSERDY:1;
-	u32 LSEBYP:1;
-	u32 :5;
-	u32 RTCSEL:2;
-	u32 :5;
-	u32 RTCEN:1;
-	u32 BDRST:1;
-	u32 :15;
+	uint32 LSEON:1;
+	uint32 LSERDY:1;
+	uint32 LSEBYP:1;
+	uint32 :5;
+	uint32 RTCSEL:2;
+	uint32 :5;
+	uint32 RTCEN:1;
+	uint32 BDRST:1;
+	uint32 :15;
 }RCC_BDCR;
 
 /***************************************************************/
@@ -113,19 +113,19 @@ typedef struct {
 typedef union
 {
 	struct{
-	u32 LSION:1;
-	u32 LSIRDY:1;
-	u32 :22;
-	u32 RMVF:1;
-	u32 :1;
-	u32 PINRSTF:1;
-	u32 PORRSTF:1;
-	u32 SFTRSTF:1;
-	u32 IWDGRSTF:1;
-	u32 WWDGRSTF:1;
-	u32 LPWRRSTF:1;
+	uint32 LSION:1;
+	uint32 LSIRDY:1;
+	uint32 :22;
+	uint32 RMVF:1;
+	uint32 :1;
+	uint32 PINRSTF:1;
+	uint32 PORRSTF:1;
+	uint32 SFTRSTF:1;
+	uint32 IWDGRSTF:1;
+	uint32 WWDGRSTF:1;
+	uint32 LPWRRSTF:1;
 	}bits;
-	u32 Reset_Reasone;
+	uint32 Reset_Reasone;
 }RCC_CSR;
 
 /***************************************************************/

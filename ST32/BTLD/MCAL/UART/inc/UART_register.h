@@ -13,7 +13,7 @@
 /*UART STATUS REGISTER*/
 #define USART1_SR_Reg      ((volatile USART_SR*)UART1_BASE_Add)
 /*Data Register*/
-#define USART1_DR_Reg      *((volatile u32*)(UART1_BASE_Add+0x04))
+#define USART1_DR_Reg      *((volatile uint32*)(UART1_BASE_Add+0x04))
 /*Baud Rate Register*/
 #define USART1_BRR_Reg    ((volatile USART_BRR*)(UART1_BASE_Add+0x08))
 /*Control Register 1*/
@@ -23,7 +23,7 @@
 /*Control Register 3*/
 #define USART1_CR3_Reg     ((volatile USART_CR3*)(UART1_BASE_Add+0x14))
 /* Guard time and prescaler register*/
-#define USART1_GTPR_Reg    *((volatile u32*)(UART1_BASE_Add+0x18))
+#define USART1_GTPR_Reg    *((volatile uint32*)(UART1_BASE_Add+0x18))
 
 /*****************************************************************************************************/
 /*USART 2                                                                                            */
@@ -31,7 +31,7 @@
 /*UART STATUS REGISTER*/
 #define USART2_SR_Reg      ((volatile USART_SR*)UART2_BASE_Add)
 /*Data Register*/
-#define USART2_DR_Reg      *((volatile u32*)(UART2_BASE_Add+0x04))
+#define USART2_DR_Reg      *((volatile uint32*)(UART2_BASE_Add+0x04))
 /*Baud Rate Register*/
 #define USART2_BRR_Reg     ((volatile USART_BRR*)(UART2_BASE_Add+0x08))
 /*Control Register 1*/
@@ -41,14 +41,14 @@
 /*Control Register 3*/
 #define USART2_CR3_Reg     ((volatile USART_CR3*)(UART2_BASE_Add+0x14))
 /* Guard time and prescaler register*/
-#define USART2_GTPR_Reg    *((volatile u32*)(UART2_BASE_Add+0x18))
+#define USART2_GTPR_Reg    *((volatile uint32*)(UART2_BASE_Add+0x18))
 /*****************************************************************************************************/
 /*USART 3                                                                                            */
 /*****************************************************************************************************/
 
 #define USART3_SR_Reg      ((volatile USART_SR*)UART3_BASE_Add)
 /*Data Register*/
-#define USART3_DR_Reg      *((volatile u32*)(UART3_BASE_Add+0x04))
+#define USART3_DR_Reg      *((volatile uint32*)(UART3_BASE_Add+0x04))
 /*Baud Rate Register*/
 #define USART3_BRR_Reg     ((volatile USART_BRR*)(UART3_BASE_Add+0x08))
 /*Control Register 1*/
@@ -58,6 +58,6 @@
 /*Control Register 3*/
 #define USART3_CR3_Reg     ((volatile USART_CR3*)(UART3_BASE_Add+0x14))
 /* Guard time and prescaler register*/
-#define USART3_GTPR_Reg    *((volatile u32*)(UART3_BASE_Add+0x18))
+#define USART3_GTPR_Reg    *((volatile uint32*)(UART3_BASE_Add+0x18))
 
 #endif /* UART_REGISTER_H_ */

@@ -13,7 +13,7 @@
 
 #define STK_CTRL_Reg        ((volatile STK_CTRL*)SysTick_Add)
 
-#define STK_LOAD_Reg       *((volatile u32*)(SysTick_Add+0x04))
-#define STK_VAL_Reg        *((volatile u32*)(SysTick_Add+0x08))
-#define STK_CALIB_Reg      *((volatile u32*)(SysTick_Add+0x0C))
+#define STK_LOAD_Reg       *((volatile uint32*)(SysTick_Add+0x04))
+#define STK_VAL_Reg        *((volatile uint32*)(SysTick_Add+0x08))
+#define STK_CALIB_Reg      *((volatile uint32*)(SysTick_Add+0x0C))
 #endif /* INC_SYSTICK_REGISTER_H_ */

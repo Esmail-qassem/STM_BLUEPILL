@@ -12,17 +12,17 @@ typedef union
 {
 struct
 {
-	u32 VECTRESET:1;
-	u32 VECTCLRACTIVE:1;
-	u32 SYSRESETREQ:1;
-	u32:5;
-	u32 PRIGROUP :3; /*priority group*/
-	u32:4;
-	u32 ENDIANESS :1;
-	u32 VECTKEY:16;
+	uint32 VECTRESET:1;
+	uint32 VECTCLRACTIVE:1;
+	uint32 SYSRESETREQ:1;
+	uint32:5;
+	uint32 PRIGROUP :3; /*priority group*/
+	uint32:4;
+	uint32 ENDIANESS :1;
+	uint32 VECTKEY:16;
 };
 
-u32 x;
+uint32 x;
 
 }NVIC_SCB_AIRCR;
 

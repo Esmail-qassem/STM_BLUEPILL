@@ -30,19 +30,19 @@
 #define RCC_BDCR_REG        ((volatile RCC_BDCR*)(RCC_BASE_ADD+0x20))
 
 /***************************************************************/
-#define RCC_APB2RSTR_REG    *((volatile u32*)(RCC_BASE_ADD+0x0C))
+#define RCC_APB2RSTR_REG    *((volatile uint32*)(RCC_BASE_ADD+0x0C))
 
 /***************************************************************/
-#define RCC_APB1RSTR_REG    *((volatile u32*)(RCC_BASE_ADD+0x10))
+#define RCC_APB1RSTR_REG    *((volatile uint32*)(RCC_BASE_ADD+0x10))
 
 /***************************************************************/
-#define RCC_AHBENR_REG     *((volatile u32*)(RCC_BASE_ADD+0x14))
+#define RCC_AHBENR_REG     *((volatile uint32*)(RCC_BASE_ADD+0x14))
 
 /***************************************************************/
-#define RCC_APB2ENR_REG    *((volatile u32*)(RCC_BASE_ADD+0x18))
+#define RCC_APB2ENR_REG    *((volatile uint32*)(RCC_BASE_ADD+0x18))
 
 /***************************************************************/
-#define RCC_APB1ENR_REG     *((volatile u32*)(RCC_BASE_ADD+0x1C))
+#define RCC_APB1ENR_REG     *((volatile uint32*)(RCC_BASE_ADD+0x1C))
 
 /***************************************************************/
 

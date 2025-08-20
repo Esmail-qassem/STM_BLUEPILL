@@ -12,12 +12,12 @@ static void(*Local4_PvFunction)(void)=NULL;
 
 typedef struct
 {
-	volatile u32 IMR;
-	volatile u32 EMR;
-	volatile u32 RTSR;
-	volatile u32 FTSR;
-	volatile u32 SWIER;
-	volatile u32 PR;
+	volatile uint32 IMR;
+	volatile uint32 EMR;
+	volatile uint32 RTSR;
+	volatile uint32 FTSR;
+	volatile uint32 SWIER;
+	volatile uint32 PR;
 }EXTI;
 
 #endif /* INC_EXTI_PRIVATE_H_ */

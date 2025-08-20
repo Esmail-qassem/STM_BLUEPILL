@@ -32,24 +32,24 @@
 /*Port input data register*/
 
 
-#define GPIOA_IDR    *((volatile u32*)(GPIO_PORTA_BASE_ADD+0x08))
-#define GPIOB_IDR    *((volatile u32*)(GPIO_PORTB_BASE_ADD+0x08))
-#define GPIOC_IDR    *((volatile u32*)(GPIO_PORTC_BASE_ADD+0x08))
+#define GPIOA_IDR    *((volatile uint32*)(GPIO_PORTA_BASE_ADD+0x08))
+#define GPIOB_IDR    *((volatile uint32*)(GPIO_PORTB_BASE_ADD+0x08))
+#define GPIOC_IDR    *((volatile uint32*)(GPIO_PORTC_BASE_ADD+0x08))
 
 
 /******************************************************************************/
 
-#define GPIOA_ODR    *((volatile u32*)(GPIO_PORTA_BASE_ADD+0x0C))
-#define GPIOB_ODR    *((volatile u32*)(GPIO_PORTB_BASE_ADD+0x0C))
+#define GPIOA_ODR    *((volatile uint32*)(GPIO_PORTA_BASE_ADD+0x0C))
+#define GPIOB_ODR    *((volatile uint32*)(GPIO_PORTB_BASE_ADD+0x0C))
 
 /*********************************************************************/
-#define GPIOA_BSRR   *((volatile u32*)(GPIO_PORTA_BASE_ADD+0x10))
-#define GPIOB_BSRR   *((volatile u32*)(GPIO_PORTB_BASE_ADD+0x10))
-#define GPIOC_BSRR   *((volatile u32*)(GPIO_PORTC_BASE_ADD+0x10))
+#define GPIOA_BSRR   *((volatile uint32*)(GPIO_PORTA_BASE_ADD+0x10))
+#define GPIOB_BSRR   *((volatile uint32*)(GPIO_PORTB_BASE_ADD+0x10))
+#define GPIOC_BSRR   *((volatile uint32*)(GPIO_PORTC_BASE_ADD+0x10))
 
 /******************************************************************************/
-#define GPIOA_BRR   *((volatile u32*)(GPIO_PORTA_BASE_ADD+0x14))
-#define GPIOB_BRR   *((volatile u32*)(GPIO_PORTB_BASE_ADD+0x14))
-#define GPIOC_BRR   *((volatile u32*)(GPIO_PORTC_BASE_ADD+0x14))
+#define GPIOA_BRR   *((volatile uint32*)(GPIO_PORTA_BASE_ADD+0x14))
+#define GPIOB_BRR   *((volatile uint32*)(GPIO_PORTB_BASE_ADD+0x14))
+#define GPIOC_BRR   *((volatile uint32*)(GPIO_PORTC_BASE_ADD+0x14))
 
 #endif /* GPIO_REGISTER_H_ */

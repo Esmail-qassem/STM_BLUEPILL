@@ -2,50 +2,50 @@
 #define SPI_PRIVATE_H_
 
 
-static void (*SPI1_CallBack)(u16) = NULL;
-static void (*SPI2_CallBack)(u16)=NULL;
+static void (*SPI1_CallBack)(uint16) = NULL;
+static void (*SPI2_CallBack)(uint16)=NULL;
 
 typedef struct
 {
-	u32 CPHA    :1;  /*Clock phase*/
-	u32 CPOL    :1;  /*Clock polarity*/
-	u32 MSTR    :1;  /*Master selection*/
-    u32 BR      :3;  /*Bude rate selection*/
-    u32 SPE     :1;  /* SPI enable */
-    u32 LSBFIRST:1;  /*Frame format*/
-    u32 SSI     :1;  /*Internal slave select*/
-    u32 SSM     :1;  /* Software slave management*/
-    u32 RXONLY  :1;  /*Recieve only*/
-    u32 DFF     :1;  /*Data Format*/
-    u32 CRCNEXT :1;  /*CRC transfer next*/
-    u32 CRCEN   :1;  /*Hardware CRC calculation enable*/
-    u32 BIDIOE  :1;  /* Output enable in bidirectional mode*/
-    u32 BIDIMODE:1;  /* Bidirectional data mode enable*/
-    u32         :16; /*Reserved*/
+	uint32 CPHA    :1;  /*Clock phase*/
+	uint32 CPOL    :1;  /*Clock polarity*/
+	uint32 MSTR    :1;  /*Master selection*/
+    uint32 BR      :3;  /*Bude rate selection*/
+    uint32 SPE     :1;  /* SPI enable */
+    uint32 LSBFIRST:1;  /*Frame format*/
+    uint32 SSI     :1;  /*Internal slave select*/
+    uint32 SSM     :1;  /* Software slave management*/
+    uint32 RXONLY  :1;  /*Recieve only*/
+    uint32 DFF     :1;  /*Data Format*/
+    uint32 CRCNEXT :1;  /*CRC transfer next*/
+    uint32 CRCEN   :1;  /*Hardware CRC calculation enable*/
+    uint32 BIDIOE  :1;  /* Output enable in bidirectional mode*/
+    uint32 BIDIMODE:1;  /* Bidirectional data mode enable*/
+    uint32         :16; /*Reserved*/
 }SPI_CR1;
 typedef struct
 {
-	u32 RXDMAEN    :1;  /*Rx buffer DMA enable*/
-	u32 TXDMAEN    :1;  /*Tx buffer DMA enable*/
-	u32 SSOE       :1;  /*SS output enable*/
-	u32            :2;  /*Reserved*/
-    u32 ERRIE      :1;  /*Error interrupt enable*/
-    u32 RXNEIE     :1;  /*RX buffer not empty interrupt enable*/
-    u32 TXEIE      :1;  /*Tx buffer empty interrupt enable*/
-    u32            :24; /*Reserved*/
+	uint32 RXDMAEN    :1;  /*Rx buffer DMA enable*/
+	uint32 TXDMAEN    :1;  /*Tx buffer DMA enable*/
+	uint32 SSOE       :1;  /*SS output enable*/
+	uint32            :2;  /*Reserved*/
+    uint32 ERRIE      :1;  /*Error interrupt enable*/
+    uint32 RXNEIE     :1;  /*RX buffer not empty interrupt enable*/
+    uint32 TXEIE      :1;  /*Tx buffer empty interrupt enable*/
+    uint32            :24; /*Reserved*/
 }SPI_CR2;
 
 typedef struct
 {
-	u32 RXNE   :1; /*Receive buffer not empty*/
-	u32 TXE    :1; /* Transmit buffer empty*/
-	u32 CHSIDE :1; /*Channel side*/
-	u32 UDR    :1; /*Underrun flag*/
-    u32 CRCERR :1; /*CRC error flag*/
-    u32 MODF   :1; /* Mode fault*/
-    u32 OVR    :1; /* Overrun flag*/
-    u32 BSY    :1; /* Busy flag*/
-    u32        :24 ; /*reserved*/
+	uint32 RXNE   :1; /*Receive buffer not empty*/
+	uint32 TXE    :1; /* Transmit buffer empty*/
+	uint32 CHSIDE :1; /*Channel side*/
+	uint32 UDR    :1; /*Underrun flag*/
+    uint32 CRCERR :1; /*CRC error flag*/
+    uint32 MODF   :1; /* Mode fault*/
+    uint32 OVR    :1; /* Overrun flag*/
+    uint32 BSY    :1; /* Busy flag*/
+    uint32        :24 ; /*reserved*/
 }SPI_SR;
 
 enum Data_Frame

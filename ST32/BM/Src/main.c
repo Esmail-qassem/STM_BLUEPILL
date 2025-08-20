@@ -3,27 +3,28 @@
 #include "GPIO_interface.h"
 #include "RCC_interface.h"
 #include "UART_interface.h"
+#include "FPEC.h"
 
 typedef void (*Function_t)(void);
 Function_t addr_to_call = 0;
-#define SCB_VTOR   *((volatile u32*)0xE000ED08)
+#define SCB_VTOR   *((volatile uint32*)0xE000ED08)
 
 
 int Pin_Reset,Power_Reset,Soft_Reset,flag;
-u32 cause;
+uint32 cause;
+uint32 Copy_uint32Address=0x80013f0;
+
+uint16 Copy_uint16Data[4]={0x3333,0x2222,0x1111,0x4444};
 void main(void)
-{   RCC_VidInit();
-    RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
+{  
+  RCC_VidInit();
 	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOAEN);
 	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
-    GPIO_SetPinConfig(GPIO_PORTA,PIN9,OUTPUT_50MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN10,INPUT_FLOATING);
 	GPIO_SetPinConfig(GPIO_PORTA,PIN2,OUTPUT_50MHZ_AF_PUSH);
 	GPIO_SetPinConfig(GPIO_PORTA,PIN3,INPUT_FLOATING);
-	GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
-    UART_voidInit();
-    UART_u8SendStringSynch(UART_Unit2,"BM\n");
+  UART_voidInit();
+
+  FPEC_voidFlashWrite(Copy_uint32Address,Copy_uint16Data,4);
 
      cause = RCC_CSR_REG->Reset_Reasone; 
 
@@ -32,29 +33,33 @@ void main(void)
       Soft_Reset=GET_BIT(cause,28);
         /*clear the flag*/
       SET_BIT(RCC_CSR_REG->Reset_Reasone,24);
-     if(Power_Reset)
+       UART_uint8SendStringSynch(UART_Unit2,"BM\n");
+     if(Soft_Reset)
+      {
+              /*jump to application*/
+        SCB_VTOR = 0x08002800;
+        addr_to_call = *(volatile Function_t*)(0x08002804);
+        addr_to_call();
+
+        
+      }
+      else if(Power_Reset || Pin_Reset)
       {
         /*jump to bootloader*/
          SCB_VTOR = 0x08001400;
         addr_to_call = *(volatile Function_t*)(0x08001404);
         addr_to_call();
-        
-      }
-      else if(Soft_Reset)
-      {
-        /*jump to application*/
-        SCB_VTOR = 0x08002800;
-        addr_to_call = *(volatile Function_t*)(0x08002804);
-        addr_to_call();
+  
 
       }
       
       
     while(1)
-    { }
+    {
+      
 
 
-
+}
 
 }
 

@@ -11,7 +11,7 @@
 #include "CLCD_interface.h"
 #include "../../MCAL/GPIO/inc/GPIO_interface.h"
 #include <util/delay.h>
-void CLCD_voidSendCommand(u8 copy_u8Command)
+void CLCD_voidSendCommand(uint8 copy_uint8Command)
 {
 	/*Setting RS pin to low*/
 DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_LOW);
@@ -19,7 +19,7 @@ DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_LOW);
 DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
 
 /*Set command data pins*/
-DIO_SetPortVal(CLCD_DATA_PORT,copy_u8Command);
+DIO_SetPortVal(CLCD_DATA_PORT,copy_uint8Command);
 
 /*Send Enable pulse*/
 DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
@@ -44,7 +44,7 @@ void CLCD_voidInit(void)
 }
 
 
-void CLCD_voidSendData(u8 copy_u8Data)
+void CLCD_voidSendData(uint8 copy_uint8Data)
 {
 
 	/*Setting RS pin to HIGH*/
@@ -53,7 +53,7 @@ void CLCD_voidSendData(u8 copy_u8Data)
 	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
 
 	/*Set data pins*/
-	DIO_SetPortVal(CLCD_DATA_PORT,copy_u8Data);
+	DIO_SetPortVal(CLCD_DATA_PORT,copy_uint8Data);
 
 	/*Send Enable pulse*/
 	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
@@ -63,76 +63,76 @@ void CLCD_voidSendData(u8 copy_u8Data)
 
 }
 
-void CLCD_voidSendString(const u8* Copy_u8String)
+void CLCD_voidSendString(const uint8* Copy_uint8String)
 {
-u8 Local_u8Counter=0;
-while(Copy_u8String[Local_u8Counter]!='\0')
+uint8 Local_uint8Counter=0;
+while(Copy_uint8String[Local_uint8Counter]!='\0')
 {
-    CLCD_voidSendData(Copy_u8String[Local_u8Counter]);
-    Local_u8Counter++;
+    CLCD_voidSendData(Copy_uint8String[Local_uint8Counter]);
+    Local_uint8Counter++;
 }
 
 }
 
 
-void CLCD_voidGoToXY(u8 Copy_u8Xposition,u8 Copy_u8Yposition)
+void CLCD_voidGoToXY(uint8 Copy_uint8Xposition,uint8 Copy_uint8Yposition)
 {
-  u8 Local_u8Address;
+  uint8 Local_uint8Address;
 
-  if(Copy_u8Xposition==0)
+  if(Copy_uint8Xposition==0)
   {
-	  Local_u8Address=Copy_u8Yposition;
+	  Local_uint8Address=Copy_uint8Yposition;
   }
-  else if(Copy_u8Xposition==1)
+  else if(Copy_uint8Xposition==1)
 
   {
-	  Local_u8Address=Copy_u8Yposition+0x40;
+	  Local_uint8Address=Copy_uint8Yposition+0x40;
   }
 
-  CLCD_voidSendCommand(Local_u8Address|(1<<7));
+  CLCD_voidSendCommand(Local_uint8Address|(1<<7));
 }
 
 
-void CLCD_voidWriteNumber(s32 copy_u32Number)
+void CLCD_voidWriteNumber(s32 copy_uint32Number)
 {
-	if(copy_u32Number<0)
+	if(copy_uint32Number<0)
 	{
 		CLCD_voidSendData('-');
-		copy_u32Number= -copy_u32Number;
+		copy_uint32Number= -copy_uint32Number;
 	}
-	if(copy_u32Number==0)
+	if(copy_uint32Number==0)
 	{
 		CLCD_voidSendData('0');
 		return;
 	}
-u8 NUM[10];
-u8 Local_u8Counter=0;
-while(copy_u32Number>0)
+uint8 NUM[10];
+uint8 Local_uint8Counter=0;
+while(copy_uint32Number>0)
 {
-	NUM[Local_u8Counter++]=(copy_u32Number%10)+'0';
-	copy_u32Number/=10;
+	NUM[Local_uint8Counter++]=(copy_uint32Number%10)+'0';
+	copy_uint32Number/=10;
 }
 /*reverse*/
-for(u8 i=Local_u8Counter;i>0;i--)
+for(uint8 i=Local_uint8Counter;i>0;i--)
 {
 	CLCD_voidSendData(NUM[i-1]);
 }
 }
-void CLCD_voidWriteSpecialChar(u8* copy_pu8Pattern,u8 copy_u8PatternNumber,u8 copy_u8Xposition,u8 copy_u8Yposition)
+void CLCD_voidWriteSpecialChar(uint8* copy_puint8Pattern,uint8 copy_uint8PatternNumber,uint8 copy_uint8Xposition,uint8 copy_uint8Yposition)
 {
-	u8 Local_u8CGRAM_Address=0;
+	uint8 Local_uint8CGRAM_Address=0;
 	/*Set the CGRAM address*/
-Local_u8CGRAM_Address=copy_u8PatternNumber*8;
-CLCD_voidSendCommand(Local_u8CGRAM_Address|(1<<6));
+Local_uint8CGRAM_Address=copy_uint8PatternNumber*8;
+CLCD_voidSendCommand(Local_uint8CGRAM_Address|(1<<6));
 
-for(u8 i=0;i<8;i++)
+for(uint8 i=0;i<8;i++)
 {
-	CLCD_voidSendData(copy_pu8Pattern[i]);
+	CLCD_voidSendData(copy_puint8Pattern[i]);
 }
 /*go back to DDRAM to display the Arr*/
- CLCD_voidGoToXY(copy_u8Xposition,copy_u8Yposition);
+ CLCD_voidGoToXY(copy_uint8Xposition,copy_uint8Yposition);
 
-CLCD_voidSendData(copy_u8PatternNumber);
+CLCD_voidSendData(copy_uint8PatternNumber);
 
 }
 

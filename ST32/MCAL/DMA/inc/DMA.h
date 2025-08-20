@@ -3,14 +3,14 @@
 #include "STD_TYPES.h"
 
 // DMA1 and DMA2 Registers
-#define DMA_ISR(base)   (*(volatile u32 *)((base) + 0x00)) // Interrupt Status Register
-#define DMA_IFCR(base)  (*(volatile u32 *)((base) + 0x04)) // Interrupt Flag Clear Register
+#define DMA_ISR(base)   (*(volatile uint32 *)((base) + 0x00)) // Interrupt Status Register
+#define DMA_IFCR(base)  (*(volatile uint32 *)((base) + 0x04)) // Interrupt Flag Clear Register
 
 // DMA Channel Registers
-#define DMA_CCR(base, ch)    (*(volatile u32 *)((base) + 0x08 + (ch - 1) * 0x14))
-#define DMA_CNDTR(base, ch)  (*(volatile u32 *)((base) + 0x0C + (ch - 1) * 0x14))
-#define DMA_CPAR(base, ch)   (*(volatile u32 *)((base) + 0x10 + (ch - 1) * 0x14))
-#define DMA_CMAR(base, ch)   (*(volatile u32 *)((base) + 0x14 + (ch - 1) * 0x14))
+#define DMA_CCR(base, ch)    (*(volatile uint32 *)((base) + 0x08 + (ch - 1) * 0x14))
+#define DMA_CNDTR(base, ch)  (*(volatile uint32 *)((base) + 0x0C + (ch - 1) * 0x14))
+#define DMA_CPAR(base, ch)   (*(volatile uint32 *)((base) + 0x10 + (ch - 1) * 0x14))
+#define DMA_CMAR(base, ch)   (*(volatile uint32 *)((base) + 0x14 + (ch - 1) * 0x14))
 
 // Interrupt Status Register (ISR) Bits
 #define DMA_ISR_GIF1    (1 << 0)  // Global Interrupt Flag for Channel 1
@@ -113,7 +113,7 @@ DMA_Channel6 ,
 DMA_Channel7 ,
 }DMA_Channel;
 
-void DMA_Init(DMA_REG dmaBase, DMA_Channel channel, DMA_Peripheral_t peripheral, u32 *memoryAddr, u32 dataSize) ;
+void DMA_Init(DMA_REG dmaBase, DMA_Channel channel, DMA_Peripheral_t peripheral, uint32 *memoryAddr, uint32 dataSize) ;
 
 
 

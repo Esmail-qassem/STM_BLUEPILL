@@ -4,6 +4,7 @@ $(shell mkdir -p $(OBJDIR) $(Images))
 
 # Source directories
 SRC_DIRS += ../Src \
+			../Parse \
            ../Startup \
            $(MCAL_path)/RCC/src \
            $(MCAL_path)/NVIC/src \
@@ -19,6 +20,7 @@ SRC_DIRS += ../Src \
 
 # Include directories
 INC_DIRS = ../Inc/ \
+		   ../Parse \
            $(wildcard $(MCAL_path)/*/inc/) \
            $(wildcard $(HAL_path)/*/inc/)
 

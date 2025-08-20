@@ -3,7 +3,7 @@
 
 void FPEC_voidEraseAppArea(void)
 {
-	u8 i;
+	uint8 i;
 	
 	for (i=5;i<64;i++)
 	{
@@ -11,7 +11,7 @@ void FPEC_voidEraseAppArea(void)
 	}
 }
 
-void FPEC_voidFlashPageErase(u8 Copy_u8PageNumber)
+void FPEC_voidFlashPageErase(uint8 Copy_uint8PageNumber)
 {
 	/* Wait Busy Flag */
 	while (GET_BIT(FPEC_Reg->SR,0) == 1);
@@ -27,7 +27,7 @@ void FPEC_voidFlashPageErase(u8 Copy_u8PageNumber)
 	SET_BIT(FPEC_Reg->CR,1);
 
 	/* Write Page address */
-	FPEC_Reg->AR = (u32)(Copy_u8PageNumber * 1024) + 0x08000000 ;
+	FPEC_Reg->AR = (uint32)(Copy_uint8PageNumber * 1024) + 0x08000000 ;
 
 	/* Start operation */
 	SET_BIT(FPEC_Reg->CR,6);
@@ -40,10 +40,10 @@ void FPEC_voidFlashPageErase(u8 Copy_u8PageNumber)
 	CLEAR_BIT(FPEC_Reg->CR,1);
 }
 
-void FPEC_voidFlashWrite(u32 Copy_u32Address, u16* Copy_u16Data, u8 Copy_u8Length)
+void FPEC_voidFlashWrite(uint32 Copy_uint32Address, uint16* Copy_uint16Data, uint8 Copy_uint8Length)
 {
-	u8 i;
-	volatile u16 Temp;
+	uint8 i;
+	volatile uint16 Temp;
 
 	while (GET_BIT(FPEC_Reg->SR,0) == 1);
 
@@ -55,16 +55,16 @@ void FPEC_voidFlashWrite(u32 Copy_u32Address, u16* Copy_u16Data, u8 Copy_u8Lengt
 	}
 	
 	
-	for (i = 0; i< Copy_u8Length; i++)
+	for (i = 0; i< Copy_uint8Length; i++)
 	{
 		/* Write Flash Programming */
 		SET_BIT(FPEC_Reg->CR,0);
 
 		/* Half word operation */
 
-		Temp = Copy_u16Data[i];
-		*((volatile u16*)Copy_u32Address) = Copy_u16Data[i];
-		Copy_u32Address += 2 ;
+		Temp = Copy_uint16Data[i];
+		*((volatile uint16*)Copy_uint32Address) = Copy_uint16Data[i];
+		Copy_uint32Address += 2 ;
 
 		/* Wait Busy Flag */
 		while (GET_BIT(FPEC_Reg->SR,0) == 1);

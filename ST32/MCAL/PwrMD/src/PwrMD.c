@@ -2,11 +2,11 @@
 #include "RCC_interface.h"
 
 // Define Power Control Registers (Base Address: 0x40007000)
-#define PWR_CR   *((volatile u32*)0x40007000) // Power Control Register
-#define PWR_CSR  *((volatile u32*)0x40007004) // Power Control/Status Register
+#define PWR_CR   *((volatile uint32*)0x40007000) // Power Control Register
+#define PWR_CSR  *((volatile uint32*)0x40007004) // Power Control/Status Register
 
 // System Control Block (SCB) Registers for Sleep Control
-#define SCB_SCR  *((volatile u32*)0xE000ED10) // System Control Register
+#define SCB_SCR  *((volatile uint32*)0xE000ED10) // System Control Register
 
 // Bit definitions for PWR_CR
 #define PWR_CR_LPDS   (1 << 0) // Low-Power Deep Sleep
@@ -56,6 +56,6 @@ void PWR_EnterStandbyMode(void) {
  * @brief Check if the MCU woke up from Standby Mode
  * @return 1 if wakeup flag is set, 0 otherwise
  */
-u8 PWR_IsWakeupFromStandby(void) {
+uint8 PWR_IsWakeupFromStandby(void) {
     return (PWR_CSR & PWR_CSR_WUF) ? 1 : 0;
 }

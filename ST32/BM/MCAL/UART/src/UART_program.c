@@ -14,8 +14,8 @@ void UART_voidInit(void)
 	   /*Baud Rate Selection*/
 	/*BAUD = F_CK/(16*UARTDIV)*/
 
-u32 LOC_u64Mantissa_1 = ( F_CPU ) / ( 16 * USART1_BAUD_RATE ) ;
-u32 LOC_u64Fraction_1 = ((LOC_u64Mantissa_1 % 100) * 16 + 7) / 16;
+uint32 LOC_u64Mantissa_1 = ( F_CPU ) / ( 16 * USART1_BAUD_RATE ) ;
+uint32 LOC_u64Fraction_1 = ((LOC_u64Mantissa_1 % 100) * 16 + 7) / 16;
 
 if (LOC_u64Fraction_1 > 15) {
     LOC_u64Mantissa_1 += 1;
@@ -77,8 +77,8 @@ USART1_CR1_Reg->UE=1;
 #ifdef UART2
 /*Baud Rate Selection*/
 /*BAUD = F_CK/(16*UARTDIV)*/
-u32 LOC_u64Mantissa_2 = ( F_CPU ) / ( 16 * USART2_BAUD_RATE ) ;
-u32 LOC_u64Fraction_2 = ((LOC_u64Mantissa_2 % 100) * 16 + 7) / 16;
+uint32 LOC_u64Mantissa_2 = ( F_CPU ) / ( 16 * USART2_BAUD_RATE ) ;
+uint32 LOC_u64Fraction_2 = ((LOC_u64Mantissa_2 % 100) * 16 + 7) / 16;
 
 if (LOC_u64Fraction_2 > 15) {
     LOC_u64Mantissa_2 += 1;
@@ -145,8 +145,8 @@ USART2_CR1_Reg->M=UART2_WORD_SIZE;
 #ifdef UART3
 /*Baud Rate Selection*/
 /*BAUD = F_CK/(16*UARTDIV)*/
-u32 LOC_u64Mantissa_3 = ( F_CPU ) / ( 16 * USART3_BAUD_RATE ) ;
-u32 LOC_u64Fraction_3 = ((LOC_u64Mantissa_3 % 100) * 16 + 7) / 16;
+uint32 LOC_u64Mantissa_3 = ( F_CPU ) / ( 16 * USART3_BAUD_RATE ) ;
+uint32 LOC_u64Fraction_3 = ((LOC_u64Mantissa_3 % 100) * 16 + 7) / 16;
 
 if (LOC_u64Fraction_3 > 15) {
     LOC_u64Mantissa_3 += 1;
@@ -211,28 +211,28 @@ USART3_CR1_Reg->M=UART3_WORD_SIZE;
 }
 
 
-void UART_u8SendCharSynch(UART_t HardWare_Unit,u8 Copy_u16Data)
+void UART_uint8SendCharSynch(UART_t HardWare_Unit,uint8 Copy_uint16Data)
 {
 switch(HardWare_Unit)
 {
 case UART_Unit1 :
           {
         		while(USART1_SR_Reg->TXE != 1);
-        		USART1_DR_Reg=Copy_u16Data;
+        		USART1_DR_Reg=Copy_uint16Data;
         		while(USART1_SR_Reg->TC != 1);
 	            break;
           }
 case UART_Unit2 :
           {
         		while(USART2_SR_Reg->TXE != 1);
-        		USART2_DR_Reg=Copy_u16Data;
+        		USART2_DR_Reg=Copy_uint16Data;
         		while(USART2_SR_Reg->TC != 1);
 	            break;
           }
 case UART_Unit3 :
           {
         		while(USART3_SR_Reg->TXE != 1);
-        		USART3_DR_Reg=Copy_u16Data;
+        		USART3_DR_Reg=Copy_uint16Data;
         		while(USART3_SR_Reg->TC != 1);
 	            break;
           }
@@ -241,18 +241,18 @@ case UART_Unit3 :
 
 }
 
-void UART_voidSendNumber(UART_t HardWare_Unit, u32 Copy_u32Data)
+void UART_voidSendNumber(UART_t HardWare_Unit, uint32 Copy_uint32Data)
 {
     for (int i = 3; i >= 0; i--) // Send 4 bytes (assuming 32-bit number)
     {
-        UART_u8SendCharSynch(HardWare_Unit, (Copy_u32Data >> (i * 8)) & 0xFF);
+        UART_uint8SendCharSynch(HardWare_Unit, (Copy_uint32Data >> (i * 8)) & 0xFF);
     }
 }
 
 
-Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit, u8 *Copy_p8ReceiveData)
+Status_t UART_uint8ReceiveCharSynch(UART_t HardWare_Unit, uint8 *Copy_p8ReceiveData)
 {
-    u32 Local_counter = 0;  // Initialize properly
+    uint32 Local_counter = 0;  // Initialize properly
     Status_t Local_Error = E_Ok;
 
     if (NULL == Copy_p8ReceiveData)
@@ -312,10 +312,10 @@ Status_t UART_u8ReceiveCharSynch(UART_t HardWare_Unit, u8 *Copy_p8ReceiveData)
     return Local_Error;
 }
 
-Status_t UART_u8SendStringSynch(UART_t HardWare_Unit,u8* Copy_p8Data)
+Status_t UART_uint8SendStringSynch(UART_t HardWare_Unit,uint8* Copy_p8Data)
 {
 	Status_t Local_ErrorStatus =E_Ok;
-	u8 Local_Counter=NULL;
+	uint8 Local_Counter=NULL;
 if(NULL ==Copy_p8Data )
 {
 
@@ -326,7 +326,7 @@ if(NULL ==Copy_p8Data )
 {
 		while(Copy_p8Data[Local_Counter]!='\0')
 		{
-			UART_u8SendCharSynch(HardWare_Unit,Copy_p8Data[Local_Counter]);
+			UART_uint8SendCharSynch(HardWare_Unit,Copy_p8Data[Local_Counter]);
 			Local_Counter++;
 		}
 }
@@ -337,15 +337,15 @@ return Local_ErrorStatus;
 
 
 
-void UART_u8RecieveStringSynch(UART_t HardWare_Unit,u8*Copy_p8Data,u8 Copy_u8DataSize)
+void UART_uint8RecieveStringSynch(UART_t HardWare_Unit,uint8*Copy_p8Data,uint8 Copy_uint8DataSize)
 {
-	    u8 receivedChar;
-	    u8 stringIndex = NULL;
+	    uint8 receivedChar;
+	    uint8 stringIndex = NULL;
 
 	    // Assuming USART1 is used for UART communication
-	    while (stringIndex < (Copy_u8DataSize - 1))
+	    while (stringIndex < (Copy_uint8DataSize - 1))
 	    {
-	    	UART_u8ReceiveCharSynch(HardWare_Unit,&receivedChar);
+	    	UART_uint8ReceiveCharSynch(HardWare_Unit,&receivedChar);
 
 	        // Check for the end of the string
 	        if (receivedChar == '\n' || receivedChar == '\r') {
@@ -361,8 +361,8 @@ void UART_u8RecieveStringSynch(UART_t HardWare_Unit,u8*Copy_p8Data,u8 Copy_u8Dat
 
 
 
-u8 UART_IsStringEqual(const u8 *str1, const u8 *str2, u8 length) {
-    for (u8 i = 0; i < length; ++i) {
+uint8 UART_IsStringEqual(const uint8 *str1, const uint8 *str2, uint8 length) {
+    for (uint8 i = 0; i < length; ++i) {
         if (str1[i] != str2[i]) {
             return 0;  // Not equal
         }

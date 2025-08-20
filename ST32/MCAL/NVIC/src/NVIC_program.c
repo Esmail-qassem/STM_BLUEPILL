@@ -12,18 +12,18 @@
 #include "NVIC_config.h"
 
 
-NVIC_Status_t NVIC_EnableInterrupt(u8 Copy_u8Peripheral)
+NVIC_Status_t NVIC_EnableInterrupt(uint8 Copy_uint8Peripheral)
 {
 	NVIC_Status_t Local_ErrStatus=NVIC_OK;
-if(Copy_u8Peripheral<32)
+if(Copy_uint8Peripheral<32)
 {
-	NVIC_ISER0=(1<<Copy_u8Peripheral);
+	NVIC_ISER0=(1<<Copy_uint8Peripheral);
 }
-else if(Copy_u8Peripheral<60)
+else if(Copy_uint8Peripheral<60)
 {
 
-	Copy_u8Peripheral-=32;
-	NVIC_ISER1=(1<<Copy_u8Peripheral);
+	Copy_uint8Peripheral-=32;
+	NVIC_ISER1=(1<<Copy_uint8Peripheral);
 }
 else
 {
@@ -32,59 +32,18 @@ else
 
 	return Local_ErrStatus;
 }
-NVIC_Status_t NVIC_DisableInterrupt(u8 Copy_u8Peripheral)
+NVIC_Status_t NVIC_DisableInterrupt(uint8 Copy_uint8Peripheral)
 {
 	NVIC_Status_t Local_ErrStatus=NVIC_OK;
-if(Copy_u8Peripheral<32)
+if(Copy_uint8Peripheral<32)
 {
-	NVIC_ICER0=(1<<Copy_u8Peripheral);
+	NVIC_ICER0=(1<<Copy_uint8Peripheral);
 }
-else if(Copy_u8Peripheral<60)
+else if(Copy_uint8Peripheral<60)
 {
 
-	Copy_u8Peripheral-=32;
-	NVIC_ICER1=(1<<Copy_u8Peripheral);
-}
-else
-{
-	Local_ErrStatus=NVIC_NOK;
-}
-
-	return Local_ErrStatus;
-}
-
-NVIC_Status_t NVIC_SetPendingFlag(u8 Copy_u8Peripheral)
-{
-	NVIC_Status_t Local_ErrStatus=NVIC_OK;
-if(Copy_u8Peripheral<32)
-{
-	NVIC_ISPR0=(1<<Copy_u8Peripheral);
-}
-else if(Copy_u8Peripheral<60)
-{
-
-	Copy_u8Peripheral-=32;
-	NVIC_ISPR1=(1<<Copy_u8Peripheral);
-}
-else
-{
-	Local_ErrStatus=NVIC_NOK;
-}
-
-	return Local_ErrStatus;
-}
-NVIC_Status_t NVIC_ClearPendingFlag(u8 Copy_u8Peripheral)
-{
-	NVIC_Status_t Local_ErrStatus=NVIC_OK;
-if(Copy_u8Peripheral<32)
-{
-	NVIC_ICPR0=(1<<Copy_u8Peripheral);
-}
-else if(Copy_u8Peripheral<60)
-{
-
-	Copy_u8Peripheral-=32;
-	NVIC_ICPR1=(1<<Copy_u8Peripheral);
+	Copy_uint8Peripheral-=32;
+	NVIC_ICER1=(1<<Copy_uint8Peripheral);
 }
 else
 {
@@ -94,19 +53,60 @@ else
 	return Local_ErrStatus;
 }
 
-NVIC_Status_t NVIC_GetActiveInterrupt(u8 Copy_u8Peripheral,u8* Copy_pvPeripheral)
+NVIC_Status_t NVIC_SetPendingFlag(uint8 Copy_uint8Peripheral)
 {
 	NVIC_Status_t Local_ErrStatus=NVIC_OK;
-if(Copy_u8Peripheral<32)
+if(Copy_uint8Peripheral<32)
 {
-	*Copy_pvPeripheral=GET_BIT(NVIC_IABR0,Copy_u8Peripheral);
+	NVIC_ISPR0=(1<<Copy_uint8Peripheral);
+}
+else if(Copy_uint8Peripheral<60)
+{
+
+	Copy_uint8Peripheral-=32;
+	NVIC_ISPR1=(1<<Copy_uint8Peripheral);
+}
+else
+{
+	Local_ErrStatus=NVIC_NOK;
+}
+
+	return Local_ErrStatus;
+}
+NVIC_Status_t NVIC_ClearPendingFlag(uint8 Copy_uint8Peripheral)
+{
+	NVIC_Status_t Local_ErrStatus=NVIC_OK;
+if(Copy_uint8Peripheral<32)
+{
+	NVIC_ICPR0=(1<<Copy_uint8Peripheral);
+}
+else if(Copy_uint8Peripheral<60)
+{
+
+	Copy_uint8Peripheral-=32;
+	NVIC_ICPR1=(1<<Copy_uint8Peripheral);
+}
+else
+{
+	Local_ErrStatus=NVIC_NOK;
+}
+
+	return Local_ErrStatus;
+}
+
+NVIC_Status_t NVIC_GetActiveInterrupt(uint8 Copy_uint8Peripheral,uint8* Copy_pvPeripheral)
+{
+	NVIC_Status_t Local_ErrStatus=NVIC_OK;
+if(Copy_uint8Peripheral<32)
+{
+	*Copy_pvPeripheral=GET_BIT(NVIC_IABR0,Copy_uint8Peripheral);
 
 }
-else if(Copy_u8Peripheral<60)
+else if(Copy_uint8Peripheral<60)
 {
 
-	Copy_u8Peripheral-=32;
-	*Copy_pvPeripheral=GET_BIT(NVIC_IABR1,Copy_u8Peripheral);
+	Copy_uint8Peripheral-=32;
+	*Copy_pvPeripheral=GET_BIT(NVIC_IABR1,Copy_uint8Peripheral);
 }
 else
 {
@@ -114,19 +114,19 @@ else
 }
 	return Local_ErrStatus;
 }
-void NVIC_SetPriority(s8 Copy_S8PriorityId,u8 Copy_u8GroupPriority,u8 Copy_u8SubPriority)
+void NVIC_SetPriority(sint8 Copy_sint8PriorityId,uint8 Copy_uint8GroupPriority,uint8 Copy_uint8SubPriority)
 {
-	/*u8 priority=Copy_u8SubPriority|(Copy_u8GroupPriority<<((GROUP-0x05FA0300)/256))  */
+	/*uint8 priority=Copy_uint8SubPriority|(Copy_uint8GroupPriority<<((GROUP-0x05FA0300)/256))  */
 	NVIC_SCB_AIRCR_Reg->x=0x05FA0000|(priority_PreBuidConfig<<8);
 
-	u8 Local_variable=priority_PreBuidConfig -3;
+	uint8 Local_variable=priority_PreBuidConfig -3;
 
-	if(Copy_S8PriorityId<0)
+	if(Copy_sint8PriorityId<0)
 	{
 		/*CORE PERIPHERAL*/
 
-	}else if(Copy_S8PriorityId > -1)
+	}else if(Copy_sint8PriorityId > -1)
 	{
-		*(NVIC_IPRn+Copy_S8PriorityId)=((Copy_u8SubPriority)|(Copy_u8GroupPriority<<(Local_variable)))<<4;
+		*(NVIC_IPRn+Copy_sint8PriorityId)=((Copy_uint8SubPriority)|(Copy_uint8GroupPriority<<(Local_variable)))<<4;
 	}
 }

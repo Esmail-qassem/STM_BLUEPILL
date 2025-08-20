@@ -7,7 +7,7 @@
 void PWR_EnterSleepMode(void);
 void PWR_EnterStopMode(void);
 void PWR_EnterStandbyMode(void);
-u8 PWR_IsWakeupFromStandby(void);
+uint8 PWR_IsWakeupFromStandby(void);
 
 #endif // PWRMD_H
 

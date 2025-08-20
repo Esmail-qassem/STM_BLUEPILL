@@ -24,16 +24,16 @@
 
 /*************************************************************/
 void CLCD_voidInit(void);
-void CLCD_voidSendCommand(u8 copy_u8Command);
-void CLCD_voidSendData(u8 copy_u8Data);
+void CLCD_voidSendCommand(uint8 copy_uint8Command);
+void CLCD_voidSendData(uint8 copy_uint8Data);
 
-void CLCD_voidSendString(const u8* Copy_u8String);
+void CLCD_voidSendString(const uint8* Copy_uint8String);
 
-void CLCD_voidGoToXY(u8 Copy_u8Xposition,u8 Copy_u8Yposition);
+void CLCD_voidGoToXY(uint8 Copy_uint8Xposition,uint8 Copy_uint8Yposition);
 
-void CLCD_voidWriteNumber(s32 copy_u32Number);
+void CLCD_voidWriteNumber(s32 copy_uint32Number);
 
-void CLCD_voidWriteSpecialChar(u8* copy_pu8Pattern,u8 copy_u8PatternNumber,u8 copy_u8Xposition,u8 copy_u8Yposition);
+void CLCD_voidWriteSpecialChar(uint8* copy_puint8Pattern,uint8 copy_uint8PatternNumber,uint8 copy_uint8Xposition,uint8 copy_uint8Yposition);
 
 
 

@@ -12,7 +12,7 @@ typedef enum
 
 void SPI_voidInit (void);
 
-Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,u16* Copy_pvReceived);
-Status_t Spi_SendRecieveASync(SPI_HW SPI_HW_Unit,u16 Copy_u16Transmit,void(*P2F_CallBack)(u16));
-void SPI_SendDataDMA(u8 *data, u16 size);
+Status_t Spi_SendRecieveSync(SPI_HW SPI_HW_Unit,uint16 Copy_uint16Transmit,uint16* Copy_pvReceived);
+Status_t Spi_SendRecieveASync(SPI_HW SPI_HW_Unit,uint16 Copy_uint16Transmit,void(*P2F_CallBack)(uint16));
+void SPI_SendDataDMA(uint8 *data, uint16 size);
 #endif /* SPI_INC_SPI_INTERFACE_H_ */

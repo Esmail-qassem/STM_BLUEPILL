@@ -27,7 +27,7 @@ typedef enum
 void EXTI_voidInterrupEnable(Line_t Copy_LineId);
 void EXTI_voidInterrupDisable(Line_t Copy_LineId);
 
-EXTI_Err EXTI_SetSignalLatch(Line_t Copy_LineId,Exti_Mode_t Copy_Mode,u8 Copy_u8Ability);
+EXTI_Err EXTI_SetSignalLatch(Line_t Copy_LineId,Exti_Mode_t Copy_Mode,uint8 Copy_uint8Ability);
 void EXTI_voidSwTrigger(Line_t Copy_LineId);
 
 Status_t EXT0_CallBack(void (*Copy_pvfunction)(void));

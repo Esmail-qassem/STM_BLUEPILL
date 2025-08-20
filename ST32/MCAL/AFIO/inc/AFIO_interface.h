@@ -32,6 +32,6 @@ typedef enum
 }AFIO_Line_t;
 
 
-void AFIO_voidSetEXTIConfiguration(AFIO_Line_t Copy_u8Line,AFIO_EXTI_PORT Copy_u8Port_Mapp);
+void AFIO_voidSetEXTIConfiguration(AFIO_Line_t Copy_uint8Line,AFIO_EXTI_PORT Copy_uint8Port_Mapp);
 
 #endif /* INC_AFIO_INTERFACE_H_ */
