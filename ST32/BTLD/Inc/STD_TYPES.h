@@ -28,7 +28,7 @@ typedef unsigned short int uint16;
 typedef unsigned long int uint32;
 typedef float float32;
 typedef double float64;
-typedef long double f128;
+typedef long double float128;
 typedef unsigned long long int uint128;
 typedef signed long long int sint128;
 #define NULL 0

@@ -24,7 +24,7 @@ Status_t UART_uint8SendStringSynch(UART_t HardWare_Unit,uint8* Copy_p8Data);
 
 void UART_uint8RecieveStringSynch(UART_t HardWare_Unit,uint8*Copy_p8Data,uint8 Copy_uint8DataSize);
 
-void UART_voidSendNumber(UART_t HardWare_Unit,s32 Copy_s32Number);
+void UART_voidSendNumber(UART_t HardWare_Unit,sint32 Copy_sint32Number);
 
 uint8 UART_IsStringEqual(const uint8 *str1, const uint8 *str2, uint8 length) ;
 

@@ -31,7 +31,7 @@ void CLCD_voidSendString(const uint8* Copy_uint8String);
 
 void CLCD_voidGoToXY(uint8 Copy_uint8Xposition,uint8 Copy_uint8Yposition);
 
-void CLCD_voidWriteNumber(s32 copy_uint32Number);
+void CLCD_voidWriteNumber(sint32 copy_uint32Number);
 
 void CLCD_voidWriteSpecialChar(uint8* copy_puint8Pattern,uint8 copy_uint8PatternNumber,uint8 copy_uint8Xposition,uint8 copy_uint8Yposition);
 

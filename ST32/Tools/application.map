@@ -284,7 +284,7 @@ LOAD linker stubs
  .debug_info    0x00002b6c       0xd7 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
  .debug_info    0x00002c43      0x2ad C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
 
-.debug_abbrev   0x00000000      0xd12
+.debug_abbrev   0x00000000      0xd03
  .debug_abbrev  0x00000000       0x56 C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
  .debug_abbrev  0x00000056       0x94 C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
  .debug_abbrev  0x000000ea       0xe9 C:/STM_BLUEPILL/ST32/Build/Object/Startup/startup_stm32f103.o
@@ -295,10 +295,10 @@ LOAD linker stubs
  .debug_abbrev  0x0000062f      0x13c C:/STM_BLUEPILL/ST32/Build/Object/MCAL/EXTI/src/EXTI_program.o
  .debug_abbrev  0x0000076b       0xa7 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/AFIO/src/AFIO_program.o
  .debug_abbrev  0x00000812      0x14e C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SPI/src/SPI_program.o
- .debug_abbrev  0x00000960      0x1ed C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
- .debug_abbrev  0x00000b4d       0xd8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
- .debug_abbrev  0x00000c25       0x64 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
- .debug_abbrev  0x00000c89       0x89 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
+ .debug_abbrev  0x00000960      0x1de C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
+ .debug_abbrev  0x00000b3e       0xd8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
+ .debug_abbrev  0x00000c16       0x64 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
+ .debug_abbrev  0x00000c7a       0x89 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
 
 .debug_aranges  0x00000000      0x1b8
  .debug_aranges
@@ -346,7 +346,7 @@ LOAD linker stubs
  .debug_line    0x00001236       0x9e C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
  .debug_line    0x000012d4       0x98 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
 
-.debug_str      0x00000000     0x1ca6
+.debug_str      0x00000000     0x1cb0
  .debug_str     0x00000000       0xfa C:/STM_BLUEPILL/ST32/Build/Object/Src/Image.o
                                 0x135 (size before relaxing)
  .debug_str     0x000000fa      0x47c C:/STM_BLUEPILL/ST32/Build/Object/Src/main.o
@@ -367,13 +367,13 @@ LOAD linker stubs
                                 0x2a1 (size before relaxing)
  .debug_str     0x000012ee      0x525 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/SPI/src/SPI_program.o
                                 0x6b3 (size before relaxing)
- .debug_str     0x00001813      0x2fc C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
-                                0x4ac (size before relaxing)
- .debug_str     0x00001b0f       0xb8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
+ .debug_str     0x00001813      0x306 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/UART/src/UART_program.o
+                                0x4b6 (size before relaxing)
+ .debug_str     0x00001b19       0xb8 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/FPEC/src/FPEC.o
                                 0x1e9 (size before relaxing)
- .debug_str     0x00001bc7       0x6c C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
+ .debug_str     0x00001bd1       0x6c C:/STM_BLUEPILL/ST32/Build/Object/MCAL/PwrMD/src/PwrMD.o
                                 0x181 (size before relaxing)
- .debug_str     0x00001c33       0x73 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
+ .debug_str     0x00001c3d       0x73 C:/STM_BLUEPILL/ST32/Build/Object/MCAL/DMA/src/DMA.o
                                 0x412 (size before relaxing)
 
 .comment        0x00000000       0x49

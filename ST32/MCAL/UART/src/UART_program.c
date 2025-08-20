@@ -6,24 +6,24 @@
 #include "UART_register.h"
 #include "UART_private.h"
 #include "UART_config.h"
-void UART_voidSendNumber(UART_t HardWare_Unit,s32 Copy_s32Number)
+void UART_voidSendNumber(UART_t HardWare_Unit,sint32 Copy_sint32Number)
 {
-	if(Copy_s32Number<0)
+	if(Copy_sint32Number<0)
 	{
 		UART_uint8SendCharSynch(UART_Unit3,'-');
-		Copy_s32Number= -Copy_s32Number;
+		Copy_sint32Number= -Copy_sint32Number;
 	}
-	if(Copy_s32Number==0)
+	if(Copy_sint32Number==0)
 	{
  UART_uint8SendCharSynch(UART_Unit3,'0');
 		return;
 	}
 uint8 NUM[10];
 uint8 Local_uint8Counter=0;
-while(Copy_s32Number>0)
+while(Copy_sint32Number>0)
 {
-	NUM[Local_uint8Counter++]=(Copy_s32Number%10)+'0';
-	Copy_s32Number/=10;
+	NUM[Local_uint8Counter++]=(Copy_sint32Number%10)+'0';
+	Copy_sint32Number/=10;
 }
 /*reverse*/
 for(uint8 i=Local_uint8Counter;i>0;i--)

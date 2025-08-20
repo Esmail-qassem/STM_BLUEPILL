@@ -93,7 +93,7 @@ void CLCD_voidGoToXY(uint8 Copy_uint8Xposition,uint8 Copy_uint8Yposition)
 }
 
 
-void CLCD_voidWriteNumber(s32 copy_uint32Number)
+void CLCD_voidWriteNumber(sint32 copy_uint32Number)
 {
 	if(copy_uint32Number<0)
 	{

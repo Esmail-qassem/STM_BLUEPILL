@@ -4,6 +4,12 @@
         "systick_interface.h": "c",
         "std_types.h": "c",
         "spi_interface.h": "c",
-        "uart_interface.h": "c"
+        "uart_interface.h": "c",
+        "bit_math.h": "c",
+        "gpio_interface.h": "c",
+        "rcc_interface.h": "c",
+        "fpec.h": "c",
+        "stdio.h": "c",
+        "parse.h": "c"
     }
 }
