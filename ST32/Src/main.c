@@ -16,9 +16,6 @@ while(1)
 	{
 		SysTick_voidSetBusyWait(100);
 		UART_uint8SendStringSynch(UART_Unit1,"uart1\n");
-	//	UART_uint8SendStringSynch(UART_Unit2,"uart2\n");
-	//	UART_uint8SendStringSynch(UART_Unit3,"uart3\n");
-
 	}
 
 

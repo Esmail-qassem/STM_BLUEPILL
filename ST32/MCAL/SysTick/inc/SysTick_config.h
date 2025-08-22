@@ -9,7 +9,7 @@
 #define SYSTICK_CONFIG_H_
 
 //AHB = 72 MHZ
-#define SYSTEM_CLOCK_HZ 8000000  // 72 MHz
+#define SYSTEM_CLOCK_HZ 36000000  // 72 MHz
 
 /*	AHB_BY_8
  *  AHB
@@ -21,7 +21,6 @@
 
 
 #if TSK_CLOCK == AHB_BY_8
-    #warning "AHB_BY_8"
     #define SYSTICK_CLOCK (SYSTEM_CLOCK_HZ / 8)  // AHB/8
 #elif TSK_CLOCK == AHB
     #warning "AHB"

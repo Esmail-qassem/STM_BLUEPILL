@@ -2,7 +2,7 @@
 #ifndef UART_CONFIG_H_
 #define UART_CONFIG_H_
 /**************************************************************************************/
-#define F_CPU              8000000UL
+#define F_CPU              36000000UL
 /* UART1
  * UART2
  * UART3
@@ -12,7 +12,7 @@
 /**************************************************************************************/
 /****************   UART 1  ****************/
 #ifdef UART1
-#define USART1_BAUD_RATE   115200
+#define USART1_BAUD_RATE   921600
 
 /*_8BIT
  *_9BIT
@@ -42,7 +42,7 @@
 /****************   UART 2  ****************/
 #ifdef UART2
 
-#define USART2_BAUD_RATE   115200
+#define USART2_BAUD_RATE   921600
 
 /*_8BIT
  *_9BIT

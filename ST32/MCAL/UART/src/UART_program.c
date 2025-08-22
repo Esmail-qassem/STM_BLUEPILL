@@ -41,16 +41,25 @@ void UART_voidInit(void)
 	   /*Baud Rate Selection*/
 	/*BAUD = F_CK/(16*UARTDIV)*/
 
-uint32 LOC_u64Mantissa_1 = ( F_CPU ) / ( 16 * USART1_BAUD_RATE ) ;
-uint32 LOC_u64Fraction_1 = ((LOC_u64Mantissa_1 % 100) * 16 + 7) / 16;
+uint32 USARTDIV1_x100 = (F_CPU * 100) / (16 * USART1_BAUD_RATE);
 
-if (LOC_u64Fraction_1 > 15) {
-    LOC_u64Mantissa_1 += 1;
-    LOC_u64Fraction_1 = 0;
+// Mantissa = integer part
+uint32 Mantissa1 = USARTDIV1_x100 / 100;
+
+// Decimal part = USARTDIV1_x100 - Mantissa1*100
+uint32 Decimal1_x100 = USARTDIV1_x100 - (Mantissa1 * 100);
+
+// Fraction = round(Decimal1_x100 * 16 / 100)
+uint32 Fraction1 = (Decimal1_x100 * 16 + 50) / 100;
+
+if (Fraction1 > 15) {
+    Mantissa1 += 1;
+    Fraction1 = 0;
 }
 
-USART1_BRR_Reg->DIV_MANTISSA=LOC_u64Mantissa_1;
-USART1_BRR_Reg->DIV_FACTOR=LOC_u64Fraction_1;
+USART1_BRR_Reg->DIV_MANTISSA = Mantissa1;
+USART1_BRR_Reg->DIV_FACTOR   = Fraction1;
+
 
 /*Word Length*/
 
@@ -104,16 +113,20 @@ USART1_CR1_Reg->UE=1;
 #ifdef UART2
 /*Baud Rate Selection*/
 /*BAUD = F_CK/(16*UARTDIV)*/
-uint32 LOC_u64Mantissa_2 = ( F_CPU ) / ( 16 * USART2_BAUD_RATE ) ;
-uint32 LOC_u64Fraction_2 = ((LOC_u64Mantissa_2 % 100) * 16 + 7) / 16;
+uint32 USARTDIV2_x100 = (F_CPU * 100) / (16 * USART2_BAUD_RATE);
 
-if (LOC_u64Fraction_2 > 15) {
-    LOC_u64Mantissa_2 += 1;
-    LOC_u64Fraction_2 = 0;
+uint32 Mantissa2 = USARTDIV2_x100 / 100;
+uint32 Decimal2_x100 = USARTDIV2_x100 - (Mantissa2 * 100);
+uint32 Fraction2 = (Decimal2_x100 * 16 + 50) / 100;
+
+if (Fraction2 > 15) {
+    Mantissa2 += 1;
+    Fraction2 = 0;
 }
 
-USART2_BRR_Reg->DIV_MANTISSA=LOC_u64Mantissa_2;
-USART2_BRR_Reg->DIV_FACTOR=LOC_u64Fraction_2;
+USART2_BRR_Reg->DIV_MANTISSA = Mantissa2;
+USART2_BRR_Reg->DIV_FACTOR   = Fraction2;
+
 
 /*Word Length*/
 
@@ -172,16 +185,19 @@ USART2_CR1_Reg->M=UART2_WORD_SIZE;
 #ifdef UART3
 /*Baud Rate Selection*/
 /*BAUD = F_CK/(16*UARTDIV)*/
-uint32 LOC_u64Mantissa_3 = ( F_CPU ) / ( 16 * USART3_BAUD_RATE ) ;
-uint32 LOC_u64Fraction_3 = ((LOC_u64Mantissa_3 % 100) * 16 + 7) / 16;
+uint32 USARTDIV3_x100 = (F_CPU * 100) / (16 * USART3_BAUD_RATE);
 
-if (LOC_u64Fraction_3 > 15) {
-    LOC_u64Mantissa_3 += 1;
-    LOC_u64Fraction_3 = 0;
+uint32 Mantissa3 = USARTDIV3_x100 / 100;
+uint32 Decimal3_x100 = USARTDIV3_x100 - (Mantissa3 * 100);
+uint32 Fraction3 = (Decimal3_x100 * 16 + 50) / 100;
+
+if (Fraction3 > 15) {
+    Mantissa3 += 1;
+    Fraction3 = 0;
 }
 
-USART3_BRR_Reg->DIV_MANTISSA=LOC_u64Mantissa_3;
-USART3_BRR_Reg->DIV_FACTOR=LOC_u64Fraction_3;
+USART3_BRR_Reg->DIV_MANTISSA = Mantissa3;
+USART3_BRR_Reg->DIV_FACTOR   = Fraction3;
 
 /*Word Length*/
 
@@ -236,6 +252,7 @@ USART3_CR1_Reg->M=UART3_WORD_SIZE;
 #endif
 
 }
+
 
 
 void UART_uint8SendCharSynch(UART_t HardWare_Unit,uint8 Copy_uint16Data)

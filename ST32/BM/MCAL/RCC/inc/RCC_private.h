@@ -130,12 +130,11 @@ typedef union
 
 /***************************************************************/
 
-enum RCC_Ability
-{
-	RCC_Disable,
-	RCC_Enable
 
-};
+#define RCC_Disable  0
+#define RCC_Enable   1
+
+
 enum RCC_System_Clock
 {
 	HSI_SELECT_CLOCK=0b00,
@@ -143,11 +142,10 @@ enum RCC_System_Clock
 	PLL_SELECT_CLOCK=0b10
 };
 
-enum HSE_PLL
-{
-	HSE_NOT_DIVIDED,
-	HSE_DIVIDED_BY_2,
-};
+
+#define	HSE_NOT_DIVIDED   0
+#define	HSE_DIVIDED_BY_2  1
+
 
 
 
