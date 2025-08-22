@@ -145,20 +145,21 @@ Linker script and memory map
 .iplt           0x08001004        0x0
  .iplt          0x08001004        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.rodata         0x08001004        0x8
+.rodata         0x08001004        0xc
                 0x08001004                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08001004        0x4 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
- .rodata        0x08001008        0x4 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
-                0x08001008                MSP_Value
+ .rodata        0x08001004        0x5 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
+ *fill*         0x08001009        0x3 
+ .rodata        0x0800100c        0x4 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
+                0x0800100c                MSP_Value
  *(.rodata*)
-                0x0800100c                . = ALIGN (0x4)
-                0x0800100c                _sidata = LOADADDR (.data)
+                0x08001010                . = ALIGN (0x4)
+                0x08001010                _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800100c        0x0
- .rel.iplt      0x0800100c        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
+.rel.dyn        0x08001010        0x0
+ .rel.iplt      0x08001010        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.data           0x20000000        0xc load address 0x0800100c
+.data           0x20000000        0xc load address 0x08001010
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -175,10 +176,10 @@ Linker script and memory map
                 0x2000000c                . = ALIGN (0x4)
                 0x2000000c                _edata = .
 
-.igot.plt       0x2000000c        0x0 load address 0x08001018
+.igot.plt       0x2000000c        0x0 load address 0x0800101c
  .igot.plt      0x2000000c        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.bss            0x2000000c       0x2c load address 0x08001018
+.bss            0x2000000c       0x2c load address 0x0800101c
                 0x2000000c                _sbss = .
  *(.bss)
  .bss           0x2000000c       0x18 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
@@ -200,7 +201,7 @@ Linker script and memory map
                 0x20000038                _ebss = .
 
 ._user_heap_stack
-                0x20000038      0x600 load address 0x08001018
+                0x20000038      0x600 load address 0x0800101c
                 0x20000038                . = ALIGN (0x8)
                 0x20000238                . = (. + _Min_Heap_Size)
  *fill*         0x20000038      0x200 

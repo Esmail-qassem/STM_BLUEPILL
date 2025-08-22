@@ -33,7 +33,7 @@ void main(void)
       Soft_Reset=GET_BIT(cause,28);
         /*clear the flag*/
       SET_BIT(RCC_CSR_REG->Reset_Reasone,24);
-       UART_uint8SendStringSynch(UART_Unit1,"\nBM\n");
+       UART_uint8SendStringSynch(UART_Unit2,"\nBM\n");
 
      if(Soft_Reset || Power_Reset)
       {

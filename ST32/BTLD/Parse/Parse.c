@@ -94,7 +94,7 @@ void UART_RX_Handler(uint8 byte)
             }
             else if (status == 0) // valid line parsed
             {
-                UART_uint8SendStringSynch(UART_Unit3, ".");  // ✅ print one dot per record
+                			UART_uint8SendCharSynch(UART_Unit3, '.');  // ✅ print one dot per record
             }
         }
         index = 0; // reset for next line
