@@ -1,29 +1,47 @@
 #include "Parse.h"
-int sum=0; 
-uint8 processRecord(uint8 *recordBuffer, uint16 length)
-{  
-    uint8 CRC=0;
-    uint8 number_of_data=parseByte(*(recordBuffer+1),*(recordBuffer+2));
-    sum+=number_of_data;
-    uint8 address_high=parseByte(*(recordBuffer+3),*(recordBuffer+4));
-    uint8 address_low=parseByte(*(recordBuffer+5),*(recordBuffer+6));
 
-    uint16 address=(address_high<<8)|address_low;
-            sum+=address;
-    uint8 Datatype= parseByte(*(recordBuffer+7),*(recordBuffer+8));
-                sum+=Datatype;
-    for(uint8 i=0;i<number_of_data*2;i+=2)
+
+char lineBuffer[MAX_LINE_LENGTH];
+uint16 index = 0;
+
+
+uint8 processRecord(uint8 *recordBuffer)
+{
+    int CRC;
+    uint16 sum = 0;   // local sum
+    uint8 number_of_data = parseByte(recordBuffer[1], recordBuffer[2]);
+    uint8 address_high  = parseByte(recordBuffer[3], recordBuffer[4]);
+    uint8 address_low   = parseByte(recordBuffer[5], recordBuffer[6]);
+    uint16 address = (address_high << 8) | address_low;
+    uint8 record_type   = parseByte(recordBuffer[7], recordBuffer[8]);
+
+    sum += number_of_data + address_high + address_low + record_type;
+    if(record_type == 0x00) // Data record
     {
-        
-        int value =parseByte(recordBuffer[9+i],recordBuffer[9+i+1]);
-                        sum+=value;
+        for(uint8 i = 0; i < number_of_data; i += 2)
+            {
+                uint8 data_low  = parseByte(recordBuffer[9 + i*2],   recordBuffer[10 + i*2]);
+                uint8 data_high  = parseByte(recordBuffer[11 + i*2],  recordBuffer[12 + i*2]);
+                uint16 halfword = (data_high << 8) | data_low;
+                sum += data_high + data_low;
+            
+                FPEC_voidFlashWrite(0x08000000 + address, &halfword, 1);
+                address += 2;
+
+            }
     }
-    uint8 crc=parseByte(recordBuffer[number_of_data*2+9],recordBuffer[number_of_data*2+10]);
-    sum+=crc;
-    CRC=sum;
-    sum=0;
-    return CRC;
+    else if(record_type == 0x01)
+    {
+      	UART_uint8SendStringSynch(UART_Unit3,"\nsoftware updated \n");
+        return 0xFF;
+    }  
+    // Checksum
+    uint8 crc = parseByte(recordBuffer[9 + number_of_data*2], recordBuffer[10 + number_of_data*2]);
+    sum += crc;
+    CRC = sum & 0xFF;   // only keep lowest 8 bits
+    return CRC; // must be 0 if valid
 }
+
 
 
 
@@ -56,3 +74,42 @@ uint8 parseByte(uint8 high, uint8 low)
     return((high_case<<4)|low_case);
 }
 
+
+void UART_RX_Handler(uint8 byte)
+{
+    static uint16 index = 0;
+
+    if (byte == '\n' || byte == '\r') // End of line (accept CR or LF)
+    {
+        if (index > 0) // only if we actually received data
+        {
+            lineBuffer[index] = '\0';   // null terminate
+
+            uint8 status = processRecord(lineBuffer);
+
+            if (status == 0xFF) // EOF detected
+            {
+                UART_uint8SendStringSynch(UART_Unit3, "EOF received\n");
+                SCB_AIRCR = 0x5FA0004; /* generate soft reset */
+            }
+            else if (status == 0) // valid line parsed
+            {
+                UART_uint8SendStringSynch(UART_Unit3, ".");  // ✅ print one dot per record
+            }
+        }
+        index = 0; // reset for next line
+    }
+    else
+    {
+        if (index < MAX_LINE_LENGTH - 1)
+        {
+            lineBuffer[index++] = byte;
+        }
+        else
+        {
+            // Overflow protection
+            UART_uint8SendStringSynch(UART_Unit3, "Line too long!\n");
+            index = 0;
+        }
+    }
+}

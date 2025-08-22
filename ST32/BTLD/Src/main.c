@@ -6,7 +6,6 @@
 #include "FPEC.h"
 #include "Parse.h"
 
-#define SCB_AIRCR *((volatile uint32*)0xE000ED0C)
 
 void init (void)
 {
@@ -19,25 +18,24 @@ void init (void)
 	GPIO_SetPinConfig(GPIO_PORTB,PIN11,INPUT_FLOATING);
 	UART_voidInit();
 } 
-char hexLine[] = ":10010000214601360121470136007EFE09D2190140";
-
-int counter=0;
 void main(void)
 {
-	uint8 Local_uint8RecStatus;
-
 	init();
+	UART_uint8SendStringSynch(UART_Unit3,"\nbtld\n");
+	FPEC_voidEraseAppArea();
+	UART_uint8SendStringSynch(UART_Unit3,"\nApplication Erased\n");
+
 	while(1)
 	{
-		SysTick_voidSetBusyWait(500);
-		UART_uint8SendStringSynch(UART_Unit3,"btld\n");
-		counter++;
-		if(counter==15)
+		uint8 Copy_p8ReceiveData=0;
+		while(E_Ok==UART_uint8ReceiveCharSynch(UART_Unit3, &Copy_p8ReceiveData)) 
 		{
-         SCB_AIRCR= 0x5FA0004; /*generate soft reset*/
+			UART_RX_Handler(Copy_p8ReceiveData);
 		}
-
-
+		while(E_TIME_OUT==UART_uint8ReceiveCharSynch(UART_Unit3, &Copy_p8ReceiveData))
+		{
+			UART_uint8SendStringSynch(UART_Unit3,"IDLE\n");
+		}
 	}
 
 

@@ -33,33 +33,23 @@ void main(void)
       Soft_Reset=GET_BIT(cause,28);
         /*clear the flag*/
       SET_BIT(RCC_CSR_REG->Reset_Reasone,24);
-       UART_uint8SendStringSynch(UART_Unit2,"BM\n");
-     if(Soft_Reset)
+       UART_uint8SendStringSynch(UART_Unit1,"\nBM\n");
+
+     if(Soft_Reset || Power_Reset)
       {
-              /*jump to application*/
+        /*jump to application*/
         SCB_VTOR = 0x08002800;
         addr_to_call = *(volatile Function_t*)(0x08002804);
-        addr_to_call();
-
-        
+        addr_to_call(); 
       }
-      else if(Power_Reset || Pin_Reset)
+      else if(Pin_Reset)
       {
         /*jump to bootloader*/
          SCB_VTOR = 0x08001400;
         addr_to_call = *(volatile Function_t*)(0x08001404);
         addr_to_call();
-  
-
       }
-      
-      
-    while(1)
-    {
-      
-
-
-}
+    while(1){}
 
 }
 

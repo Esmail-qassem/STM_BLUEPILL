@@ -2,10 +2,15 @@
 #define PARSE_H_
 
 #include "STD_TYPES.h"
+#include "UART_interface.h"
+#define SCB_AIRCR *((volatile uint32*)0xE000ED0C)
+
+#define MAX_LINE_LENGTH 64
+
 uint8 asciiToHex(uint8 c);
 uint8 parseByte(uint8 high, uint8 low);
-uint8 processRecord(uint8 *recordBuffer, uint16 length);
-void uartReceiveHandler(uint8 data);
+uint8 processRecord(uint8 *recordBuffer);
+void UART_RX_Handler(uint8 data);
 
 
 
