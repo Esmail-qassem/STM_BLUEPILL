@@ -9,7 +9,7 @@
 #define SYSTICK_CONFIG_H_
 
 //AHB = 72 MHZ
-#define SYSTEM_CLOCK_HZ 72000000  // 72 MHz
+#define SYSTEM_CLOCK_HZ 36000000  // 72 MHz
 
 /*	AHB_BY_8
  *  AHB

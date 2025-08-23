@@ -14,7 +14,7 @@ void main(void)
 	Peripheral_APP_Init();
 while(1)
 	{
-		SysTick_voidSetBusyWait(100);
+		SysTick_voidSetBusyWait(300);
 		UART_uint8SendStringSynch(UART_Unit1,"uart1\n");
 	}
 
