@@ -47,9 +47,9 @@ void main(void)
 {
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(1,100,&UART1);
-	RTOS_voidCreateTask(0,1000,&UART2);
-	RTOS_voidCreateTask(2,1000,&UART3);
+	RTOS_voidCreateTask(1,5,&UART1);
+	RTOS_voidCreateTask(0,10,&UART2);
+	RTOS_voidCreateTask(2,20,&UART3);
 	RTOS_voidStart();
 	while(1)
 	{

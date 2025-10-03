@@ -7,10 +7,7 @@ CFLAGS+= -DAPPLICATION_ONLY
 endif
 
 # Source directories
-SRC_DIRS += ../Src \
-           ../Startup \
-		   ../RTOS\
-           $(MCAL_path)/RCC/src \
+SRC_DIRS +=$(MCAL_path)/RCC/src \
            $(MCAL_path)/NVIC/src \
            $(MCAL_path)/SysTick/src \
            $(MCAL_path)/GPIO/src \
@@ -21,8 +18,11 @@ SRC_DIRS += ../Src \
            $(MCAL_path)/FPEC/src \
            $(MCAL_path)/PwrMD/src \
            $(MCAL_path)/DMA/src \
-           $(MCAL_path)/TIMERS/src
-
+           $(MCAL_path)/TIMERS/src\
+		   ../RTOS\
+           ../Startup\
+		   ../Src\
+		   
 
 # Include directories
 INC_DIRS = ../Inc/ \
