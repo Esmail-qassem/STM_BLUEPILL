@@ -2,6 +2,12 @@
 
 
 char lineBuffer[MAX_LINE_LENGTH];
+static const uint8 asciiToHex[105] = {
+    ['0']=0, ['1']=1, ['2']=2, ['3']=3, ['4']=4, ['5']=5, ['6']=6, ['7']=7, 
+    ['8']=8, ['9']=9, ['A']=10, ['B']=11, ['C']=12, ['D']=13, ['E']=14, ['F']=15,
+    ['a']=10, ['b']=11, ['c']=12, ['d']=13, ['e']=14, ['f']=15
+};
+
 uint16 index = 0;
 
 
@@ -45,33 +51,11 @@ uint8 processRecord(uint8 *recordBuffer)
 
 
 
-uint8 asciiToHex(uint8 c)
-{
-    uint8 value=0;
-  if (c >= '0' && c <= '9')
-    {
-        value = c - '0';     // '0' → 0, '9' → 9
-    }
-    else if (c >= 'A' && c <= 'F')
-    {
-        value = c - 'A' + 10;  // 'A' → 10, 'F' → 15
-    }
-    else if (c >= 'a' && c <= 'f')
-    {
-        value = c - 'a' + 10;  // 'a' → 10, 'f' → 15
-    }
-    else
-    {
-        // Invalid char 
-    }
-    return value;
-}
+
 
 uint8 parseByte(uint8 high, uint8 low)
 {
-   uint8 low_case= asciiToHex(low);
-    uint8 high_case=asciiToHex(high);
-    return((high_case<<4)|low_case);
+    return((asciiToHex[high]<<4)|asciiToHex[low]);
 }
 
 

@@ -7,7 +7,6 @@
 
 #define MAX_LINE_LENGTH 64
 
-uint8 asciiToHex(uint8 c);
 uint8 parseByte(uint8 high, uint8 low);
 uint8 processRecord(uint8 *recordBuffer);
 void UART_RX_Handler(uint8 data);
