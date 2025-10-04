@@ -5,7 +5,7 @@
 #include "GPIO_interface.h"
 #include "UART_interface.h" 
 #include "RTOS.h"
-
+volatile uint32 idle_counter = 0;
 void RCC_Init(void)
 {
 	RCC_VidInit();
@@ -28,28 +28,36 @@ void Peripheral_APP_Init(void)
 	GPIO_SetPinConfig(GPIO_PORTC,PIN13,OUTPUT_10MHZ_PUSH_PULL);
 	UART_voidInit();
 }
-static uint8 LED_TOGGLE=0;
+
+
 void UART1 (void)
-{
-	 UART_voidSendNumber(UART_Unit1,LED_TOGGLE);
+{	
+UART_uint8SendStringSynch(UART_Unit1,"test1\n");
 }
 void UART2 (void)
 {
 	UART_uint8SendStringSynch(UART_Unit2,"test2\n");
 }
-void UART3 (void)
+void IdleTask(void)
 {
-	LED_TOGGLE^=1;
-	GPIO_SetPinValue(GPIO_PORTC,PIN13,LED_TOGGLE);
+	idle_counter++;
+}
+void TOGGLE_LED (void)
+{
+	static uint8 TogglePin=0;
+	TogglePin^=1;
+	GPIO_SetPinValue(GPIO_PORTC,PIN13,TogglePin);
 
 }
+
 void main(void)
 {
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(1,5,&UART1);
+	RTOS_voidCreateTask(1,7,&UART1);
 	RTOS_voidCreateTask(0,10,&UART2);
-	RTOS_voidCreateTask(2,20,&UART3);
+	RTOS_voidCreateTask(2,10,&TOGGLE_LED);
+	RTOS_voidCreateTask(3,1,&IdleTask);
 	RTOS_voidStart();
 	while(1)
 	{

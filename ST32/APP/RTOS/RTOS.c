@@ -32,29 +32,34 @@ Task_status RTOS_voidCreateTask(uint8 Copy_priority,uint16 Copy_periodicity,void
 
 void RTOS_voidSchedular(void)
 {
-	uint8 Local_u8TaskCounter;
-	for(Local_u8TaskCounter=0;Local_u8TaskCounter<TASK_NUMBER;Local_u8TaskCounter++)
-	{
-		if (SysTask[Local_u8TaskCounter].state == READY) 
-		{
-				SysTask[Local_u8TaskCounter].remaining_ticks--;
-				if(SysTask[Local_u8TaskCounter].remaining_ticks == 0)
-			{
-				SysTask[Local_u8TaskCounter].remaining_ticks = SysTask[Local_u8TaskCounter].periodicity;
-				if(SysTask[Local_u8TaskCounter].TaskFunc != NULL)
-				{
-					SysTask[Local_u8TaskCounter].TaskFunc();	
-				}
-				else
-				{
-					//do nothing
-				}
-			}
-		}
-		
-	}
+    uint8 Local_u8TaskCounter;
+    uint8 task_executed = 0;
 
+    for (Local_u8TaskCounter = 0; Local_u8TaskCounter < TASK_NUMBER; Local_u8TaskCounter++)
+    {
+        if (SysTask[Local_u8TaskCounter].state == READY)
+        {
+            SysTask[Local_u8TaskCounter].remaining_ticks--;
+
+            if (SysTask[Local_u8TaskCounter].remaining_ticks == 0)
+            {
+                SysTask[Local_u8TaskCounter].remaining_ticks = SysTask[Local_u8TaskCounter].periodicity;
+
+                if (SysTask[Local_u8TaskCounter].TaskFunc != NULL)
+                {
+                    SysTask[Local_u8TaskCounter].TaskFunc();
+                    task_executed = 1;
+                }
+            }
+        }
+    }
+
+    if (!task_executed)
+    {
+	IdleTask();  // run only if nothing else executed
+    }
 }
+
 
 Task_status RTOS_voidDeleteTask(uint8 Copy_priority)
 {

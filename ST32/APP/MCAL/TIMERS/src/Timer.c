@@ -6,10 +6,8 @@ static TimerCallback_t tim2_callback = 0;
 static TimerCallback_t tim3_callback = 0;
 static TimerCallback_t tim4_callback = 0;
 
-volatile uint32 tim1_msTicks = 0;
-volatile uint32 tim2_msTicks = 0;
-volatile uint32 tim3_msTicks = 0;
-volatile uint32 tim4_msTicks = 0;
+volatile uint32 total_ticks = 0;
+
 volatile NVIC_Status_t nvic_stat= NVIC_NOK;
 void Timer_Init(Timer_t timer)
 {
@@ -84,7 +82,6 @@ void TIM1_UP_IRQHandler(void)
 {
     if (TIM_SR(TIMER1_BASE) & TIM_SR_UIF) {
         TIM_SR(TIMER1_BASE) &= ~TIM_SR_UIF;
-        tim1_msTicks++;
         if (tim1_callback) tim1_callback();
     }
 }
@@ -93,7 +90,7 @@ void TIM2_IRQHandler(void)
 {
     if (TIM_SR(TIMER2_BASE) & TIM_SR_UIF) {
         TIM_SR(TIMER2_BASE) &= ~TIM_SR_UIF;
-        tim2_msTicks++;
+        
         if (tim2_callback) tim2_callback();
     }
 }
@@ -102,7 +99,7 @@ void TIM3_IRQHandler(void)
 {
     if (TIM_SR(TIMER3_BASE) & TIM_SR_UIF) {
         TIM_SR(TIMER3_BASE) &= ~TIM_SR_UIF;
-        tim3_msTicks++;
+        
         if (tim3_callback) tim3_callback();
     }
 }
@@ -111,7 +108,7 @@ void TIM4_IRQHandler(void)
 {
     if (TIM_SR(TIMER4_BASE) & TIM_SR_UIF) {
         TIM_SR(TIMER4_BASE) &= ~TIM_SR_UIF;
-        tim4_msTicks++;
+        total_ticks++;
         if (tim4_callback) tim4_callback();
     }
 }
