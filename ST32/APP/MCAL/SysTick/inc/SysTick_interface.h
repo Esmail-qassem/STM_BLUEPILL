@@ -7,7 +7,11 @@
 
 #ifndef SYSTICK_INTERFACE_H_
 #define SYSTICK_INTERFACE_H_
-
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "SysTick_private.h"
+#include "SysTick_register.h"
+#include "SysTick_config.h"
 
 void SysTick_voidInit(void);
 

@@ -1,16 +1,19 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "RTOS.h"
-#include "Timer.h"
-
+//#include "Timer.h"
+#include "SysTick_interface.h"
 task_type SysTask[TASK_NUMBER]={{0}};
 
 
 void RTOS_voidStart(void)
 {
-	Timer_SetCallback(TIMER4,&RTOS_voidSchedular);
-	Timer_Init(TIMER4);
-	Timer_Start(TIMER4);
+	// Timer_SetCallback(TIMER4,&RTOS_voidSchedular);
+	// Timer_Init(TIMER4);
+	// Timer_Start(TIMER4);
+	SysTick_voidInit();
+    SysTick_voidSetIntervalPeriodoc(TICKS_PER_MS-1,&RTOS_voidSchedular);
+
 }
 
 Task_status RTOS_voidCreateTask(uint8 Copy_priority,uint16 Copy_periodicity,void(*Copy_pvTaskFunc)(void))

@@ -1,9 +1,4 @@
-/*
- * SysTick_config.h
- *
- *  Created on: Feb 19, 2024
- *      Author: s_a_a
- */
+
 
 #ifndef SYSTICK_CONFIG_H_
 #define SYSTICK_CONFIG_H_

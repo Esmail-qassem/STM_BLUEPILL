@@ -1,10 +1,6 @@
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
-#include "SysTick_interface.h"
-#include "SysTick_private.h"
-#include "SysTick_register.h"
-#include "SysTick_config.h"
 
+
+#include "SysTick_interface.h"
 
 
 void SysTick_voidInit(void)
@@ -69,7 +65,10 @@ Status_t SysTick_voidSetIntervalPeriodoc(uint32 Copy_uint32TicksCount,void (*Cop
 		 Local_PvFunction=Copy_pvfunction;
 
 			/*Load the value*/
-			STK_LOAD_Reg=Copy_uint32TicksCount;
+			STK_LOAD_Reg=Copy_uint32TicksCount-1;
+
+			 /* Clear current value register */
+        	STK_VAL_Reg = 0;
 			/*enable the interrput*/
 			STK_CTRL_Reg->TICKINT=Enable;
 			/*enable the timer */

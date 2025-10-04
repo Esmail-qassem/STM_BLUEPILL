@@ -1,6 +1,5 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-#include "SysTick_interface.h"
 #include "RCC_interface.h"
 #include "GPIO_interface.h"
 #include "UART_interface.h" 
@@ -54,9 +53,9 @@ void main(void)
 {
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(1,7,&UART1);
-	RTOS_voidCreateTask(0,10,&UART2);
-	RTOS_voidCreateTask(2,10,&TOGGLE_LED);
+	RTOS_voidCreateTask(1,10,&UART1);
+	RTOS_voidCreateTask(0,50,&UART2);
+	RTOS_voidCreateTask(2,20,&TOGGLE_LED);
 	RTOS_voidCreateTask(3,1,&IdleTask);
 	RTOS_voidStart();
 	while(1)

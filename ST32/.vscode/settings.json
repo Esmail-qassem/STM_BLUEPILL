@@ -13,6 +13,7 @@
         "parse.h": "c",
         "timer67.h": "c",
         "nvic_interface.h": "c",
-        "timer.h": "c"
+        "timer.h": "c",
+        "systick_private.h": "c"
     }
 }
