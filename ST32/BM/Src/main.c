@@ -10,7 +10,7 @@ Function_t addr_to_call = 0;
 #define SCB_VTOR   *((volatile uint32*)0xE000ED08)
 
 
-int Pin_Reset,Power_Reset,Soft_Reset,flag;
+uint8 Pin_Reset,Power_Reset,Soft_Reset,flag,IWDG_FLAG;
 uint32 cause;
 uint32 Copy_uint32Address=0x80013f0;
 
@@ -18,24 +18,23 @@ uint16 Copy_uint16Data[4]={0x3333,0x2222,0x1111,0x4444};
 void main(void)
 {  
   RCC_VidInit();
-	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOAEN);
-	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART2EN);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN2,OUTPUT_50MHZ_AF_PUSH);
-	GPIO_SetPinConfig(GPIO_PORTA,PIN3,INPUT_FLOATING);
+	RCC_voidEnablePeripheral(APB2_BUS,APB2_GPIOBEN);
+	RCC_voidEnablePeripheral(APB1_BUS,APB1_USART3EN);
+	 GPIO_SetPinConfig(GPIO_PORTB,PIN10,OUTPUT_50MHZ_AF_PUSH);
+
   UART_voidInit();
+  UART_uint8SendStringSynch(UART_Unit3,"\nBM\n");
 
   FPEC_voidFlashWrite(Copy_uint32Address,Copy_uint16Data,4);
 
      cause = RCC_CSR_REG->Reset_Reasone; 
-
       Pin_Reset=GET_BIT(cause,26);
       Power_Reset=GET_BIT(cause,27);
       Soft_Reset=GET_BIT(cause,28);
+      IWDG_FLAG=GET_BIT(cause,29);
         /*clear the flag*/
       SET_BIT(RCC_CSR_REG->Reset_Reasone,24);
-       UART_uint8SendStringSynch(UART_Unit2,"\nBM\n");
-
-     if(Soft_Reset || Power_Reset)
+     if(Soft_Reset || Power_Reset ||IWDG_FLAG)
       {
         /*jump to application*/
         SCB_VTOR = 0x08002800;

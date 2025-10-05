@@ -2,6 +2,7 @@
 #define TIMER14_H
 
 #include "STD_TYPES.h"
+#include "BIT_MATH.h"
 #include "RCC_interface.h"
 #include "NVIC_interface.h"
 
@@ -9,6 +10,7 @@
 #define TIM_DIER_UIE   (1U << 0)   // Update interrupt enable
 #define TIM_CR1_CEN    (1U << 0)   // Counter enable
 #define TIM_SR_UIF     (1U << 0)   // Update interrupt flag
+#define TIM_SR_TIF     (1U << 6)   // trigger interrupt flag
 
 /* === Base addresses === */
 #define TIMER1_BASE    0x40012C00
@@ -55,5 +57,4 @@ void Timer_Init(Timer_t timer);
 void Timer_Start(Timer_t timer);
 void Timer_Stop(Timer_t timer);
 void Timer_SetCallback(Timer_t timer, TimerCallback_t cb);
-
 #endif

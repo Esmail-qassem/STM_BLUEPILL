@@ -12,7 +12,7 @@ void RTOS_voidStart(void)
 	// Timer_Init(TIMER4);
 	// Timer_Start(TIMER4);
 	SysTick_voidInit();
-    SysTick_voidSetIntervalPeriodoc(TICKS_PER_MS-1,&RTOS_voidSchedular);
+    SysTick_voidSetIntervalPeriodoc(TICKS_PER_MS,&RTOS_voidSchedular);
 
 }
 
@@ -55,11 +55,6 @@ void RTOS_voidSchedular(void)
                 }
             }
         }
-    }
-
-    if (!task_executed)
-    {
-	IdleTask();  // run only if nothing else executed
     }
 }
 

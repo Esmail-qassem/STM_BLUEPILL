@@ -14,6 +14,10 @@
         "timer67.h": "c",
         "nvic_interface.h": "c",
         "timer.h": "c",
-        "systick_private.h": "c"
+        "systick_private.h": "c",
+        "uart_register.h": "c",
+        "pwrmd.h": "c",
+        "iwdg.h": "c",
+        "clcd_interface.h": "c"
     }
 }

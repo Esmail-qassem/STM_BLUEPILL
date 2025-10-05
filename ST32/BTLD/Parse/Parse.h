@@ -3,6 +3,7 @@
 
 #include "STD_TYPES.h"
 #include "UART_interface.h"
+#include "FPEC.h"
 #define SCB_AIRCR *((volatile uint32*)0xE000ED0C)
 
 #define MAX_LINE_LENGTH 64

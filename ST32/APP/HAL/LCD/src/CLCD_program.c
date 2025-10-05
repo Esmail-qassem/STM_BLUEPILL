@@ -1,36 +1,33 @@
-/***********************************************************************/
-/***********************************************************************/
-/*****************       Aathur:Esmail Qassem          *****************/
-/*****************       Layer:HAL                     *****************/
-/*****************       SWC:CLCD_PROGRAM              *****************/
-/*****************       version:1.00                  *****************/
-/***********************************************************************/
-/***********************************************************************/
-#include "STD_TYPES.h"
-#include "BIT_MATH.h"
+
 #include "CLCD_interface.h"
-#include "../../MCAL/GPIO/inc/GPIO_interface.h"
-#include <util/delay.h>
+void Delay_ms(uint32 ms)
+{
+    uint32 cycle_per_ms =F_CPU/9000U;
+    for(uint32 i=0;i<ms;i++)
+    {
+        for(uint32 j=0;j<50;j++);
+    }
+}
 void CLCD_voidSendCommand(uint8 copy_uint8Command)
 {
 	/*Setting RS pin to low*/
-DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_LOW);
+GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_LOW);
 /*Setting RW pin low for write*/
-DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
+GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
 
 /*Set command data pins*/
-DIO_SetPortVal(CLCD_DATA_PORT,copy_uint8Command);
+GPIO_SetPortValue(CLCD_DATA_PORT,(uint8)copy_uint8Command);
 
 /*Send Enable pulse*/
-DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
-_delay_ms(2);
-DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_LOW);
+GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
+Delay_ms(2);
+GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_LOW);
 }
 
 void CLCD_voidInit(void)
 {
 	/*Wait more that 30 ms*/
-	_delay_ms(40);
+	Delay_ms(35);
 
 	/*Function set ,2 lines AND 5*8 size*/
 	CLCD_voidSendCommand(0b00111000);
@@ -48,17 +45,17 @@ void CLCD_voidSendData(uint8 copy_uint8Data)
 {
 
 	/*Setting RS pin to HIGH*/
-	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_HIGH);
+	GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_HIGH);
 	/*Setting RW pin low for write*/
-	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
+	GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_RW_PIN,DIO_LOW);
 
 	/*Set data pins*/
-	DIO_SetPortVal(CLCD_DATA_PORT,copy_uint8Data);
+	GPIO_SetPortValue(CLCD_DATA_PORT,(uint8)copy_uint8Data);
 
 	/*Send Enable pulse*/
-	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
-	_delay_ms(2);
-	DIO_SetPinVal(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_LOW);
+	GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_HIGH);
+	Delay_ms(2);
+	GPIO_SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_LOW);
 
 
 }

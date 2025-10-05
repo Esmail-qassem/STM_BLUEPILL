@@ -27,6 +27,7 @@ void Timer_Init(Timer_t timer)
             TIM_ARR(TIMER2_BASE)  = TIM2_RELOAD;
             TIM_DIER(TIMER2_BASE) |= TIM_DIER_UIE;
            nvic_stat= NVIC_EnableInterrupt(TIM2_IRQn);
+
             break;
 
         case TIMER3:
@@ -35,6 +36,7 @@ void Timer_Init(Timer_t timer)
             TIM_ARR(TIMER3_BASE)  = TIM3_RELOAD;
             TIM_DIER(TIMER3_BASE) |= TIM_DIER_UIE;
            nvic_stat= NVIC_EnableInterrupt(TIM3_IRQn);
+
             break;
 
         case TIMER4:
@@ -43,6 +45,7 @@ void Timer_Init(Timer_t timer)
             TIM_ARR(TIMER4_BASE)  = TIM4_RELOAD;
             TIM_DIER(TIMER4_BASE) |= TIM_DIER_UIE;
             nvic_stat=NVIC_EnableInterrupt(TIM4_IRQn);
+           
             break;
     }
 }

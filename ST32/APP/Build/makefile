@@ -18,7 +18,9 @@ SRC_DIRS +=$(MCAL_path)/RCC/src \
            $(MCAL_path)/FPEC/src \
            $(MCAL_path)/PwrMD/src \
            $(MCAL_path)/DMA/src \
+           $(MCAL_path)/IWDG/src \
            $(MCAL_path)/TIMERS/src\
+           $(HAL_path)/LCD/src\
 		   ../RTOS\
            ../Startup\
 		   ../Src\

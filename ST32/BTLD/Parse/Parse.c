@@ -8,9 +8,6 @@ static const uint8 asciiToHex[105] = {
     ['a']=10, ['b']=11, ['c']=12, ['d']=13, ['e']=14, ['f']=15
 };
 
-uint16 index = 0;
-
-
 uint8 processRecord(uint8 *recordBuffer)
 {
     int CRC;
