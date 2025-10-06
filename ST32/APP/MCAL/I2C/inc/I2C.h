@@ -58,8 +58,8 @@ I2C_Status_t I2C_SendData(I2C_Port_t port, uint8 data);
 I2C_Status_t I2C_ReceiveData(I2C_Port_t port, uint8 *data, uint8 ack);
 
 /* High-level blocking APIs */
-I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size);
-I2C_Status_t I2C_MasterReceive(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size);
+I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size, uint8 repeated_start);
+I2C_Status_t I2C_MasterReceive(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size, uint8 repeated_start);
 
 /* interrupt/event/error handling */
 void I2C_EV_IRQHandler(I2C_Port_t port);

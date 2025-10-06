@@ -164,37 +164,41 @@ I2C_Status_t I2C_Stop(I2C_Port_t port)
 }
 
 /*-----------------------------------------------------------*/
-I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size)
+I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size, uint8 repeated_start)
 {
     uint32 base = I2C_GetBase(port);
     I2C_Status_t status;
-    if (I2C_SR2(base) & (1 << 1)) 
-    {
-    // Bus busy, maybe wait or reset
-    return I2C_BUSY;
-    }
 
+    // Check if bus is busy
+    if (I2C_SR2(base) & (1 << 1))
+        return I2C_BUSY;
+
+    // Generate START condition
     status = I2C_Start(port);
     if (status != I2C_OK) return status;
 
+    // Send slave address with Write bit
     status = I2C_SendAddress(port, slave_addr, I2C_WRITE);
     if (status != I2C_OK) return status;
 
+    // Send all bytes
     for (uint16 i = 0; i < size; i++) {
         status = I2C_SendData(port, data[i]);
         if (status != I2C_OK) return status;
     }
-    // Wait for BTF before Stop
+
+    // Wait for BTF (Byte Transfer Finished)
     uint32 timeout = I2C_TIMEOUT_MAX;
     while (!(I2C_SR1(base) & (1 << 2))) { // BTF
         if (--timeout == 0) return I2C_TIMEOUT;
     }
 
-    I2C_Stop(port);
+    // Generate STOP only if repeated_start == 0
+    if (!repeated_start)
+        I2C_Stop(port);
+
     return I2C_OK;
 }
-
-
 /*-----------------------------------------------------------*/
 
 uint8 I2C_ReadStatus(uint32 base)
@@ -203,21 +207,29 @@ uint8 I2C_ReadStatus(uint32 base)
 }
 
 /*-----------------------------------------------------------*/
-I2C_Status_t I2C_MasterReceive(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size)
+I2C_Status_t I2C_MasterReceive(I2C_Port_t port, uint8 slave_addr, uint8 *data, uint16 size, uint8 repeated_start)
 {
+    uint32 base = I2C_GetBase(port);
     I2C_Status_t status;
 
+    // Generate START condition
     status = I2C_Start(port);
     if (status != I2C_OK) return status;
 
+    // Send slave address with Read bit
     status = I2C_SendAddress(port, slave_addr, I2C_READ);
     if (status != I2C_OK) return status;
 
+    // Receive bytes
     for (uint16 i = 0; i < size; i++) {
         uint8 ack = (i < (size - 1)) ? 1 : 0;
         status = I2C_ReceiveData(port, &data[i], ack);
         if (status != I2C_OK) return status;
     }
-    I2C_Stop(port);
+
+    // Generate STOP only if repeated_start == 0
+    if (!repeated_start)
+        I2C_Stop(port);
+
     return I2C_OK;
 }
