@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "flappy_bird.h": "c",
+        "gpio_interface.h": "c"
+    }
+}

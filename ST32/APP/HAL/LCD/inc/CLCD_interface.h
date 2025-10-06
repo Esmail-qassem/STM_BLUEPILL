@@ -14,7 +14,7 @@
 
 #define CLCD_RS_PIN           PIN0
 #define CLCD_RW_PIN           PIN1
-#define CLCD_E_PIN            PIN11
+#define CLCD_E_PIN            PIN12
 
 #define DIO_LOW   0
 #define DIO_HIGH  1

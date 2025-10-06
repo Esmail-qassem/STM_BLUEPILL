@@ -23,12 +23,14 @@ SRC_DIRS +=$(MCAL_path)/RCC/src \
            $(HAL_path)/LCD/src\
 		   ../RTOS\
            ../Startup\
+           ../P1/flappy_bird\
 		   ../Src\
 		   
 
 # Include directories
 INC_DIRS = ../Inc/ \
 		   ../RTOS\
+		   ../P1/flappy_bird\
            $(wildcard $(MCAL_path)/*/inc/) \
            $(wildcard $(HAL_path)/*/inc/)
 

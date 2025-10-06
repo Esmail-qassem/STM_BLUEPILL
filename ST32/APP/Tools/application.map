@@ -19,7 +19,7 @@ Linker script and memory map
                 0x08002800                Vector_Table
                 0x08002930                . = ALIGN (0x4)
 
-.text           0x08002930     0x2514
+.text           0x08002930     0x2570
                 0x08002930                . = ALIGN (0x4)
  *(.text)
  .text          0x08002930      0x24c C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
@@ -180,48 +180,52 @@ Linker script and memory map
                 0x08004c78                SPI3_IRQHandler
                 0x08004c78                I2C1_ER_IRQHandler
                 0x08004c78                DMA2_Channel3_IRQHandler
- .text          0x08004c84      0x1c0 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
-                0x08004c84                RCC_Init
-                0x08004cb8                Peripheral_APP_Init
-                0x08004d5e                LCD
-                0x08004d88                UART1
-                0x08004d9c                IdleTask
-                0x08004dc8                TOGGLE_LED
-                0x08004df0                main
+ .text          0x08004c84       0x48 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+                0x08004c84                DrawBird
+                0x08004c9e                DrawPipe
+                0x08004cb8                DrawScore
+ .text          0x08004ccc      0x1d4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+                0x08004ccc                LCD
+                0x08004cf4                UART1
+                0x08004d08                IdleTask
+                0x08004d34                TOGGLE_LED
+                0x08004d6c                main
+                0x08004db0                RCC_Init
+                0x08004de4                Peripheral_APP_Init
  *(.text*)
-                0x08004e44                . = ALIGN (0x4)
-                0x08004e44                _etext = .
+                0x08004ea0                . = ALIGN (0x4)
+                0x08004ea0                _etext = .
 
-.glue_7         0x08004e44        0x0
- .glue_7        0x08004e44        0x0 linker stubs
+.glue_7         0x08004ea0        0x0
+ .glue_7        0x08004ea0        0x0 linker stubs
 
-.glue_7t        0x08004e44        0x0
- .glue_7t       0x08004e44        0x0 linker stubs
+.glue_7t        0x08004ea0        0x0
+ .glue_7t       0x08004ea0        0x0 linker stubs
 
-.vfp11_veneer   0x08004e44        0x0
- .vfp11_veneer  0x08004e44        0x0 linker stubs
+.vfp11_veneer   0x08004ea0        0x0
+ .vfp11_veneer  0x08004ea0        0x0 linker stubs
 
-.v4_bx          0x08004e44        0x0
- .v4_bx         0x08004e44        0x0 linker stubs
+.v4_bx          0x08004ea0        0x0
+ .v4_bx         0x08004ea0        0x0 linker stubs
 
-.iplt           0x08004e44        0x0
- .iplt          0x08004e44        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
+.iplt           0x08004ea0        0x0
+ .iplt          0x08004ea0        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
 
-.rodata         0x08004e44       0x18
-                0x08004e44                . = ALIGN (0x4)
+.rodata         0x08004ea0        0xc
+                0x08004ea0                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08004e44        0x4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
-                0x08004e44                MSP_Value
- .rodata        0x08004e48       0x13 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .rodata        0x08004ea0        0x4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
+                0x08004ea0                MSP_Value
+ .rodata        0x08004ea4        0x7 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
  *(.rodata*)
-                0x08004e5c                . = ALIGN (0x4)
- *fill*         0x08004e5b        0x1 
-                0x08004e5c                _sidata = LOADADDR (.data)
+                0x08004eac                . = ALIGN (0x4)
+ *fill*         0x08004eab        0x1 
+                0x08004eac                _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08004e5c        0x0
- .rel.iplt      0x08004e5c        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
+.rel.dyn        0x08004eac        0x0
+ .rel.iplt      0x08004eac        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
 
-.data           0x20000000        0x4 load address 0x08004e5c
+.data           0x20000000        0x4 load address 0x08004eac
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -242,16 +246,17 @@ Linker script and memory map
  .data          0x20000001        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .data          0x20000001        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .data          0x20000001        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
+ .data          0x20000001        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
  .data          0x20000001        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
  *(.data*)
                 0x20000004                . = ALIGN (0x4)
  *fill*         0x20000001        0x3 
                 0x20000004                _edata = .
 
-.igot.plt       0x20000004        0x0 load address 0x08004e60
+.igot.plt       0x20000004        0x0 load address 0x08004eb0
  .igot.plt      0x20000004        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
 
-.bss            0x20000004       0x7c load address 0x08004e60
+.bss            0x20000004       0x80 load address 0x08004eb0
                 0x20000004                _sbss = .
  *(.bss)
  .bss           0x20000004        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
@@ -272,21 +277,23 @@ Linker script and memory map
  .bss           0x20000044       0x34 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
                 0x20000048                SysTask
  .bss           0x20000078        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
- .bss           0x20000078        0x5 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .bss           0x20000078        0x0 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .bss           0x20000078        0x9 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
                 0x20000078                idle_counter
  *(.bss*)
-                0x20000080                . = ALIGN (0x4)
- *fill*         0x2000007d        0x3 
-                0x20000080                _ebss = .
+                0x20000084                . = ALIGN (0x4)
+ *fill*         0x20000081        0x3 
+                0x20000084                _ebss = .
 
 ._user_heap_stack
-                0x20000080      0x600 load address 0x08004e60
-                0x20000080                . = ALIGN (0x8)
-                0x20000280                . = (. + _Min_Heap_Size)
- *fill*         0x20000080      0x200 
-                0x20000680                . = (. + _Min_Stack_Size)
- *fill*         0x20000280      0x400 
-                0x20000680                . = ALIGN (0x8)
+                0x20000084      0x604 load address 0x08004eb0
+                0x20000088                . = ALIGN (0x8)
+ *fill*         0x20000084        0x4 
+                0x20000288                . = (. + _Min_Heap_Size)
+ *fill*         0x20000088      0x200 
+                0x20000688                . = (. + _Min_Stack_Size)
+ *fill*         0x20000288      0x400 
+                0x20000688                . = ALIGN (0x8)
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
@@ -303,11 +310,12 @@ LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/TIMERS/src/Timer.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
+LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
 LOAD C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 OUTPUT(C:/STM_BLUEPILL/ST32/APP/Tools/application.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x39a8
+.debug_info     0x00000000     0x3abe
  .debug_info    0x00000000      0x659 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
  .debug_info    0x00000659      0x2ff C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
  .debug_info    0x00000958      0x267 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
@@ -324,9 +332,10 @@ LOAD linker stubs
  .debug_info    0x00002eaf      0x358 C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .debug_info    0x00003207      0x2a2 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .debug_info    0x000034a9      0x15e C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
- .debug_info    0x00003607      0x3a1 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .debug_info    0x00003607      0x103 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .debug_info    0x0000370a      0x3b4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
-.debug_abbrev   0x00000000     0x1073
+.debug_abbrev   0x00000000     0x10f9
  .debug_abbrev  0x00000000       0xf6 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
  .debug_abbrev  0x000000f6      0x12b C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
  .debug_abbrev  0x00000221      0x141 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
@@ -343,9 +352,10 @@ LOAD linker stubs
  .debug_abbrev  0x00000c8b      0x109 C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .debug_abbrev  0x00000d94      0x131 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .debug_abbrev  0x00000ec5       0xe9 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
- .debug_abbrev  0x00000fae       0xc5 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .debug_abbrev  0x00000fae       0x86 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .debug_abbrev  0x00001034       0xc5 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
-.debug_aranges  0x00000000      0x220
+.debug_aranges  0x00000000      0x240
  .debug_aranges
                 0x00000000       0x20 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
  .debug_aranges
@@ -379,9 +389,11 @@ LOAD linker stubs
  .debug_aranges
                 0x000001e0       0x20 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
  .debug_aranges
-                0x00000200       0x20 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+                0x00000200       0x20 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .debug_aranges
+                0x00000220       0x20 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
-.debug_line     0x00000000     0x18e3
+.debug_line     0x00000000     0x1953
  .debug_line    0x00000000      0x169 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
  .debug_line    0x00000169      0x181 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
  .debug_line    0x000002ea      0x142 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
@@ -398,9 +410,10 @@ LOAD linker stubs
  .debug_line    0x00001424      0x17f C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .debug_line    0x000015a3      0x155 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .debug_line    0x000016f8       0xc6 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
- .debug_line    0x000017be      0x125 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .debug_line    0x000017be       0x6a C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .debug_line    0x00001828      0x12b C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
-.debug_str      0x00000000     0x21d1
+.debug_str      0x00000000     0x2213
  .debug_str     0x00000000      0x7e4 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
                                 0x81a (size before relaxing)
  .debug_str     0x000007e4      0x1bf C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
@@ -433,8 +446,10 @@ LOAD linker stubs
                                 0x2c8 (size before relaxing)
  .debug_str     0x000020a0       0xd0 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
                                 0x159 (size before relaxing)
- .debug_str     0x00002170       0x61 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
-                                0x5bc (size before relaxing)
+ .debug_str     0x00002170       0x42 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+                                0x154 (size before relaxing)
+ .debug_str     0x000021b2       0x61 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+                                0x5c4 (size before relaxing)
 
 .comment        0x00000000       0x49
  .comment       0x00000000       0x49 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
@@ -454,6 +469,7 @@ LOAD linker stubs
  .comment       0x00000049       0x4a C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .comment       0x00000049       0x4a C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .comment       0x00000049       0x4a C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
+ .comment       0x00000049       0x4a C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
  .comment       0x00000049       0x4a C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
 .ARM.attributes
@@ -491,9 +507,11 @@ LOAD linker stubs
  .ARM.attributes
                 0x000002a3       0x2d C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
  .ARM.attributes
-                0x000002d0       0x2d C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+                0x000002d0       0x2d C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .ARM.attributes
+                0x000002fd       0x2d C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
 
-.debug_frame    0x00000000      0xea0
+.debug_frame    0x00000000      0xf28
  .debug_frame   0x00000000       0xb0 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/RCC/src/RCC_program.o
  .debug_frame   0x000000b0      0x100 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/NVIC/src/NVIC_program.o
  .debug_frame   0x000001b0      0x120 C:/STM_BLUEPILL/ST32/APP/Build/Object/MCAL/SysTick/src/SysTick_program.o
@@ -510,4 +528,5 @@ LOAD linker stubs
  .debug_frame   0x00000b14      0x12c C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/LCD/src/CLCD_program.o
  .debug_frame   0x00000c40      0x118 C:/STM_BLUEPILL/ST32/APP/Build/Object/RTOS/RTOS.o
  .debug_frame   0x00000d58       0x74 C:/STM_BLUEPILL/ST32/APP/Build/Object/Startup/startup_stm32f103.o
- .debug_frame   0x00000dcc       0xd4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
+ .debug_frame   0x00000dcc       0x88 C:/STM_BLUEPILL/ST32/APP/Build/Object/P1/flappy_bird/flappy_bird.o
+ .debug_frame   0x00000e54       0xd4 C:/STM_BLUEPILL/ST32/APP/Build/Object/Src/main.o
