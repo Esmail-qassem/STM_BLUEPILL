@@ -170,8 +170,8 @@ I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, 
     I2C_Status_t status;
 
     // Check if bus is busy
-    if (I2C_SR2(base) & (1 << 1))
-        return I2C_BUSY;
+    // if (I2C_SR2(base) & (1 << 1))
+    //     return I2C_BUSY;
 
     // Generate START condition
     status = I2C_Start(port);

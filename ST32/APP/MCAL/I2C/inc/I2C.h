@@ -19,7 +19,7 @@
 #define I2C_TRISE(base)       *((volatile uint32*)(base + 0x20))
 
 /*-----------------------------*/
-#define I2C_TIMEOUT_MAX  50000
+#define I2C_TIMEOUT_MAX  10000
 #define I2C_READ  1
 #define I2C_WRITE 0
 #define PCLK1 36000000

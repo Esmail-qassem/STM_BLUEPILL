@@ -8,24 +8,20 @@
 #include "CLCD_interface.h"
 #include "RTOS.h"
 #include "flappy_bird.h"
+/************************************/
+/* Global Variable */
 volatile uint32 idle_counter = 0;
 I2C_Config_t config={100000,0,1,0};
-I2C_Status_t ss =I2C_OK;
-uint8 ARR[2]={10,20};
-uint8 dee[2]={0x111,50};
-uint8 zz=0;
-uint8 read_data;
+/************************************/
+/*proto typed*/
 void RCC_Init(void);
 void Peripheral_APP_Init(void);
-
+/************************************/
+/*Tasks*/
 void LCD (void)
 {	uint32 static counter=0;
 	CLCD_voidGoToXY(0,0);
 	 CLCD_voidWriteNumber(counter);
-	// CLCD_voidGoToXY(1,0);
-	// CLCD_voidWriteNumber(ss);
-	// CLCD_voidGoToXY(1,5);
-	// CLCD_voidWriteNumber(read_data);
 	counter++;
 }
 void UART1 (void)
@@ -42,12 +38,6 @@ void IdleTask(void)
 		idle_counter=0;
 		IWDG_VoidReload();
 	}
-	//ss = I2C_MasterTransmit(I2C1_PORT,0x10,ARR,2);
-	// uint8 SLV_W=0b1010000;
-	// ss= I2C_MasterTransmit(I2C1_PORT, SLV_W,dee,2);
-	// zz= I2C_MasterReceive(I2C1_PORT, SLV_W, &read_data, 1);
-
-
 }
 void TOGGLE_LED (void)
 {
@@ -57,7 +47,7 @@ void TOGGLE_LED (void)
 	GPIO_SetPinValue(GPIO_PORTB,PIN15,TogglePin);
 
 }
-
+/************************************/
 void main(void)
 {
 	IWDG_VoidInit();
@@ -73,10 +63,6 @@ void main(void)
 
 	}
 }
-
-
-
-
 void RCC_Init(void)
 {
 	RCC_VidInit();
