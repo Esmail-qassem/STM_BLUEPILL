@@ -5,6 +5,9 @@
         "i2c.h": "c",
         "std_types.h": "c",
         "clcd_interface.h": "c",
-        "rcc_interface.h": "c"
+        "rcc_interface.h": "c",
+        "eeprom_interface.h": "c",
+        "eeprom.h": "c",
+        "rtos.h": "c"
     }
 }

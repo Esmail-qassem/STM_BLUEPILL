@@ -17,12 +17,18 @@ I2C_Config_t config={100000,0,1,0};
 void RCC_Init(void);
 void Peripheral_APP_Init(void);
 /************************************/
+uint32 I2C_TASK_COUNTER=0;
 /*Tasks*/
 void LCD (void)
 {	uint32 static counter=0;
 	CLCD_voidGoToXY(0,0);
+	CLCD_voidSendString("lcd tim:");
 	 CLCD_voidWriteNumber(counter);
+	 	CLCD_voidGoToXY(1,0);
+		CLCD_voidSendString("i2c tim:");
+	 CLCD_voidWriteNumber(I2C_TASK_COUNTER);
 	counter++;
+	
 }
 void UART1 (void)
 {
@@ -47,16 +53,24 @@ void TOGGLE_LED (void)
 	GPIO_SetPinValue(GPIO_PORTB,PIN15,TogglePin);
 
 }
+
+
+void I2C_TASK (void)
+{
+I2C_TASK_COUNTER++;
+	
+}
 /************************************/
 void main(void)
 {
 	IWDG_VoidInit();
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(2,500,&LCD);
+	RTOS_voidCreateTask(2,10,&LCD);
 	RTOS_voidCreateTask(0,1000,&TOGGLE_LED);
-	RTOS_voidCreateTask(1,60,&UART1);
+	RTOS_voidCreateTask(1,50,&UART1);
 	RTOS_voidCreateTask(3,1,&IdleTask);
+	RTOS_voidCreateTask(4,100,&I2C_TASK);
 	RTOS_voidStart();
 	while(1)
 	{
@@ -105,5 +119,5 @@ void Peripheral_APP_Init(void)
 
 	UART_voidInit();
 	CLCD_voidInit();
-	//I2C_Init(I2C1_PORT,&config);
+	I2C_Init(I2C1_PORT,&config);
 }

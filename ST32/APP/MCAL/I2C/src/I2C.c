@@ -88,7 +88,6 @@ I2C_Status_t I2C_Start(I2C_Port_t port)
     uint32 base = I2C_GetBase(port);
     uint32 timeout = I2C_TIMEOUT_MAX;
 
-   // while (I2C_SR2(base) & (1 << 1)); // Wait until BUSY flag = 0
     /* Generate START */
     SET_BIT(I2C_CR1(base), 8); // START = 1
 
@@ -168,10 +167,6 @@ I2C_Status_t I2C_MasterTransmit(I2C_Port_t port, uint8 slave_addr, uint8 *data, 
 {
     uint32 base = I2C_GetBase(port);
     I2C_Status_t status;
-
-    // Check if bus is busy
-    // if (I2C_SR2(base) & (1 << 1))
-    //     return I2C_BUSY;
 
     // Generate START condition
     status = I2C_Start(port);

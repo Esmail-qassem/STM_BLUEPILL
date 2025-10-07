@@ -3,6 +3,7 @@
 #include "RTOS.h"
 //#include "Timer.h"
 #include "SysTick_interface.h"
+#include "RTOS.h"
 task_type SysTask[TASK_NUMBER]={{0}};
 
 
