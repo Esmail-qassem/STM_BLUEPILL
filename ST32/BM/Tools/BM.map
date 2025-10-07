@@ -19,7 +19,7 @@ Linker script and memory map
                 0x08000000                Vector_Table
                 0x08000130                . = ALIGN (0x4)
 
-.text           0x08000130      0xf40
+.text           0x08000130      0xf5c
                 0x08000130                . = ALIGN (0x4)
  *(.text)
  .text          0x08000130      0x120 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
@@ -93,73 +93,73 @@ Linker script and memory map
                 0x080002f4                SPI3_IRQHandler
                 0x080002f4                I2C1_ER_IRQHandler
                 0x080002f4                DMA2_Channel3_IRQHandler
- .text          0x08000300      0x24c C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
+ .text          0x08000300      0x268 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
                 0x08000300                RCC_VidInit
-                0x08000394                RCC_voidEnablePeripheral
-                0x08000430                RCC_voidDisablePeripheral
-                0x080004d0                RCC_voidResetPeripheral
- .text          0x0800054c      0x1f0 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
-                0x0800054c                SysTick_voidInit
-                0x08000568                SysTick_voidSetBusyWait
-                0x080005bc                SysTick_voidSetIntervalSingle
-                0x08000638                SysTick_voidSetIntervalPeriodoc
-                0x08000698                SysTick_voidStopTimer
-                0x080006b4                SysTick_GetElapsedTime
-                0x080006d4                SysTick_GetRemaningTime
-                0x080006e8                SysTick_Handler
- .text          0x0800073c      0x3e8 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
-                0x0800073c                GPIO_SetPinConfig
-                0x080008ec                GPIO_GetPinReading
-                0x0800098c                GPIO_GetPortReading
-                0x080009f8                GPIO_SetPinValue
-                0x08000ac8                GPIO_SetPortValue
- .text          0x08000b24      0x3dc C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
-                0x08000b24                UART_voidInit
-                0x08000bf8                UART_uint8SendCharSynch
-                0x08000cb8                UART_voidSendNumber
-                0x08000cf6                UART_uint8ReceiveCharSynch
-                0x08000df8                UART_uint8SendStringSynch
-                0x08000e46                UART_uint8RecieveStringSynch
-                0x08000ea6                UART_IsStringEqual
-                0x08000eec                USART3_IRQHandler
- .text          0x08000f00      0x170 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
-                0x08000f00                FPEC_voidEraseAppArea
-                0x08000f2a                FPEC_voidFlashPageErase
-                0x08000fbc                FPEC_voidFlashWrite
+                0x080003b0                RCC_voidEnablePeripheral
+                0x0800044c                RCC_voidDisablePeripheral
+                0x080004ec                RCC_voidResetPeripheral
+ .text          0x08000568      0x1f0 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
+                0x08000568                SysTick_voidInit
+                0x08000584                SysTick_voidSetBusyWait
+                0x080005d8                SysTick_voidSetIntervalSingle
+                0x08000654                SysTick_voidSetIntervalPeriodoc
+                0x080006b4                SysTick_voidStopTimer
+                0x080006d0                SysTick_GetElapsedTime
+                0x080006f0                SysTick_GetRemaningTime
+                0x08000704                SysTick_Handler
+ .text          0x08000758      0x3e8 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
+                0x08000758                GPIO_SetPinConfig
+                0x08000908                GPIO_GetPinReading
+                0x080009a8                GPIO_GetPortReading
+                0x08000a14                GPIO_SetPinValue
+                0x08000ae4                GPIO_SetPortValue
+ .text          0x08000b40      0x3dc C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
+                0x08000b40                UART_voidInit
+                0x08000c14                UART_uint8SendCharSynch
+                0x08000cd4                UART_voidSendNumber
+                0x08000d12                UART_uint8ReceiveCharSynch
+                0x08000e14                UART_uint8SendStringSynch
+                0x08000e62                UART_uint8RecieveStringSynch
+                0x08000ec2                UART_IsStringEqual
+                0x08000f08                USART3_IRQHandler
+ .text          0x08000f1c      0x170 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
+                0x08000f1c                FPEC_voidEraseAppArea
+                0x08000f46                FPEC_voidFlashPageErase
+                0x08000fd8                FPEC_voidFlashWrite
  *(.text*)
-                0x08001070                . = ALIGN (0x4)
-                0x08001070                _etext = .
+                0x0800108c                . = ALIGN (0x4)
+                0x0800108c                _etext = .
 
-.glue_7         0x08001070        0x0
- .glue_7        0x08001070        0x0 linker stubs
+.glue_7         0x0800108c        0x0
+ .glue_7        0x0800108c        0x0 linker stubs
 
-.glue_7t        0x08001070        0x0
- .glue_7t       0x08001070        0x0 linker stubs
+.glue_7t        0x0800108c        0x0
+ .glue_7t       0x0800108c        0x0 linker stubs
 
-.vfp11_veneer   0x08001070        0x0
- .vfp11_veneer  0x08001070        0x0 linker stubs
+.vfp11_veneer   0x0800108c        0x0
+ .vfp11_veneer  0x0800108c        0x0 linker stubs
 
-.v4_bx          0x08001070        0x0
- .v4_bx         0x08001070        0x0 linker stubs
+.v4_bx          0x0800108c        0x0
+ .v4_bx         0x0800108c        0x0 linker stubs
 
-.iplt           0x08001070        0x0
- .iplt          0x08001070        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
+.iplt           0x0800108c        0x0
+ .iplt          0x0800108c        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.rodata         0x08001070        0xc
-                0x08001070                . = ALIGN (0x4)
+.rodata         0x0800108c        0xc
+                0x0800108c                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08001070        0x5 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
- *fill*         0x08001075        0x3 
- .rodata        0x08001078        0x4 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
-                0x08001078                MSP_Value
+ .rodata        0x0800108c        0x5 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
+ *fill*         0x08001091        0x3 
+ .rodata        0x08001094        0x4 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
+                0x08001094                MSP_Value
  *(.rodata*)
-                0x0800107c                . = ALIGN (0x4)
-                0x0800107c                _sidata = LOADADDR (.data)
+                0x08001098                . = ALIGN (0x4)
+                0x08001098                _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0800107c        0x0
- .rel.iplt      0x0800107c        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
+.rel.dyn        0x08001098        0x0
+ .rel.iplt      0x08001098        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.data           0x20000000        0xc load address 0x0800107c
+.data           0x20000000        0xc load address 0x08001098
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -176,10 +176,10 @@ Linker script and memory map
                 0x2000000c                . = ALIGN (0x4)
                 0x2000000c                _edata = .
 
-.igot.plt       0x2000000c        0x0 load address 0x08001088
+.igot.plt       0x2000000c        0x0 load address 0x080010a4
  .igot.plt      0x2000000c        0x0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
 
-.bss            0x2000000c       0x24 load address 0x08001088
+.bss            0x2000000c       0x24 load address 0x080010a4
                 0x2000000c                _sbss = .
  *(.bss)
  .bss           0x2000000c       0x10 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
@@ -202,7 +202,7 @@ Linker script and memory map
                 0x20000030                _ebss = .
 
 ._user_heap_stack
-                0x20000030      0x600 load address 0x08001088
+                0x20000030      0x600 load address 0x080010a4
                 0x20000030                . = ALIGN (0x8)
                 0x20000230                . = (. + _Min_Heap_Size)
  *fill*         0x20000030      0x200 
@@ -219,14 +219,14 @@ LOAD C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
 OUTPUT(C:/STM_BLUEPILL/ST32/BM/Tools/BM.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x1bce
+.debug_info     0x00000000     0x1c79
  .debug_info    0x00000000      0x4a7 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
  .debug_info    0x000004a7      0x15e C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
- .debug_info    0x00000605      0x63a C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
- .debug_info    0x00000c3f      0x296 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
- .debug_info    0x00000ed5      0x4e0 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
- .debug_info    0x000013b5      0x644 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
- .debug_info    0x000019f9      0x1d5 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
+ .debug_info    0x00000605      0x6e5 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
+ .debug_info    0x00000cea      0x296 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
+ .debug_info    0x00000f80      0x4e0 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
+ .debug_info    0x00001460      0x644 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
+ .debug_info    0x00001aa4      0x1d5 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
 
 .debug_abbrev   0x00000000      0x788
  .debug_abbrev  0x00000000       0xdd C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
@@ -253,29 +253,29 @@ LOAD linker stubs
  .debug_aranges
                 0x000000c0       0x20 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
 
-.debug_line     0x00000000      0xb82
+.debug_line     0x00000000      0xb94
  .debug_line    0x00000000      0x13c C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
  .debug_line    0x0000013c       0xc6 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
- .debug_line    0x00000202      0x169 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
- .debug_line    0x0000036b      0x180 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
- .debug_line    0x000004eb      0x282 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
- .debug_line    0x0000076d      0x2bd C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
- .debug_line    0x00000a2a      0x158 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
+ .debug_line    0x00000202      0x17b C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
+ .debug_line    0x0000037d      0x180 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
+ .debug_line    0x000004fd      0x282 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
+ .debug_line    0x0000077f      0x2bd C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
+ .debug_line    0x00000a3c      0x158 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
 
-.debug_str      0x00000000     0x11ba
+.debug_str      0x00000000     0x136c
  .debug_str     0x00000000      0x617 C:/STM_BLUEPILL/ST32/BM/Build/Object/Src/main.o
                                 0x652 (size before relaxing)
  .debug_str     0x00000617       0xd0 C:/STM_BLUEPILL/ST32/BM/Build/Object/Startup/startup_stm32f103.o
                                 0x158 (size before relaxing)
- .debug_str     0x000006e7      0x473 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
-                                0x7f6 (size before relaxing)
- .debug_str     0x00000b5a      0x1dd C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
+ .debug_str     0x000006e7      0x625 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/RCC/src/RCC_program.o
+                                0x9a8 (size before relaxing)
+ .debug_str     0x00000d0c      0x1dd C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/SysTick/src/SysTick_program.o
                                 0x2fc (size before relaxing)
- .debug_str     0x00000d37      0x142 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
+ .debug_str     0x00000ee9      0x142 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/GPIO/src/GPIO_program.o
                                 0x420 (size before relaxing)
- .debug_str     0x00000e79      0x29c C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
+ .debug_str     0x0000102b      0x29c C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/UART/src/UART_program.o
                                 0x431 (size before relaxing)
- .debug_str     0x00001115       0xa5 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
+ .debug_str     0x000012c7       0xa5 C:/STM_BLUEPILL/ST32/BM/Build/Object/MCAL/FPEC/src/FPEC.o
                                 0x1ec (size before relaxing)
 
 .comment        0x00000000       0x49
