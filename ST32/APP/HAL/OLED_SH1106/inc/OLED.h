@@ -22,8 +22,4 @@ void SH1106_SendData(I2C_Port_t PORT,uint8 data);
 void SH1106_Clear(void);
 void SH1106_DrawPixel(uint8 x, uint8 y, SH1106_Color_t color);
 void SH1106_UpdateScreen(I2C_Port_t PORT);
-
-void SH1106_DrawRect(uint8 x, uint8 y, uint8 w, uint8 h, SH1106_Color_t color);
-void SH1106_FillRect(uint8 x, uint8 y, uint8 w, uint8 h, SH1106_Color_t color);
-void SH1106_DrawBird(uint8 x, uint8 y);
 #endif
