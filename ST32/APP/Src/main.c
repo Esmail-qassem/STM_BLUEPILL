@@ -6,12 +6,13 @@
 #include "I2C.h"
 #include "IWDG.h"
 #include "CLCD_interface.h"
+#include "OLED.h"
 #include "RTOS.h"
 #include "flappy_bird.h"
 /************************************/
 /* Global Variable */
 volatile uint32 idle_counter = 0;
-I2C_Config_t config={100000,0,1,0};
+I2C_Config_t config={400000,0,1,0};
 /************************************/
 /*proto typed*/
 void RCC_Init(void);
@@ -19,21 +20,19 @@ void Peripheral_APP_Init(void);
 /************************************/
 uint32 I2C_TASK_COUNTER=0;
 /*Tasks*/
-void LCD (void)
-{	uint32 static counter=0;
-	CLCD_voidGoToXY(0,0);
-	CLCD_voidSendString("lcd tim:");
-	 CLCD_voidWriteNumber(counter);
-	 	CLCD_voidGoToXY(1,0);
-		CLCD_voidSendString("i2c tim:");
-	 CLCD_voidWriteNumber(I2C_TASK_COUNTER);
-	counter++;
-	
-}
+// void LCD (void)
+// {	uint32 static counter=0;
+// 	CLCD_voidGoToXY(0,0);
+// 	CLCD_voidSendString("lcd tim:");
+// 	CLCD_voidWriteNumber(counter);
+// 	CLCD_voidGoToXY(1,0);
+// 	CLCD_voidSendString("i2c tim:");
+// 	CLCD_voidWriteNumber(I2C_TASK_COUNTER);
+// 	counter++;
+// }
 void UART1 (void)
 {
-UART_uint8SendStringSynch(UART_Unit1,"uart1\n");
-
+	//UART_uint8SendStringSynch(UART_Unit1,"esmail\n :");
 }
 void IdleTask(void)
 {
@@ -51,26 +50,31 @@ void TOGGLE_LED (void)
 	TogglePin^=1;
 	GPIO_SetPinValue(GPIO_PORTC,PIN13,TogglePin);
 	GPIO_SetPinValue(GPIO_PORTB,PIN15,TogglePin);
-
 }
-
 
 void I2C_TASK (void)
 {
-I2C_TASK_COUNTER++;
-	
+
+for(uint8 y=0;y<SH1106_HEIGHT;y++)
+{
+	for(uint8 x=0;x<SH1106_WIDTH;x++)
+	{
+		SH1106_DrawBird(x, y);
+	}
+	SH1106_UpdateScreen(I2C1_PORT);
+}
+	I2C_TASK_COUNTER++;
 }
 /************************************/
 void main(void)
 {
-	IWDG_VoidInit();
+	//IWDG_VoidInit();
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(2,10,&LCD);
-	RTOS_voidCreateTask(0,1000,&TOGGLE_LED);
-	RTOS_voidCreateTask(1,50,&UART1);
-	RTOS_voidCreateTask(3,1,&IdleTask);
-	RTOS_voidCreateTask(4,100,&I2C_TASK);
+	RTOS_voidCreateTask(2,1000,&TOGGLE_LED);
+	RTOS_voidCreateTask(1,500,&UART1);
+	//RTOS_voidCreateTask(3,1,&IdleTask);
+	RTOS_voidCreateTask(0,10,&I2C_TASK);
 	RTOS_voidStart();
 	while(1)
 	{
@@ -120,4 +124,6 @@ void Peripheral_APP_Init(void)
 	UART_voidInit();
 	CLCD_voidInit();
 	I2C_Init(I2C1_PORT,&config);
+	SH1106_Init(I2C1_PORT);
+	//SH1106_Clear();
 }

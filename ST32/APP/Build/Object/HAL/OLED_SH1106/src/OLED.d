@@ -1,0 +1,7 @@
+C:/STM_BLUEPILL/ST32/APP/Build/Object/HAL/OLED_SH1106/src/OLED.o: \
+ ../HAL/OLED_SH1106/src/OLED.c ../HAL/OLED_SH1106/inc/OLED.h \
+ ../Inc/STD_TYPES.h ../MCAL/I2C/inc/I2C.h ../Inc/BIT_MATH.h
+../HAL/OLED_SH1106/inc/OLED.h:
+../Inc/STD_TYPES.h:
+../MCAL/I2C/inc/I2C.h:
+../Inc/BIT_MATH.h:

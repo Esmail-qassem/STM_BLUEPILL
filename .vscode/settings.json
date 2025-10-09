@@ -8,6 +8,9 @@
         "rcc_interface.h": "c",
         "eeprom_interface.h": "c",
         "eeprom.h": "c",
-        "rtos.h": "c"
+        "rtos.h": "c",
+        "dio_interface.h": "c",
+        "bit_math.h": "c",
+        "oled.h": "c"
     }
 }
