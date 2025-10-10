@@ -55,7 +55,7 @@ void DrawScore(uint8 score)
 #define GRAVITY         1
 #define JUMP_STRENGTH   5
 #define GROUND_LEVEL    60   // Y max (bottom of screen)
-#define CEILING_LEVEL   0    // Y min (top of screen)
+#define CEILING_LEVEL   1    // Y min (top of screen)
 static sint16 birdY = 30;
 static sint16 velocity = 0;
 
