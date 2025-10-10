@@ -72,8 +72,13 @@ void SH1106_Clear(void)
 void SH1106_DrawPixel(uint8 x, uint8 y, SH1106_Color_t color)
 {
     if (x >= SH1106_WIDTH || y >= SH1106_HEIGHT)
+    {
         return;
-
+    }    
+    if(x ==0 && y ==0)
+    {
+         return;
+    }
     uint16 index = x + (y / 8) * SH1106_WIDTH;
 
     if (color == SH1106_COLOR_WHITE)
