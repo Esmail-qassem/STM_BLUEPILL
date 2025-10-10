@@ -11,6 +11,7 @@
         "rtos.h": "c",
         "dio_interface.h": "c",
         "bit_math.h": "c",
-        "oled.h": "c"
+        "oled.h": "c",
+        "iwdg.h": "c"
     }
 }

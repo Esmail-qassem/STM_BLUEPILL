@@ -1,5 +1,6 @@
 #include "flappy_bird.h"
 
+extern volatile uint8 PUSH_BUTTON;
 void SH1106_DrawRect(uint8 x, uint8 y, uint8 w, uint8 h, SH1106_Color_t color)
 {
     for (uint8 i = 0; i < w; i++) {
@@ -51,51 +52,41 @@ void DrawScore(uint8 score)
 {
     
 }
+#define GRAVITY         1
+#define JUMP_STRENGTH   5
+#define GROUND_LEVEL    60   // Y max (bottom of screen)
+#define CEILING_LEVEL   0    // Y min (top of screen)
+static sint16 birdY = 30;
+static sint16 velocity = 0;
+
 void Flappy_MainFunction(void)
-{
-    static uint8 x = 0;
-    static uint8 dir = 1;   // 1 = right, 0 = left
-    const uint8 y = 32;
-    const uint8 speed = 5;  // pixels per frame (smooth motion)
-
-    // 1. Clear buffer first
+{    // 1. Clear buffer first
+    velocity += GRAVITY;
+    birdY += velocity;
     SH1106_Clear();
-
+    if(birdY > GROUND_LEVEL )
+    {
+        birdY = GROUND_LEVEL;
+    }
+    else if (birdY < CEILING_LEVEL)
+    {
+        birdY = CEILING_LEVEL;
+    }
     // 2. Draw bird
-    DrawBird(x, y);
-
+    DrawBird(5, birdY);
     // 3. Update display
     SH1106_UpdateScreen(I2C1_PORT);
-
     // 4. Move bird
-    if(dir)
-    {
-        if(x+speed>=120)
-        {
-            dir=0;
-            x=120;
-            
-        }
-        else
-        {
-            x+=speed;
-        }
-    }
-    else
-    {
-        if(x<=speed)
-        {
-            dir=1;
-            x=0;
+}
 
-        }
-        else
-        {
-            x-=speed;
-        }
 
+void Bird_Jump(void)
+{
+    if (PUSH_BUTTON == PRESSED)
+    {
+        velocity = -JUMP_STRENGTH; // Bird jumps upward
     }
- 
+
 }
 
 

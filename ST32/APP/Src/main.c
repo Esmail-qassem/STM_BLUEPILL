@@ -16,18 +16,19 @@ void RCC_Init(void);
 void Peripheral_APP_Init(void);
 /************************************/
 uint32 I2C_TASK_COUNTER=0;
+volatile uint8 PUSH_BUTTON;
 /*Tasks*/
 void IdleTask(void)
 {
-	static uint32 idle_counteridle_counter=0;
-	idle_counteridle_counter++;
-	if(idle_counteridle_counter == 396)
-	{
-		/*reload the wdg every 396 ms */
-		idle_counteridle_counter=0;
-		IWDG_VoidReload();
-	}
-	
+	// static uint32 idle_counteridle_counter=0;
+	// idle_counteridle_counter++;
+	// if(idle_counteridle_counter == 396)
+	// {
+	// 	/*reload the wdg every 396 ms */
+	// 	idle_counteridle_counter=0;
+	// 	IWDG_VoidReload();
+	// }
+	GPIO_GetPinReading(GPIO_PORTB,PIN5,&PUSH_BUTTON);
 }
 void TOGGLE_LED (void)
 {
@@ -40,8 +41,10 @@ void TOGGLE_LED (void)
 
 void I2C_TASK (void)
 {
-	Flappy_MainFunction();
+	//Flappy_MainFunction();
 	I2C_TASK_COUNTER++;
+	Flappy_MainFunction();
+	Bird_Jump();
 }
 /************************************/
 void main(void)
@@ -49,13 +52,12 @@ void main(void)
 	//IWDG_VoidInit();
 	RCC_Init();
 	Peripheral_APP_Init();
-	RTOS_voidCreateTask(0,1000,&TOGGLE_LED);
-	//RTOS_voidCreateTask(0,1,&IdleTask);
-	RTOS_voidCreateTask(1,40,&I2C_TASK);
+	RTOS_voidCreateTask(2,500,&TOGGLE_LED);
+	RTOS_voidCreateTask(1,10,&IdleTask);
+	RTOS_voidCreateTask(0,100,&I2C_TASK);
 	RTOS_voidStart();
 	while(1)
 	{
-
 	}
 }
 
@@ -109,8 +111,14 @@ void Peripheral_APP_Init(void)
 	 GPIO_SetPinConfig(GPIO_PORTB,PIN7,OUTPUT_50MHZ_AF_OPEN_DRAIN);
 	/*I2C 2*/
 
-	UART_voidInit();
-	CLCD_voidInit();
+
+	/* push botton */
+	GPIO_SetPinConfig(GPIO_PORTB,PIN5,INPUT_PULL_UP_DOWN);
+	GPIO_SetPinValue(GPIO_PORTB,PIN5,GPIO_HIGH);
+
+
+	//UART_voidInit();
+	//CLCD_voidInit();
 	I2C_Init(I2C1_PORT,&config);
 	SH1106_Init(I2C1_PORT);
 	//SH1106_Clear();

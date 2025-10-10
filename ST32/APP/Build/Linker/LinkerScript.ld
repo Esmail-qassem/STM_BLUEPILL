@@ -8,7 +8,7 @@
 _estack = ORIGIN(RAM) + LENGTH(RAM); /* End of "RAM" Ram type memory */
 
 _Min_Heap_Size = 0x200 ;  /* Required amount of heap */
-_Min_Stack_Size = 0x400 ; /* Required amount of stack */
+_Min_Stack_Size = 0x1000 ; /* Required amount of stack */
 
 /* Memories definition -> Label_Name(AttributeList) : ORIGIN = StartMemoryAddress,   LENGTH = MemoryLength */
 /*FLASH  (rx)     : ORIGIN = 0x08002800,   LENGTH = 54K*/
