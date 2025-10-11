@@ -15,8 +15,7 @@ I2C_Config_t config={400000,0,1,0};
 void RCC_Init(void);
 void Peripheral_APP_Init(void);
 /************************************/
-uint32 I2C_TASK_COUNTER=0;
-volatile uint8 PUSH_BUTTON;
+uint8 PUSH_BUTTON = 1;
 /*Tasks*/
 void IdleTask(void)
 {
@@ -41,8 +40,6 @@ void TOGGLE_LED (void)
 
 void I2C_TASK (void)
 {
-	//Flappy_MainFunction();
-	I2C_TASK_COUNTER++;
 	Flappy_MainFunction();
 	Bird_Jump();
 }
@@ -54,7 +51,7 @@ void main(void)
 	Peripheral_APP_Init();
 	RTOS_voidCreateTask(2,500,&TOGGLE_LED);
 	RTOS_voidCreateTask(1,10,&IdleTask);
-	RTOS_voidCreateTask(0,100,&I2C_TASK);
+	RTOS_voidCreateTask(0,50,&I2C_TASK);
 	RTOS_voidStart();
 	while(1)
 	{

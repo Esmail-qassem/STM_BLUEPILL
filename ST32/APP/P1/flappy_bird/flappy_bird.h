@@ -7,8 +7,10 @@
 #define NOT_PRESSED  GPIO_HIGH
 #define PRESSED      GPIO_LOW
 
+extern uint8 PUSH_BUTTON;
+
 void DrawBird(uint8 x,uint8 y);
-void DrawPipe(uint8 x,uint8 y);
+void DrawPipe(void);
 void DrawScore(uint8 score);
 
 void SH1106_DrawRect(uint8 x, uint8 y, uint8 w, uint8 h, SH1106_Color_t color);

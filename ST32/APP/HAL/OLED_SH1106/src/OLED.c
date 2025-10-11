@@ -1,11 +1,27 @@
 #include "OLED.h"
 
-static uint8 SH1106_Buffer[SH1106_WIDTH * SH1106_PAGES];
+uint8 BufferA[SH1106_WIDTH * SH1106_PAGES];
+uint8 BufferB[SH1106_WIDTH * SH1106_PAGES];
+
+uint8 *SH1106_Buffer= BufferA;        // FOR DRAWING
+uint8 *SH1106_DisplayBuffer= BufferB; // FOR DISPLAYING
+
+
 #define SH1106_COLUMN_OFFSET 2   // SH1106 has 132 columns, 128 visible
 
 //-----------------------------------------------------//
 //                Low-level Senders                    //
 //-----------------------------------------------------//
+
+void swapBuffer(void)
+{
+    uint8 *temp=SH1106_Buffer;
+    SH1106_Buffer=SH1106_DisplayBuffer;
+    SH1106_DisplayBuffer=temp;
+}
+
+
+
 void SH1106_SendCommand(I2C_Port_t PORT, uint8 cmd)
 {
     uint8 data[2];
@@ -65,7 +81,7 @@ void SH1106_Init(I2C_Port_t PORT)
 //-----------------------------------------------------//
 void SH1106_Clear(void)
 {
-    for (uint16 i = 0; i < sizeof(SH1106_Buffer); i++)
+    for (uint16 i = 0; i < sizeof(BufferA); i++)
         SH1106_Buffer[i] = 0x00;
 }
 
@@ -75,10 +91,6 @@ void SH1106_DrawPixel(uint8 x, uint8 y, SH1106_Color_t color)
     {
         return;
     }    
-    if(x ==0 && y ==0)
-    {
-         return;
-    }
     uint16 index = x + (y / 8) * SH1106_WIDTH;
 
     if (color == SH1106_COLOR_WHITE)
@@ -102,7 +114,7 @@ void SH1106_UpdateScreen(I2C_Port_t PORT)
 
         for (uint8 col = 0; col < SH1106_WIDTH; col++)
         {
-            data[1 + col] = SH1106_Buffer[page * SH1106_WIDTH + col];
+            data[1 + col] = SH1106_DisplayBuffer[page * SH1106_WIDTH + col];
         }
 
         // Send entire page at once
